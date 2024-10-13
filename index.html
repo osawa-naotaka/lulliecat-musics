@@ -17,7 +17,7 @@
             list-style-type: none;
         }
         body {
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
         img, svg {
@@ -40,11 +40,18 @@
             /* --lulliecat-main-color: #4f3235; */
             --lulliecat-main-color: #303030;
             --lulliecat-shadow-color: #c0c0c0;
+
+            --lulliecat-header-height: 42px;
         }
 
         /*
          * grobal settings
          */
+        :root {
+            scroll-snap-type: y proximity;
+            scroll-behavior: smooth;
+        }
+
         body {
             /* decoration */
             /* font-family: "Roboto", "Zen Antique", "Noto Sans JP", serif; */
@@ -72,24 +79,83 @@
          * Hero
          */
          .hero > img {
+            /* decoration */
+            opacity: 0; /* for carousel animation */
+
             /* layout - dimension */
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100vh;
             object-fit: cover;
+
+            /* animation */
+            animation: carousel 16s infinite;
+        }
+        img:nth-of-type(2) {
+            animation-delay: 4s;
+        }
+        img:nth-of-type(3) {
+            animation-delay: 8s;
+        }
+        img:nth-of-type(4) {
+            animation-delay: 12s;
         }
         .hero {
+            background-color: var(--lulliecat-main-color);
             /* layout - containing block for .hero > h1 */
             position: relative;
+
+            /* layout - dimension */
+            width: 100%;
+            height: 100vh;
+
+            /* scroll */
+            scroll-snap-align: start;
         }
         .hero > h1 {
             /* decolation */
             font-size: 128px;
             line-height: 1.1;
+            opacity: 0; /* for fade-in animation */
 
             /* layout - position respect to .hero */
             position: absolute;
+            z-index: 1;
             bottom: 32px;
             left: 32px;
+
+            /* animation */
+            animation: sitename ease-out 0.5s forwards 1s;
+        }
+
+        /* depends on the number of pictures */
+        @keyframes carousel {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            35% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sitename {
+            0% {
+                transform: translateY(32px);
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         /*
@@ -109,6 +175,7 @@
 
             /* layout - dimension */
             width: 100%;
+            height: var(--lulliecat-header-height);
 
             /* layout - alignment */
             align-items: baseline;
@@ -146,7 +213,12 @@
         /*
          * musicvideo
          */
-         .musicvideo img {
+        .musicvideos {
+            scroll-snap-align: start;
+            scroll-margin-block-start: var(--lulliecat-header-height);
+            margin-bottom: 100px;
+        }
+        .musicvideos img {
             width: 360px;
             aspect-ratio: 16 / 9;
             object-fit: cover;
@@ -154,23 +226,16 @@
             border-radius: 8px;
             box-shadow: 0 0 10px var(--lulliecat-shadow-color);
         }
-        .musicvideo > ul {
-            /* display: flex; */
-            /* overflow-x: scroll; */
-            /* scroll-snap-type: x mandatory; */
+        .musicvideos > ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
         }
 
-        .musicvideo > ul > li {
-            flex-shrink: 0;
-            /* scroll-snap-align: center; */
+        .musicvideos > ul > li {
         }
 
-        .musicvideo {
-            margin-bottom: 100px;
-        }
-
-        .musicvideo > ul > li > iframe {
-            /* display: none; */
+        .musicvideos > ul > li > iframe {
+            display: none;
         }
 
 
@@ -198,17 +263,20 @@
 </head>
 <body>
 
-    <div class="hero">
+    <div class="hero" id="home">
         <h1>lulliecat<br>musics.</h1>
-        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="woman with guitar">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
+        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
     </div>
 
     <header>
         <h2>lullicat musics</h2>
         <nav>
             <ul>
-                <li><a href="#">home</a></li>
-                <li><a href="#">music videos</a></li>
+                <li><a href="#home">home</a></li>
+                <li><a href="#musicvideos">music videos</a></li>
                 <li><a href="#">bands</a></li>
                 <li><a href="#">About me</a></li>
             </ul>
@@ -216,7 +284,7 @@
     </header>
 
 
-    <section class="musicvideo">
+    <section class="musicvideos" id="musicvideos">
         <h2>music videos.</h2>
         <ul>
             <li>
