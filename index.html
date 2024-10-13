@@ -634,12 +634,12 @@
         © 2024 lulliecat
     </footer>
     <script>
-        const cards = document.querySelectorAll(".card");
+        const cards         = document.querySelectorAll(".card");
+        const player_label  = document.querySelector(".mainplayer > label");
+        const player        = document.querySelector(".mainplayer > iframe");
         cards.forEach((card) => {
-            const img_label    = card.querySelector("figure > label");
-            const id           = img_label.getAttribute("for");
-            const player_label = document.querySelector(".mainplayer > label");
-            const player       = document.querySelector(".mainplayer > iframe");
+            const img_label = card.querySelector("figure > label");
+            const id        = img_label.getAttribute("for");
 
             // open
             img_label.addEventListener('click', (e) => player.src = `https://www.youtube.com/embed/${id}`);
