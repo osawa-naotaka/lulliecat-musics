@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Zen+Antique&display=swap" rel="stylesheet">
+    <title>lullicat musics</title>
+    <style>
+        /* reset css */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style-type: none;
+        }
+        body {
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        img, svg {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        /*
+         * parameter
+         */
+        :root {
+            /* --lulliecat-background-color: #fef6e9; */
+            --lulliecat-background-color: #f0f0f0;
+            --lulliecat-background-color-dim: #f0f0f080;
+            --lulliecat-sub-accent-color: #f5af77;
+            --lulliecat-accent-color: #f3aa96;
+            /* --lulliecat-main-color: #4f3235; */
+            --lulliecat-main-color: #303030;
+            --lulliecat-shadow-color: #c0c0c0;
+        }
+
+        /*
+         * grobal settings
+         */
+        body {
+            /* decoration */
+            /* font-family: "Roboto", "Zen Antique", "Noto Sans JP", serif; */
+            font-family: "Roboto", "Noto Sans JP", serif;
+            color: var(--lulliecat-main-color);
+            background-color: var(--lulliecat-background-color);
+        }
+
+        section {
+            /* layout - dimension */
+            max-width: 1200px;
+            margin-inline: auto;
+            margin-block: 32px;
+        }
+        h2 {
+            /* decoration */
+            font-size: 64px;
+            border-bottom: 8px solid;
+            
+            /* layout */
+            margin-block-end: 32px;
+        }
+
+        /*
+         * Hero
+         */
+         .hero > img {
+            /* layout - dimension */
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+        .hero {
+            /* layout - containing block for .hero > h1 */
+            position: relative;
+        }
+        .hero > h1 {
+            /* decolation */
+            font-size: 128px;
+            line-height: 1.1;
+
+            /* layout - position respect to .hero */
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+        }
+
+        /*
+         * header
+         */
+        header {
+            /* decolation */
+            background-color: #f0f0f0c0;
+            box-shadow: 0px 0px 10px var(--lulliecat-shadow-color);
+
+            /* block type */
+            display: flex;
+
+            /* layout - position */
+            position: sticky;
+            top: 0;
+
+            /* layout - dimension */
+            width: 100%;
+
+            /* layout - alignment */
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        header > h2 {
+            /* decolation */
+            font-size: 32px;
+            font-weight: bold;
+            border-bottom: none;
+
+            /* layout - dimension */
+            margin-left: 32px;
+        }
+        header > nav {
+            /* decolation */
+            font-weight: bold;
+
+            /* layout - dimension */
+            margin-right: 32px;
+        }
+        header > nav > ul {
+            /* block type */
+            display: flex;
+
+            /* layout - dimension */
+            gap: 16px;
+        }
+        header a {
+            /* decolation */
+            color: var(--lulliecat-main-color);
+        }
+
+
+        /*
+         * musicvideo
+         */
+         .musicvideo img {
+            width: 360px;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px var(--lulliecat-shadow-color);
+        }
+        .musicvideo > ul {
+            /* display: flex; */
+            /* overflow-x: scroll; */
+            /* scroll-snap-type: x mandatory; */
+        }
+
+        .musicvideo > ul > li {
+            flex-shrink: 0;
+            /* scroll-snap-align: center; */
+        }
+
+        .musicvideo {
+            margin-bottom: 100px;
+        }
+
+
+
+        /*
+         * footer
+         */
+        footer {
+            /* decoration */
+            color: var(--lulliecat-background-color);
+            background-color: var(--lulliecat-main-color);
+
+            /* layout - position */
+            position: fixed;
+            bottom: 0;
+
+            /* layout - dimension */
+            width: 100%;
+            padding: 4px;
+
+            /* layout - alignment */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>lulliecat<br>musics.</h1>
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="woman with guitar">
+    </div>
+
+    <header>
+        <h2>lullicat musics</h2>
+        <nav>
+            <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">music videos</a></li>
+                <li><a href="#">bands</a></li>
+                <li><a href="#">About me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="musicvideo">
+        <h2>music videos.</h2>
+        <ul>
+            <li>
+                <figure>
+                    <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
+                    <figcaption>
+                        All is One
+                        Orphaned Land
+                    </figcaption>
+                </figure>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Bds3FALcR7M?si=9q43d-QUeOnRB2hd&amp;controls=0&amp;rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        © 2024 lullicat
+    </footer>
+</body>
+</html>
