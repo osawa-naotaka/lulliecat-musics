@@ -229,7 +229,7 @@
 
 
         /*
-         * musicvideo
+         * music videos
          */
         .musicvideos {
             scroll-snap-align: start;
@@ -251,27 +251,16 @@
             grid-template-columns: 1fr 1fr 1fr;
         }
 
+        /* card */
         .card {
             padding: 16px;
         }
-
         .card > input {
             display: none;
         }
 
-        .card > iframe {
-            display: none;
-        }
-
-        .player {
-            display: none;
-        }
-
-        .player > label {
-            cursor: pointer;
-        }
-
-        .card > input:checked ~ .player {
+        /* music videos main player */
+        .mainplayer {
             display: flex;
             position: fixed;
             inset: 0;
@@ -281,15 +270,19 @@
             background-color: var(--lulliecat-main-color-dim);
             color: var(--lulliecat-background-color);
         }
-
-        .player > label {
+        .mainplayer:has(> input:checked)  {
+            display: none;
+        }
+        .mainplayer > iframe {
+            width: 80vw;
+            height: calc(80vw * 9 / 16);
+        }
+        .mainplayer > label {
             position: fixed;
             top: 0;
         }
-
-        .player > iframe {
-            width: 80vw;
-            height: calc(80vw * 9 / 16);
+        .mainplayer > input {
+            display: none;
         }
 
 
@@ -340,9 +333,14 @@
 
     <section class="musicvideos" id="musicvideos">
         <h2>music videos.</h2>
+        <div class="mainplayer">
+            <input type="radio" name="video" id="player-close" checked>
+            <label for="player-close">Close</label>
+            <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         <ul>
             <li class="card">
-                <input type="checkbox" id="kKOkybfh9bE">
+                <input type="radio" name="video" id="kKOkybfh9bE">
                 <figure>
                     <label for="kKOkybfh9bE">
                         <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="">
@@ -352,13 +350,9 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="kKOkybfh9bE">Close</label>
-                    <iframe loading="lazy" src="https://www.youtube.com/embed/kKOkybfh9bE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="L72R8VFVNEY">
+                <input type="radio" name="video" id="L72R8VFVNEY">
                 <figure>
                     <label for="L72R8VFVNEY">
                         <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="">
@@ -368,13 +362,9 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="L72R8VFVNEY">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/L72R8VFVNEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="EzgE7CbTs3o">
+                <input type="radio" name="video" id="EzgE7CbTs3o">
                 <figure>
                     <label for="EzgE7CbTs3o">
                         <img src="https://img.youtube.com/vi/EzgE7CbTs3o/sddefault.jpg" alt="">
@@ -384,13 +374,9 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="EzgE7CbTs3o">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/EzgE7CbTs3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="PWbg7ShjOPk">
+                <input type="radio" name="video" id="PWbg7ShjOPk">
                 <figure>
                     <label for="PWbg7ShjOPk">
                         <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
@@ -400,13 +386,9 @@
                         <span class="artist">岸田教団＆THE明星ロケッツ</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="PWbg7ShjOPk">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/PWbg7ShjOPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="trrEWoMWSQg">
+                <input type="radio" name="video" id="trrEWoMWSQg">
                 <figure>
                     <label for="trrEWoMWSQg">
                         <img src="https://img.youtube.com/vi/trrEWoMWSQg/sddefault.jpg" alt="">
@@ -416,13 +398,9 @@
                         <span class="artist">岸田教団＆THE明星ロケッツ</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="trrEWoMWSQg">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/trrEWoMWSQg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="Bds3FALcR7M">
+                <input type="radio" name="video" id="Bds3FALcR7M">
                 <figure>
                     <label for="Bds3FALcR7M">
                         <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
@@ -432,13 +410,9 @@
                         <span class="artist">Orphaned Land</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="Bds3FALcR7M">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/Bds3FALcR7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="AbCliCQnBUo">
+                <input type="radio" name="video" id="AbCliCQnBUo">
                 <figure>
                     <label for="AbCliCQnBUo">
                         <img src="https://img.youtube.com/vi/AbCliCQnBUo/sddefault.jpg" alt="">
@@ -448,13 +422,9 @@
                         <span class="artist">Orphaned Land</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="AbCliCQnBUo">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/AbCliCQnBUo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="4SZDVcNUiI0">
+                <input type="radio" name="video" id="4SZDVcNUiI0">
                 <figure>
                     <label for="4SZDVcNUiI0">
                         <img src="https://img.youtube.com/vi/4SZDVcNUiI0/sddefault.jpg" alt="">
@@ -464,13 +434,9 @@
                         <span class="artist">Circus Maximus</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="4SZDVcNUiI0">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/4SZDVcNUiI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="SiH5FNKKcjQ">
+                <input type="radio" name="video" id="SiH5FNKKcjQ">
                 <figure>
                     <label for="SiH5FNKKcjQ">
                         <img src="https://img.youtube.com/vi/SiH5FNKKcjQ/sddefault.jpg" alt="">
@@ -480,13 +446,9 @@
                         <span class="artist">Twilight Force</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="SiH5FNKKcjQ">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/SiH5FNKKcjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="LaTI4XF8PAY">
+                <input type="radio" name="video" id="LaTI4XF8PAY">
                 <figure>
                     <label for="LaTI4XF8PAY">
                         <img src="https://img.youtube.com/vi/LaTI4XF8PAY/sddefault.jpg" alt="">
@@ -496,13 +458,9 @@
                         <span class="artist">Twilight Force</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="LaTI4XF8PAY">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/LaTI4XF8PAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="WM8bTdBs-cw">
+                <input type="radio" name="video" id="WM8bTdBs-cw">
                 <figure>
                     <label for="WM8bTdBs-cw">
                         <img src="https://img.youtube.com/vi/WM8bTdBs-cw/sddefault.jpg" alt="">
@@ -512,13 +470,9 @@
                         <span class="artist">Metallica</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="WM8bTdBs-cw">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/WM8bTdBs-cw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="msuO_KuHwVY">
+                <input type="radio" name="video" id="msuO_KuHwVY">
                 <figure>
                     <label for="msuO_KuHwVY">
                         <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
@@ -528,13 +482,9 @@
                         <span class="artist">In Vain</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="msuO_KuHwVY">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/msuO_KuHwVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="12kcpP-8jfM">
+                <input type="radio" name="video" id="12kcpP-8jfM">
                 <figure>
                     <label for="12kcpP-8jfM">
                         <img src="https://img.youtube.com/vi/12kcpP-8jfM/hqdefault.jpg" alt="">
@@ -544,13 +494,9 @@
                         <span class="artist">Bad Religion</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="12kcpP-8jfM">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/12kcpP-8jfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="RGqA1lNXYhg">
+                <input type="radio" name="video" id="RGqA1lNXYhg">
                 <figure>
                     <label for="RGqA1lNXYhg">
                         <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="">
@@ -560,13 +506,9 @@
                         <span class="artist">Bad Religion</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="RGqA1lNXYhg">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/RGqA1lNXYhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="n7-YIZhwvKI">
+                <input type="radio" name="video" id="n7-YIZhwvKI">
                 <figure>
                     <label for="n7-YIZhwvKI">
                         <img src="https://img.youtube.com/vi/n7-YIZhwvKI/sddefault.jpg" alt="">
@@ -576,13 +518,9 @@
                         <span class="artist">DGM</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="n7-YIZhwvKI">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/n7-YIZhwvKI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="YjPZgtm3Dmk">
+                <input type="radio" name="video" id="YjPZgtm3Dmk">
                 <figure>
                     <label for="YjPZgtm3Dmk">
                         <img src="https://img.youtube.com/vi/YjPZgtm3Dmk/sddefault.jpg" alt="">
@@ -592,13 +530,9 @@
                         <span class="artist">DGM</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="YjPZgtm3Dmk">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/YjPZgtm3Dmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="CbI79e5iZKs">
+                <input type="radio" name="video" id="CbI79e5iZKs">
                 <figure>
                     <label for="CbI79e5iZKs">
                         <img src="https://img.youtube.com/vi/CbI79e5iZKs/sddefault.jpg" alt="">
@@ -608,13 +542,9 @@
                         <span class="artist">人間椅子</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="CbI79e5iZKs">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/CbI79e5iZKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="woGfOQ6Ze90">
+                <input type="radio" name="video" id="woGfOQ6Ze90">
                 <figure>
                     <label for="woGfOQ6Ze90">
                         <img src="https://img.youtube.com/vi/woGfOQ6Ze90/sddefault.jpg" alt="">
@@ -624,13 +554,9 @@
                         <span class="artist">Cynic</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="woGfOQ6Ze90">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/woGfOQ6Ze90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="MM62wjLrgmA">
+                <input type="radio" name="video" id="MM62wjLrgmA">
                 <figure>
                     <label for="MM62wjLrgmA">
                         <img src="https://img.youtube.com/vi/MM62wjLrgmA/sddefault.jpg" alt="">
@@ -640,13 +566,9 @@
                         <span class="artist">Tool</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="MM62wjLrgmA">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/MM62wjLrgmA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="-_nQhGR0K8M">
+                <input type="radio" name="video" id="-_nQhGR0K8M">
                 <figure>
                     <label for="-_nQhGR0K8M">
                         <img src="https://img.youtube.com/vi/-_nQhGR0K8M/sddefault.jpg" alt="">
@@ -656,13 +578,9 @@
                         <span class="artist">Tool</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="-_nQhGR0K8M">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/-_nQhGR0K8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="ZRtdQ81jPUQ">
+                <input type="radio" name="video" id="ZRtdQ81jPUQ">
                 <figure>
                     <label for="ZRtdQ81jPUQ">
                         <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
@@ -672,13 +590,9 @@
                         <span class="artist">YOASOBI</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="ZRtdQ81jPUQ">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/ZRtdQ81jPUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="3V9952osjnc">
+                <input type="radio" name="video" id="3V9952osjnc">
                 <figure>
                     <label for="3V9952osjnc">
                         <img src="https://img.youtube.com/vi/3V9952osjnc/sddefault.jpg" alt="">
@@ -688,13 +602,9 @@
                         <span class="artist">P丸様。</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="3V9952osjnc">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/3V9952osjnc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="_ZvxNcITgfo">
+                <input type="radio" name="video" id="_ZvxNcITgfo">
                 <figure>
                     <label for="_ZvxNcITgfo">
                         <img src="https://img.youtube.com/vi/_ZvxNcITgfo/sddefault.jpg" alt="">
@@ -704,13 +614,9 @@
                         <span class="artist">貢献Girls</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="_ZvxNcITgfo">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/_ZvxNcITgfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
             <li class="card">
-                <input type="checkbox" id="9YkPC2fx_iQ">
+                <input type="radio" name="video" id="9YkPC2fx_iQ">
                 <figure>
                     <label for="9YkPC2fx_iQ">
                         <img src="https://img.youtube.com/vi/9YkPC2fx_iQ/sddefault.jpg" alt="">
@@ -720,10 +626,6 @@
                         <span class="artist">パンナ</span>
                     </figcaption>
                 </figure>
-                <div class="player">
-                    <label for="9YkPC2fx_iQ">Close</label>
-                    <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/9YkPC2fx_iQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
             </li>
         </ul>
     </section>
@@ -734,10 +636,10 @@
     <script>
         const cards = document.querySelectorAll(".card");
         cards.forEach((card) => {
-            const img_label = card.querySelector("figure > label");
-            const player_label = card.querySelector(".player > label");
-            const player = card.querySelector(".player > iframe");
-            const id = img_label.getAttribute("for");
+            const img_label    = card.querySelector("figure > label");
+            const id           = img_label.getAttribute("for");
+            const player_label = document.querySelector(".mainplayer > label");
+            const player       = document.querySelector(".mainplayer > iframe");
 
             // open
             img_label.addEventListener('click', (e) => player.src = `https://www.youtube.com/embed/${id}`);
