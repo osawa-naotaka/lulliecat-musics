@@ -37,10 +37,19 @@
             --lulliecat-background-color: #f0f0f0;
             --lulliecat-background-color-dim: #f0f0f080;
             --lulliecat-background-color-header: #f0f0f0c0;
-            --lulliecat-accent-color: #f5af77;
-            /* --lulliecat-accent-color: #f3aa96; */
-            /* --lulliecat-accent-color: #e35a29; */
-            /* --lulliecat-main-color: #4f3235; */
+            --lulliecat-sub-accent-color: #f5af77;
+            --lulliecat-accent-color: #f3aa96;
+            --lulliecat-accent-color: #e35a29;
+            --lulliecat-accent-color: #5eab4c;
+            --lulliecat-accent-color: #31663e;
+            --lulliecat-accent-color: #746c5f;
+            --lulliecat-accent-color: #33705e;
+            --lulliecat-accent-color: #4b5969;
+            --lulliecat-accent-color: #e84e66;
+            --lulliecat-accent-color: #ddc823;
+            --lulliecat-accent-color: #dd2823;
+            --lulliecat-accent-color: #d7003a;
+            --lulliecat-main-color: #4f3235;
             --lulliecat-main-color: #303030;
             --lulliecat-main-color-dim: #303030f0;
             --lulliecat-shadow-color: #c0c0c0;
@@ -57,6 +66,11 @@
             font-family: "Roboto", "Noto Sans JP", serif;
             color: var(--lulliecat-main-color);
             background-color: var(--lulliecat-background-color);
+        }
+
+        em {
+            font-style: normal;
+            color: var(--lulliecat-accent-color);
         }
 
         section {
@@ -77,11 +91,15 @@
             /* layout */
             /* margin-block-end: 32px; */
         }
+        section > header > h2::first-letter {
+            color: var(--lulliecat-accent-color);
+        }
         @media screen and (max-width: 700px) {
             section > header > h2 {
                 font-size: 48px;
             }
         }
+
         /*
          * Hero
          */
@@ -198,7 +216,6 @@
         body > header {
             /* decolation */
             background-color: var(--lulliecat-background-color-header);
-            /* box-shadow: 0px 0px 10px var(--lulliecat-shadow-color); */
 
             /* block type */
             display: flex;
@@ -284,9 +301,6 @@
             padding: 16px 40px 0px 16px;
             background-color: var(--lulliecat-background-color-header);
         }
-        .tag-tabs:has( input:checked ) > {
-            background-color: var(--lulliecat-main-color);
-        }
         .tag-tabs > label > input {
             display: none;
         }
@@ -308,7 +322,7 @@
             right: 16px;
         }
         .tag-tabs > label > input:checked + p {
-            background-color: var(--lulliecat-main-color);
+            background-color: var(--lulliecat-accent-color);
             color: var(--lulliecat-background-color);
         }
         .musicvideos:has( .tag-tabs #all:checked ) .card {
@@ -418,7 +432,7 @@
     </div>
 
     <header>
-        <h1>lulliecat musics</h1>
+        <h1>lulliecat <em>m</em>usics</h1>
         <nav>
             <ul>
                 <li><a href="#home">home</a></li>
