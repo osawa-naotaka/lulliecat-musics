@@ -244,9 +244,6 @@
         }
 
         /* tag tabs */
-        .card {
-            display: none;
-        }
         .tag-tabs {
             position: sticky;
             top: var(--lulliecat-header-height);
@@ -279,9 +276,15 @@
         /* card */
         .card {
             padding: 16px;
+
+            /* for tabs */
+            display: none;
         }
         .card > input {
             display: none;
+        }
+        .card .artist::before {
+            content: " / ";
         }
 
         /* music videos main player */
@@ -310,6 +313,13 @@
         }
         .mainplayer > input {
             display: none;
+        }
+        /* prevent background scroll when playing a video */
+        html {
+            overflow: hidden;
+        }
+        html:has(.mainplayer input:checked) {
+            overflow: auto;
         }
 
 
