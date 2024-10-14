@@ -61,7 +61,10 @@
             /* layout - dimension */
             max-width: 1200px;
             margin-inline: auto;
-            margin-block: 32px;
+            padding-block: 32px;
+            position: relative;
+            background-color: var(--lulliecat-background-color);
+            z-index: 1;
         }
         section > header {
             padding: 16px;
@@ -101,7 +104,7 @@
             opacity: 0; /* for carousel animation */
 
             /* layout - dimension */
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -147,7 +150,7 @@
             font-weight: bold;
 
             /* layout - position respect to .hero */
-            position: absolute;
+            position: fixed;
             z-index: 1;
             left: 32px;
         }
@@ -209,6 +212,8 @@
             /* layout - alignment */
             align-items: baseline;
             justify-content: space-between;
+
+            z-index: 3;
         }
         body > header > h1 {
             /* decolation */
@@ -250,6 +255,7 @@
         .musicvideos {
             scroll-margin-block-start: var(--lulliecat-header-height);
             margin-bottom: 100px;
+            z-index: 2;
         }
         .musicvideos img {
             aspect-ratio: 16 / 9;
