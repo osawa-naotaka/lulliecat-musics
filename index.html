@@ -243,6 +243,35 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         }
 
+        /* tag tabs */
+        .card {
+            display: none;
+        }
+        .tag-tabs > input {
+            display: none;
+        }
+        .tag-tabs > label {
+            cursor: pointer;
+        }
+        .musicvideos:has( .tag-tabs #all:checked ) .card {
+            display: block;
+        }
+        .musicvideos:has( .tag-tabs #recomended:checked ) .card:has( .tags .recomended ),
+        .musicvideos:has( .tag-tabs #rock:checked ) .card:has( .tags .rock ),
+        .musicvideos:has( .tag-tabs #anime:checked ) .card:has( .tags .anime ),
+        .musicvideos:has( .tag-tabs #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+        .musicvideos:has( .tag-tabs #prog-metal:checked ) .card:has( .tags .prog-metal ),
+        .musicvideos:has( .tag-tabs #epic-metal:checked ) .card:has( .tags .epic-metal ),
+        .musicvideos:has( .tag-tabs #death-metal:checked ) .card:has( .tags .death-metal ),
+        .musicvideos:has( .tag-tabs #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
+        .musicvideos:has( .tag-tabs #doom-metal:checked ) .card:has( .tags .doom-metal ),
+        .musicvideos:has( .tag-tabs #altanative-metal:checked ) .card:has( .tags .altanative-metal ),
+        .musicvideos:has( .tag-tabs #vtuber:checked ) .card:has( .tags .vtuber ),
+        .musicvideos:has( .tag-tabs #game:checked ) .card:has( .tags .game )
+        {
+            display: block;
+        }
+
         /* card */
         .card {
             padding: 16px;
@@ -331,6 +360,38 @@
             <label for="player-close">Close</label>
             <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <div class="tag-tabs">
+            <input type="radio" name="tag" id="close">
+            <input type="radio" name="tag" id="all">
+            <input type="radio" name="tag" id="recomended" checked>
+            <input type="radio" name="tag" id="rock">
+            <input type="radio" name="tag" id="anime">
+            <input type="radio" name="tag" id="heavy-metal">
+            <input type="radio" name="tag" id="prog-metal">
+            <input type="radio" name="tag" id="epic-metal">
+            <input type="radio" name="tag" id="death-metal">
+            <input type="radio" name="tag" id="melodic-hardcore">
+            <input type="radio" name="tag" id="doom-metal">
+            <input type="radio" name="tag" id="altanative-metal">
+            <input type="radio" name="tag" id="vtuber">
+            <input type="radio" name="tag" id="game">
+            
+
+            <label for="close">Close</label>
+            <label for="all">All</label>
+            <label for="recomended">Recomended</label>
+            <label for="rock">Rock</label>
+            <label for="anime">Anime</label>
+            <label for="heavy-metal">Heavy Metal</label>
+            <!-- <label for="prog-metal">Prog Metal</label> -->
+            <!-- <label for="epic-metal">Epic Metal</label> -->
+            <!-- <label for="death-metal">Death Metal</label> -->
+            <label for="melodic-hardcore">Melodic Hardcore</label>
+            <!-- <label for="doom-metal">Doom Metal</label> -->
+            <!-- <label for="altanative-metal">Altanative Metal</label> -->
+            <label for="vtuber">Vtuber</label>
+            <label for="game">Game</label>
+        </div>
         <ul>
             <li class="card">
                 <input type="radio" name="video" id="kKOkybfh9bE">
@@ -343,6 +404,11 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="anime"></span>
+                    <span class="rock"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="L72R8VFVNEY">
@@ -355,6 +421,9 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="rock"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="EzgE7CbTs3o">
@@ -367,6 +436,9 @@
                         <span class="artist">さユり</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="rock"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="PWbg7ShjOPk">
@@ -379,6 +451,11 @@
                         <span class="artist">岸田教団＆THE明星ロケッツ</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="anime"></span>
+                    <span class="rock"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="trrEWoMWSQg">
@@ -391,6 +468,10 @@
                         <span class="artist">岸田教団＆THE明星ロケッツ</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="anime"></span>
+                    <span class="rock"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="Bds3FALcR7M">
@@ -403,6 +484,11 @@
                         <span class="artist">Orphaned Land</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="AbCliCQnBUo">
@@ -415,6 +501,10 @@
                         <span class="artist">Orphaned Land</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="4SZDVcNUiI0">
@@ -427,6 +517,10 @@
                         <span class="artist">Circus Maximus</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="SiH5FNKKcjQ">
@@ -439,6 +533,10 @@
                         <span class="artist">Twilight Force</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="epic-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="LaTI4XF8PAY">
@@ -451,6 +549,10 @@
                         <span class="artist">Twilight Force</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="epic-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="WM8bTdBs-cw">
@@ -463,6 +565,9 @@
                         <span class="artist">Metallica</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="msuO_KuHwVY">
@@ -475,6 +580,12 @@
                         <span class="artist">In Vain</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="death-metal"></span>
+                    <span class="prog-metal"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="12kcpP-8jfM">
@@ -487,6 +598,9 @@
                         <span class="artist">Bad Religion</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="melodic-hardcore"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="RGqA1lNXYhg">
@@ -499,6 +613,10 @@
                         <span class="artist">Bad Religion</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="melodic-hardcore"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="n7-YIZhwvKI">
@@ -511,6 +629,10 @@
                         <span class="artist">DGM</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="YjPZgtm3Dmk">
@@ -523,6 +645,10 @@
                         <span class="artist">DGM</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="CbI79e5iZKs">
@@ -535,6 +661,10 @@
                         <span class="artist">人間椅子</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="doom-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="woGfOQ6Ze90">
@@ -547,6 +677,10 @@
                         <span class="artist">Cynic</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="MM62wjLrgmA">
@@ -559,6 +693,11 @@
                         <span class="artist">Tool</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                    <span class="altanative-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="-_nQhGR0K8M">
@@ -571,6 +710,11 @@
                         <span class="artist">Tool</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="heavy-metal"></span>
+                    <span class="prog-metal"></span>
+                    <span class="altanative-metal"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="ZRtdQ81jPUQ">
@@ -583,6 +727,11 @@
                         <span class="artist">YOASOBI</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="rock"></span>
+                    <span class="anime"></span>
+                    <span class="recomended"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="3V9952osjnc">
@@ -595,6 +744,9 @@
                         <span class="artist">P丸様。</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="vtuber"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="_ZvxNcITgfo">
@@ -607,6 +759,9 @@
                         <span class="artist">貢献Girls</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="game"></span>
+                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="9YkPC2fx_iQ">
@@ -619,6 +774,9 @@
                         <span class="artist">パンナ</span>
                     </figcaption>
                 </figure>
+                <div class="tags">
+                    <span class="game"></span>
+                </div>
             </li>
         </ul>
     </section>
