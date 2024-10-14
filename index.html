@@ -203,14 +203,14 @@
             border-bottom: none;
 
             /* layout - dimension */
-            margin-left: 32px;
+            margin-left: 16px;
         }
         body > header > nav {
             /* decolation */
             font-weight: bold;
 
             /* layout - dimension */
-            margin-right: 32px;
+            margin-right: 16px;
         }
         body > header > nav > ul {
             /* block type */
@@ -282,7 +282,7 @@
             padding-inline: 8px;
             font-weight: bold;
         }
-        .tag-tabs > .close {
+        .tag-tabs > .tabs-close {
             position: absolute;
             top: -16px;
             right: 16px;
@@ -294,7 +294,7 @@
         .musicvideos:has( .tag-tabs #all:checked ) .card {
             display: block;
         }
-        .musicvideos:has( .tag-tabs #close:checked ) .card:has( .tags .close ),
+        .musicvideos:has( .tag-tabs #close:checked ) .video-close,
         .musicvideos:has( .tag-tabs #recomended:checked ) .card:has( .tags .recomended ),
         .musicvideos:has( .tag-tabs #rock:checked ) .card:has( .tags .rock ),
         .musicvideos:has( .tag-tabs #anime:checked ) .card:has( .tags .anime ),
@@ -313,7 +313,7 @@
         }
 
         /* card */
-        .card {
+        .card, .video-close {
             padding: 16px;
 
             /* for tabs */
@@ -418,7 +418,7 @@
             <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="tag-tabs">
-            <label class="close">
+            <label class="tabs-close">
                 <input type="radio" name="tag" id="close">
                 <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
@@ -484,11 +484,8 @@
             </label> -->
         </div>
         <ul>
-            <li class="card">
+            <li class="video-close">
                 <p>Select a tag to display the video.</p>
-                <div class="tags">
-                    <span class="close"></span>
-                </div>
             </li>
             <li class="card">
                 <input type="radio" name="video" id="kKOkybfh9bE">
