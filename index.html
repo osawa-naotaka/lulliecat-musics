@@ -63,13 +63,16 @@
             margin-inline: auto;
             margin-block: 32px;
         }
-        h2 {
+        section > header {
+            padding: 16px;
+        }
+        section > header > h2 {
             /* decoration */
             font-size: 64px;
             border-bottom: 8px solid;
             
             /* layout */
-            margin-block-end: 32px;
+            /* margin-block-end: 32px; */
         }
 
         /*
@@ -173,10 +176,10 @@
         /*
          * header
          */
-        header {
+        body > header {
             /* decolation */
             background-color: #f0f0f0c0;
-            box-shadow: 0px 0px 10px var(--lulliecat-shadow-color);
+            /* box-shadow: 0px 0px 10px var(--lulliecat-shadow-color); */
 
             /* block type */
             display: flex;
@@ -193,7 +196,7 @@
             align-items: baseline;
             justify-content: space-between;
         }
-        header > h1 {
+        body > header > h1 {
             /* decolation */
             font-size: 32px;
             font-weight: bold;
@@ -202,23 +205,28 @@
             /* layout - dimension */
             margin-left: 32px;
         }
-        header > nav {
+        body > header > nav {
             /* decolation */
             font-weight: bold;
 
             /* layout - dimension */
             margin-right: 32px;
         }
-        header > nav > ul {
+        body > header > nav > ul {
             /* block type */
             display: flex;
 
             /* layout - dimension */
             gap: 24px;
         }
-        header a {
+        body > header a {
             /* decolation */
             color: var(--lulliecat-main-color);
+        }
+        @media screen and (max-width: 700px) {
+            body > header > nav {
+                display: none;
+            }
         }
 
 
@@ -245,18 +253,48 @@
 
         /* tag tabs */
         .tag-tabs {
+            display: flex;
+            position: relative;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            column-gap: 16px;
+            /* grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); */
             position: sticky;
             top: var(--lulliecat-header-height);
+            padding: 16px;
+            background-color: #f0f0f0c0;
         }
-        .tag-tabs > input {
+        .tag-tabs:has( input:checked ) > {
+            background-color: #303030;
+        }
+        .tag-tabs > label > input {
             display: none;
         }
         .tag-tabs > label {
+            margin-bottom: 8px;
+        }
+        .tag-tabs > label > p {
             cursor: pointer;
+            border: 1px solid;
+            border-radius: 4px;
+            min-width: 60px;
+            text-align: center;
+            padding-inline: 8px;
+            font-weight: bold;
+        }
+        .tag-tabs > .close {
+            position: absolute;
+            top: -16px;
+            right: 16px;
+        }
+        .tag-tabs > label > input:checked + p {
+            background-color: var(--lulliecat-main-color);
+            color: var(--lulliecat-background-color);
         }
         .musicvideos:has( .tag-tabs #all:checked ) .card {
             display: block;
         }
+        .musicvideos:has( .tag-tabs #close:checked ) .card:has( .tags .close ),
         .musicvideos:has( .tag-tabs #recomended:checked ) .card:has( .tags .recomended ),
         .musicvideos:has( .tag-tabs #rock:checked ) .card:has( .tags .rock ),
         .musicvideos:has( .tag-tabs #anime:checked ) .card:has( .tags .anime ),
@@ -266,9 +304,10 @@
         .musicvideos:has( .tag-tabs #death-metal:checked ) .card:has( .tags .death-metal ),
         .musicvideos:has( .tag-tabs #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
         .musicvideos:has( .tag-tabs #doom-metal:checked ) .card:has( .tags .doom-metal ),
-        .musicvideos:has( .tag-tabs #altanative-metal:checked ) .card:has( .tags .altanative-metal ),
+        .musicvideos:has( .tag-tabs #alternative-metal:checked ) .card:has( .tags .altanative-metal ),
         .musicvideos:has( .tag-tabs #vtuber:checked ) .card:has( .tags .vtuber ),
-        .musicvideos:has( .tag-tabs #game:checked ) .card:has( .tags .game )
+        .musicvideos:has( .tag-tabs #game:checked ) .card:has( .tags .game ),
+        .musicvideos:has( .tag-tabs #symphonic-rock:checked ) .card:has( .tags .symphonic-rock )
         {
             display: block;
         }
@@ -315,6 +354,7 @@
             display: none;
         }
         /* prevent background scroll when playing a video */
+        /* it may not be worked on Safari */
         html {
             overflow: hidden;
         }
@@ -369,47 +409,87 @@
 
 
     <section class="musicvideos" id="musicvideos">
-        <h2>music videos.</h2>
+        <header>
+            <h2>music videos.</h2>
+        </header>
         <div class="mainplayer">
             <input type="radio" name="video" id="player-close" checked>
             <label for="player-close">Close</label>
             <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="tag-tabs">
-            <input type="radio" name="tag" id="close">
-            <input type="radio" name="tag" id="all">
-            <input type="radio" name="tag" id="recomended" checked>
-            <input type="radio" name="tag" id="rock">
-            <input type="radio" name="tag" id="anime">
-            <input type="radio" name="tag" id="heavy-metal">
-            <input type="radio" name="tag" id="prog-metal">
-            <input type="radio" name="tag" id="epic-metal">
-            <input type="radio" name="tag" id="death-metal">
-            <input type="radio" name="tag" id="melodic-hardcore">
-            <input type="radio" name="tag" id="doom-metal">
-            <input type="radio" name="tag" id="altanative-metal">
-            <input type="radio" name="tag" id="vtuber">
-            <input type="radio" name="tag" id="game">
-            <input type="radio" name="tag" id="symphonic-rock">
-            
-
-            <label for="close">Close</label>
-            <label for="all">All</label>
-            <label for="recomended">Recomended</label>
-            <label for="rock">Rock</label>
-            <label for="anime">Anime</label>
-            <label for="heavy-metal">Heavy Metal</label>
-            <!-- <label for="prog-metal">Prog Metal</label> -->
-            <!-- <label for="epic-metal">Epic Metal</label> -->
-            <!-- <label for="death-metal">Death Metal</label> -->
-            <label for="melodic-hardcore">Melodic Hardcore</label>
-            <!-- <label for="doom-metal">Doom Metal</label> -->
-            <!-- <label for="altanative-metal">Altanative Metal</label> -->
-            <label for="vtuber">Vtuber</label>
-            <label for="game">Game</label>
-            <!-- <label for="symphonic-rock">Symphonic Rock</label> -->
+            <label class="close">
+                <input type="radio" name="tag" id="close">
+                <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                    <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="all">
+                <p>All</p>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="recomended" checked>
+                <p>Recomended</p>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="rock">
+                <p>Rock</p>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="anime">
+                <p>Anime</p>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="heavy-metal">
+                <p>Heavy Metal</p>
+            </label>
+            <!-- <label>
+                <input type="radio" name="tag" id="prog-metal">
+                <p>Prog Metal</p>
+            </label> -->
+            <!-- <label>
+                <input type="radio" name="tag" id="epic-metal">
+                <p>Epic Metal</p>
+            </label> -->
+            <!-- <label>
+                <input type="radio" name="tag" id="death-metal">
+                <p>Death Metal</p>
+            </label> -->
+            <label>
+                <input type="radio" name="tag" id="melodic-hardcore">
+                <p>Melodic Hardcore</p>
+            </label>
+            <!-- <label>
+                <input type="radio" name="tag" id="doom-metal">
+                <p>Doom Metal</p>
+            </label> -->
+            <!-- <label>
+                <input type="radio" name="tag" id="alternative-metal">
+                <p>Alternative Metal</p>
+            </label> -->
+            <label>
+                <input type="radio" name="tag" id="vtuber">
+                <p>Vtuber</p>
+            </label>
+            <label>
+                <input type="radio" name="tag" id="game">
+                <p>Game</p>
+            </label>
+            <!-- <label>
+                <input type="radio" name="tag" id="symphonic-rock">
+                <p>Symphonic Rock</p>
+            </label> -->
         </div>
         <ul>
+            <li class="card">
+                <p>Select a tag to display the video.</p>
+                <div class="tags">
+                    <span class="close"></span>
+                </div>
+            </li>
             <li class="card">
                 <input type="radio" name="video" id="kKOkybfh9bE">
                 <figure>
@@ -781,7 +861,7 @@
                 <div class="tags">
                     <span class="heavy-metal"></span>
                     <span class="prog-metal"></span>
-                    <span class="altanative-metal"></span>
+                    <span class="alternative-metal"></span>
                 </div>
             </li>
             <li class="card">
@@ -798,7 +878,7 @@
                 <div class="tags">
                     <span class="heavy-metal"></span>
                     <span class="prog-metal"></span>
-                    <span class="altanative-metal"></span>
+                    <span class="alternative-metal"></span>
                 </div>
             </li>
             <li class="card">
