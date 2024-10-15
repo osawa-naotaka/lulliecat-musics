@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Zen+Antique&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>lulliecat musics</title>
     <style>
         /* reset css */
@@ -25,37 +25,21 @@
             display: block;
             max-width: 100%;
         }
-        a {
-            text-decoration: none;
-        }
 
         /*
          * parameter
          */
         :root {
-            /* --lulliecat-background-color: #fef6e9; */
-            --lulliecat-background-color: #f0f0f0;
-            --lulliecat-background-color-dim: #f0f0f080;
-            --lulliecat-background-color-dark: #e0e0e0;
-            --lulliecat-background-color-header: #f0f0f0c0;
-            --lulliecat-sub-accent-color: #f5af77;
-            --lulliecat-accent-color: #f3aa96;
-            --lulliecat-accent-color: #e35a29;
-            --lulliecat-accent-color: #5eab4c;
-            --lulliecat-accent-color: #31663e;
-            --lulliecat-accent-color: #746c5f;
-            --lulliecat-accent-color: #33705e;
-            --lulliecat-accent-color: #4b5969;
-            --lulliecat-accent-color: #e84e66;
-            --lulliecat-accent-color: #ddc823;
-            --lulliecat-accent-color: #dd2823;
-            --lulliecat-accent-color: #d7003a;
-            --lulliecat-main-color: #4f3235;
-            --lulliecat-main-color: #303030;
-            --lulliecat-main-color-dim: #303030f0;
-            --lulliecat-shadow-color: #c0c0c0;
+            --background-color: #f0f0f0;
+            --background-color-dim: #f0f0f080;
+            --background-color-dark: #e0e0e0;
+            --background-color-header: #f0f0f0c0;
+            --accent-color: #d7003a;
+            --main-color: #303030;
+            --main-color-dim: #303030f0;
+            --shadow-color: #c0c0c0;
 
-            --lulliecat-header-height: 42px;
+            --header-height: 42px;
         }
 
         /*
@@ -63,34 +47,32 @@
          */
         body {
             /* decoration */
-            /* font-family: "Roboto", "Zen Antique", "Noto Sans JP", serif; */
             font-family: "Roboto", "Noto Sans JP", serif;
-            color: var(--lulliecat-main-color);
+            font-size: 18px;
+            color: var(--main-color);
         }
 
-        em {
-            font-style: normal;
-            font-weight: bold;
-            color: var(--lulliecat-accent-color);
-        }
-
+        /* container decoration and layout */
         main, aside {
             /* layout - dimension */
             width: 100%;
-            background-color: var(--lulliecat-background-color);
-
             padding-inline: 16px;
         }
-
+        main {
+            /* decoration */
+            background-color: var(--background-color);
+        }
         aside {
-            background-color: var(--lulliecat-background-color-dark);
+            /* decoration */
+            background-color: var(--background-color-dark);
         }
 
+        /* section decoration and layout */
         section {
             /* layout - dimension */
             width: 100%;
             max-width: 1200px;
-            margin-inline: auto;
+            margin-inline: auto; /* align center */
             padding-block: 32px;
         }
         section > header > h2 {
@@ -99,19 +81,35 @@
             border-bottom: 8px solid;
         }
         section > header > h2::first-letter {
-            color: var(--lulliecat-accent-color);
+            /* decoration */
+            color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
             section > header > h2 {
+                /* decoration */
                 font-size: 48px;
             }
         }
+
+        /* inline elements */
+        em {
+            /* decoration */
+            font-style: normal;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        a {
+            /* decolation */
+            color: var(--main-color);
+            text-decoration: none;
+        }
+
 
         /*
          * Hero
          */
          .hero {
-            /* layout - containing block for .hero > h1 */
+            /* reference block for .hero > h1 */
             position: relative;
 
             /* clip for carousel scaling animation */
@@ -119,25 +117,26 @@
 
             /* layout - dimension */
             width: 100%;
-            height: 100svh; /* viewport height without address bar etc... */
+            height: 100svh;
         }
 
-        /* hero carousel */
+        /* hero image */
         .hero > img {
-            /* decoration */
-            opacity: 0; /* for carousel animation */
-
-            /* layout - dimension */
+            /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            width: 100%;
-            height: 100svh;
-            object-fit: cover;
-
-            /* animation */
-            animation: carousel 16s infinite;
-
             z-index: -2;
+
+            /* scaling image to viewport */
+            width: 100%;
+            height: 100svh; /* viewport height without address bar etc... */
+            object-fit: cover; /* Scaling with aspect ratio preserved  */
+        }
+
+        /* hero image carousel animation */
+        .hero > img {
+            opacity: 0; /* transparent at first */
+            animation: carousel 16s infinite;
         }
         .hero > img:nth-of-type(2) {
             animation-delay: 4s;
@@ -173,26 +172,26 @@
             /* decolation */
             font-size: 128px;
             font-weight: bold;
-            color: var(--lulliecat-accent-color);
+            color: var(--accent-color);
 
-            /* layout - position respect to .hero */
+            /* absolutely positioned respect to viewport */
             position: fixed;
-            z-index: -1;
             left: 32px;
+            z-index: -1;
         }
         .site-name-1 {
-            /* layout - position respect to .hero */
             bottom: 166px;
+        }
+        .site-name-2 {
+            bottom: 48px;
+        }
 
-            /* animation */
-            opacity: 0;
+        /* hero text slide-in animation */
+        .site-name-1 {
+            opacity: 0; /* transparent at first */
             animation: sitename ease-out 0.5s forwards 1s;
         }
         .site-name-2 {
-            /* layout - position respect to .hero */
-            bottom: 48px;
-
-            /* animation */
             opacity: 0;
             animation: sitename ease-out 0.5s forwards 1.5s;
         }
@@ -216,56 +215,52 @@
             }
         }
 
+
         /*
          * header
          */
+        /* flex container for h1 and nav */
         body > header {
             /* decolation */
-            background-color: var(--lulliecat-background-color-header);
+            background-color: var(--background-color-header);
+            font-weight: bold;
 
-            /* block type */
+            /* this block is flex container */
             display: flex;
 
-            /* layout - position */
+            /* stickily positioned block */
             position: sticky;
-            top: 0;
 
             /* layout - dimension */
             width: 100%;
-            height: var(--lulliecat-header-height);
+            height: var(--header-height);
+            top: 0;
+            z-index: 1;
 
             /* layout - alignment */
             align-items: baseline;
             justify-content: space-between;
-
-            z-index: 1;
         }
         body > header > h1 {
             /* decolation */
             font-size: 32px;
-            font-weight: bold;
             border-bottom: none;
 
             /* layout - dimension */
             margin-left: 16px;
         }
-        body > header > nav {
-            /* decolation */
-            font-weight: bold;
-
+        .navigation {
             /* layout - dimension */
             margin-right: 16px;
         }
-        body > header > nav > ul {
-            /* block type */
+
+        /* flex container for nav list items */
+        .navigation > ul {
+            /* this block is flex container */
             display: flex;
 
             /* layout - dimension */
             gap: 24px;
-        }
-        body > header a {
-            /* decolation */
-            color: var(--lulliecat-main-color);
         }
         @media screen and (max-width: 700px) {
             body > header > nav {
@@ -277,134 +272,179 @@
         /*
          * music videos
          */
-        .musicvideos {
-            /* scroll-margin-block-start: var(--lulliecat-header-height); */
+        .music-videos {
+            /* layout - dimension */
             padding-bottom: 100px;
         }
-        .musicvideos > ul {
+
+        /* grid container for .card */
+        .music-videos > ul {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 24px;
         }
 
-        /* tag tabs */
-        .tag-tabs {
+        /* card */
+        /* grid items */
+        .card > figure img {
+            /* decoration */
+            border-radius: 8px;
+            box-shadow: 0 0 10px var(--shadow-color);
+            cursor: pointer;
+ 
+            /* layout - dimension */
+            width: 100%; /* scaling image to grid container */
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            padding: 0;
+        }
+        .card .artist::before {
+            content: " / ";
+        }
+
+
+        /* 1. filtering by tags */
+        /* flex container for tag list */
+        .music-tags {
+            /* this block is flex container */
             display: flex;
+
+            /* layout - alignment */
             justify-content: flex-start;
-            flex-wrap: wrap;
+
+            /* layout scheme for flex items */
             column-gap: 16px;
+            flex-wrap: wrap;
+
+            /* decoration */
+            background-color: var(--background-color-header);
+
+            /* stickily positioned block */
             position: sticky;
-            top: var(--lulliecat-header-height);
+
+            /* layout - dimension */
+            top: var(--header-height);
             left: 0;
             right: 0;
-            padding: 16px 34px 0px 0px;
             margin-bottom: 16px;
-            background-color: var(--lulliecat-background-color-header);
+            padding: 16px 34px 0px 0px;
         }
-        .tag-tabs > label > input {
-            display: none;
-        }
-        .tag-tabs > label {
+
+        /* flex items (tag) */
+        .music-tags > label {
+            /* dimension */
             margin-bottom: 8px;
         }
-        .tag-tabs > label > p {
-            cursor: pointer;
-            border: 1px solid var(--lulliecat-main-color);
-            border-radius: 4px;
-            min-width: 60px;
-            text-align: center;
-            padding-inline: 8px;
-            font-weight: bold;
-            transition: color 0.1s;
-            transition: background-color 0.1s;
+        .music-tags > label > input {
+            /* decoration */
+            display: none;
         }
-        .tag-tabs > .tabs-close {
+        .music-tags > label > p {
+            /* decoration */
+            font-weight: bold;
+            border: 1px solid var(--main-color);
+            border-radius: 4px;
+            cursor: pointer;
+
+            /* layout - demension */
+            padding-inline: 8px;
+            min-width: 80px;
+            text-align: center;
+
+            /* transient animation */
+            transition: color 0.1s, background-color 0.1s;
+        }
+        .music-tags > .tabs-close {
+            /* absolutely positioned block respect to flex container */
             position: absolute;
+
+            /* layout - demension */
             top: 12px;
             right: -5px;
         }
-        .tag-tabs > label > input:checked + p {
-            background-color: var(--lulliecat-accent-color);
-            color: var(--lulliecat-background-color);
-            border: 1px solid var(--lulliecat-accent-color);
+        .music-tags > label > input:checked + p {
+            /* decoration */
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            border: 1px solid var(--accent-color);
         }
 
-        .musicvideos:has( .tag-tabs #all:checked ) .card {
-            display: block;
-        }
-        .musicvideos:has( .tag-tabs #close:checked ) .video-close,
-        .musicvideos:has( .tag-tabs #recomended:checked ) .card:has( .tags .recomended ),
-        .musicvideos:has( .tag-tabs #rock:checked ) .card:has( .tags .rock ),
-        .musicvideos:has( .tag-tabs #anime:checked ) .card:has( .tags .anime ),
-        .musicvideos:has( .tag-tabs #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
-        .musicvideos:has( .tag-tabs #prog-metal:checked ) .card:has( .tags .prog-metal ),
-        .musicvideos:has( .tag-tabs #epic-metal:checked ) .card:has( .tags .epic-metal ),
-        .musicvideos:has( .tag-tabs #death-metal:checked ) .card:has( .tags .death-metal ),
-        .musicvideos:has( .tag-tabs #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
-        .musicvideos:has( .tag-tabs #doom-metal:checked ) .card:has( .tags .doom-metal ),
-        .musicvideos:has( .tag-tabs #alternative-metal:checked ) .card:has( .tags .altanative-metal ),
-        .musicvideos:has( .tag-tabs #vtuber:checked ) .card:has( .tags .vtuber ),
-        .musicvideos:has( .tag-tabs #game:checked ) .card:has( .tags .game ),
-        .musicvideos:has( .tag-tabs #symphonic-rock:checked ) .card:has( .tags .symphonic-rock )
-        {
-            display: block;
-        }
-
-        /* card */
+        /* 2. display selected card */
+        /* display: none by default */
         .card, .video-close {
-            /* for tabs */
             display: none;
         }
         .card > input {
             display: none;
         }
-        .card .artist::before {
-            content: " / ";
+        .music-videos:has( .music-tags #all:checked ) .card {
+            display: block;
         }
-        .card > figure  img {
-            aspect-ratio: 16 / 9;
-            width: 100%; /* この指定がないと、元画像が包含ブロックより大きい場合にアスペクト比の切り出しをしてくれない */
-            object-fit: cover;
-            padding: 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px var(--lulliecat-shadow-color);
-
-            cursor: pointer;
+        .music-videos:has( .music-tags #close:checked ) .video-close,
+        .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+        .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
+        .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
+        .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+        .music-videos:has( .music-tags #prog-metal:checked ) .card:has( .tags .prog-metal ),
+        .music-videos:has( .music-tags #epic-metal:checked ) .card:has( .tags .epic-metal ),
+        .music-videos:has( .music-tags #death-metal:checked ) .card:has( .tags .death-metal ),
+        .music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
+        .music-videos:has( .music-tags #doom-metal:checked ) .card:has( .tags .doom-metal ),
+        .music-videos:has( .music-tags #alternative-metal:checked ) .card:has( .tags .altanative-metal ),
+        .music-videos:has( .music-tags #vtuber:checked ) .card:has( .tags .vtuber ),
+        .music-videos:has( .music-tags #game:checked ) .card:has( .tags .game ),
+        .music-videos:has( .music-tags #symphonic-rock:checked ) .card:has( .tags .symphonic-rock )
+        {
+            display: block;
         }
 
-        /* music videos main player */
-        .mainplayer {
+
+        /* music video player */
+        .player {
+            /* decoration */
+            background-color: var(--main-color-dim);
+            color: var(--background-color);
+
+            /* this block is flex container */
             display: flex;
-            position: fixed;
-            inset: 0;
+
+            /* layout - alignment (centering iframe) */
             align-items: center;
             justify-content: center;
-            z-index: 10;
 
-            background-color: var(--lulliecat-main-color-dim);
-            color: var(--lulliecat-background-color);
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            inset: 0;
+            z-index: 10;
         }
-        .mainplayer:has(> input:checked)  {
+        /* hide player when disable */
+        .player:has(> input:checked)  {
             display: none;
         }
-        .mainplayer > iframe {
+        .player > input {
+            display: none;
+        }
+        /* flex item - video player*/
+        .player > iframe {
+            /* layout - demension */
             width: min(100%, 1920px);
             aspect-ratio: 16 / 9;
         }
-        .mainplayer > label {
+        /* close button */
+        .player > label {
+            /* decoration */
+            cursor: pointer;
+
+            /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            cursor: pointer;
-        }
-        .mainplayer > input {
-            display: none;
         }
         /* prevent background scroll when playing a video */
         /* it may not be worked on Safari */
         html {
             overflow: hidden;
         }
-        html:has(.mainplayer input:checked) {
+        html:has(.player input:checked) {
             overflow: auto;
         }
 
@@ -412,14 +452,21 @@
         /*
          * about me
          */
+        aside > section {
+            /* layout - demension */
+            padding-block-end: 128px;
+        }
         aside p {
+            /* layout - demension */
             margin-block: 16px;
         }
+        /* auto indentation */
         aside p::before {
             content: '　';
         }
         aside em {
-            color: var(--lulliecat-main-color);
+            /* decoration */
+            color: var(--main-color);
         }
 
 
@@ -428,12 +475,13 @@
          */
         footer {
             /* decoration */
-            color: var(--lulliecat-background-color);
-            background-color: var(--lulliecat-main-color);
+            color: var(--background-color);
+            background-color: var(--main-color);
 
-            /* layout - position */
+            /* absolutely positioned respect to viewport */
             position: fixed;
             bottom: 0;
+            z-index: 1;
 
             /* layout - dimension */
             width: 100%;
@@ -441,8 +489,6 @@
 
             /* layout - alignment */
             text-align: center;
-
-            z-index: 1;
         }
     </style>
 </head>
@@ -458,28 +504,27 @@
     </div>
 
     <header>
-        <h1><a href="#"> lulliecat <em>m</em>usics</a></h1>
-        <nav>
+        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <nav class="navigation">
             <ul>
                 <li><a href="#home"><em>h</em>ome</a></li>
-                <li><a href="#musicvideos"><em>m</em>usic videos</a></li>
+                <li><a href="#music-videos"><em>m</em>usic videos</a></li>
                 <li><a href="#about-me"><em>a</em>bout me</a></li>
             </ul>
         </nav>
     </header>
 
-
     <main>
-        <section class="musicvideos" id="musicvideos">
+        <section class="music-videos" id="music-videos">
             <header>
                 <h2>music videos.</h2>
             </header>
-            <div class="mainplayer">
+            <div class="player">
                 <input type="radio" name="video" id="player-close" checked>
                 <label for="player-close">Close</label>
                 <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <div class="tag-tabs">
+            <div class="music-tags">
                 <label class="tabs-close">
                     <input type="radio" name="tag" id="close">
                     <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1201,8 +1246,7 @@
                         </div>
                     </li>
                 </ul>
-        </section>
-    
+        </section>    
     </main>
 
     <aside>
@@ -1273,8 +1317,8 @@
     </footer>
     <script>
         const cards         = document.querySelectorAll(".card");
-        const player_label  = document.querySelector(".mainplayer > label");
-        const player        = document.querySelector(".mainplayer > iframe");
+        const player_label  = document.querySelector(".player > label");
+        const player        = document.querySelector(".player > iframe");
         cards.forEach((card) => {
             const img_label = card.querySelector("figure > label");
             const id        = img_label.getAttribute("for");
@@ -1285,7 +1329,6 @@
             // close
             player_label.addEventListener('click', (e) => player.src = "");
         });
-
     </script>
 </body>
 </html>
