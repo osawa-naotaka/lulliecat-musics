@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>lulliecat musics</title>
+    <style>
+        /* initialize */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style-type: none;
+        }
+        body {
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        img, svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        /*
+         * parameter
+         */
+        :root {
+            --background-color: #f0f0f0;
+            --background-color-dim: #f0f0f080;
+            --background-color-dark: #e0e0e0;
+            --background-color-header: #f0f0f0c0;
+            --accent-color: #d7003a;
+            --main-color: #303030;
+            --main-color-dim: #303030f0;
+            --shadow-color: #c0c0c0;
+
+            --header-height: 42px;
+        }
+
+        /*
+         * grobal settings
+         */
+        body {
+            /* decoration */
+            font-family: "Roboto", "Noto Sans JP", serif;
+            font-size: 18px;
+            color: var(--main-color);
+        }
+
+        /* container */
+        main, aside {
+            /* layout - dimension */
+            width: 100%;
+            padding-inline: 16px;
+        }
+        main {
+            /* decoration */
+            background-color: var(--background-color);
+        }
+        aside {
+            /* decoration */
+            background-color: var(--background-color-dark);
+        }
+
+        /* section */
+        section {
+            /* layout - dimension */
+            width: 100%;
+            max-width: 1200px;
+            margin-inline: auto; /* align center */
+            padding-block: 32px;
+        }
+        section > header > h2 {
+            /* decoration */
+            font-size: 64px;
+            border-bottom: 8px solid;
+
+            /* layout - demension */
+            margin-bottom: 24px;
+        }
+        section > header > h2::first-letter {
+            /* decoration */
+            color: var(--accent-color);
+        }
+        @media screen and (max-width: 700px) {
+            section > header > h2 {
+                /* decoration */
+                font-size: 48px;
+            }
+        }
+
+        /* inline elements */
+        em {
+            /* decoration */
+            font-style: normal;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        a {
+            /* decolation */
+            color: var(--main-color);
+            text-decoration: none;
+        }
+
+
+        /*
+         * Hero
+         */
+         .hero {
+            /* reference block for .hero > h1 */
+            position: relative;
+
+            /* clip for carousel scaling animation */
+            overflow: clip;
+
+            /* layout - dimension */
+            width: 100%;
+            height: 100svh;
+        }
+
+        /* hero image */
+        .hero > img {
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            top: 0;
+            z-index: -2;
+
+            /* scaling image to viewport */
+            width: 100%;
+            height: 100svh; /* viewport height without address bar etc... */
+            object-fit: cover; /* Scaling with aspect ratio preserved  */
+        }
+
+        /* hero image carousel animation */
+        .hero > img {
+            opacity: 0; /* transparent at first */
+            animation: carousel 16s infinite;
+        }
+        .hero > img:nth-of-type(2) {
+            animation-delay: 4s;
+        }
+        .hero > img:nth-of-type(3) {
+            animation-delay: 8s;
+        }
+        .hero > img:nth-of-type(4) {
+            animation-delay: 12s;
+        }
+        /* depends on the number of pictures */
+        @keyframes carousel {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            35% {
+                opacity: 0;
+                scale: 1.03;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* hero text - site name */
+        .site-name-1, .site-name-2 {
+            /* decolation */
+            font-size: 128px;
+            font-weight: bold;
+            color: var(--accent-color);
+
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            left: 32px;
+            z-index: -1;
+        }
+        .site-name-1 {
+            bottom: 166px;
+        }
+        .site-name-2 {
+            bottom: 48px;
+        }
+
+        /* hero text slide-in animation */
+        .site-name-1 {
+            opacity: 0; /* transparent at first */
+            animation: sitename ease-out 0.5s forwards 1s;
+        }
+        .site-name-2 {
+            opacity: 0;
+            animation: sitename ease-out 0.5s forwards 1.5s;
+        }
+        @keyframes sitename {
+            0% {
+                transform: translateY(32px);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 160px;
+            }
+            .site-name-2 {
+                bottom: 90px;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 72px;
+            }
+        }
+
+
+        /*
+         * header
+         */
+        /* flex container for h1 and nav */
+        body > header {
+            /* decolation */
+            background-color: var(--background-color-header);
+            font-weight: bold;
+
+            /* this block is flex container */
+            display: flex;
+
+            /* stickily positioned block */
+            position: sticky;
+
+            /* layout - dimension */
+            width: 100%;
+            height: var(--header-height);
+            top: 0;
+            z-index: 1;
+
+            /* layout - alignment */
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        body > header > h1 {
+            /* decolation */
+            font-size: 32px;
+            border-bottom: none;
+
+            /* layout - dimension */
+            margin-left: 16px;
+        }
+        .navigation {
+            /* layout - dimension */
+            margin-right: 16px;
+        }
+
+        /* flex container for nav list items */
+        .navigation > ul {
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - dimension */
+            gap: 24px;
+        }
+
+        /* phone header */
+        @media screen and (max-width: 700px) {
+            body > header {
+                /* make header 2-line */
+                display: block;
+                height: calc(var(--header-height) * 2);
+            }
+            .navigation {
+                /* align right */
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+
+        /*
+         * music videos
+         */
+        .music-videos {
+            /* layout - dimension */
+            padding-bottom: 100px;
+        }
+
+        /* grid container for .card */
+        .music-videos > ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        /* card */
+        /* grid items */
+        .card > figure img {
+            /* decoration */
+            border-radius: 8px;
+            box-shadow: 0 0 10px var(--shadow-color);
+            cursor: pointer;
+ 
+            /* layout - dimension */
+            width: 100%; /* scaling image to grid container */
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            padding: 0;
+        }
+        .card .artist::before {
+            content: " / ";
+        }
+
+
+        /* 1. filtering by tags */
+        /* flex container for tag list */
+        .music-tags {
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - alignment */
+            justify-content: flex-start;
+
+            /* layout scheme for flex items */
+            column-gap: 16px;
+            flex-wrap: wrap;
+
+            /* decoration */
+            background-color: var(--background-color-header);
+
+            /* stickily positioned block */
+            position: sticky;
+
+            /* layout - dimension */
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            margin-bottom: 16px;
+            padding: 16px 34px 0px 0px;
+        }
+        /* phone header */
+        @media screen and (max-width: 700px) {
+            .music-tags {
+                top: calc( var(--header-height) * 2);
+            }
+        }
+
+
+        /* flex items (tag) */
+        .music-tags > label {
+            /* dimension */
+            margin-bottom: 8px;
+        }
+        .music-tags > label > input {
+            /* decoration */
+            display: none;
+        }
+        .music-tags > label > p {
+            /* decoration */
+            font-weight: bold;
+            border: 1px solid var(--main-color);
+            border-radius: 4px;
+            cursor: pointer;
+
+            /* layout - demension */
+            padding-inline: 8px;
+            min-width: 80px;
+            text-align: center;
+
+            /* transient animation */
+            transition: color 0.1s, background-color 0.1s;
+        }
+        .music-tags > .tabs-close {
+            /* absolutely positioned block respect to flex container */
+            position: absolute;
+
+            /* layout - demension */
+            top: 12px;
+            right: -5px;
+        }
+        .music-tags > label > input:checked + p {
+            /* decoration */
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        /* 2. display selected card */
+        /* display: none by default */
+        .card, .video-close {
+            display: none;
+        }
+        .card > input {
+            display: none;
+        }
+        .music-videos:has( .music-tags #all:checked ) .card {
+            display: block;
+        }
+        .music-videos:has( .music-tags #close:checked ) .video-close,
+        .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+        .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
+        .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
+        .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+        .music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore )
+        {
+            display: block;
+        }
+
+
+        /* music video player */
+        .player {
+            /* decoration */
+            background-color: var(--main-color-dim);
+            color: var(--background-color);
+
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - alignment (centering iframe) */
+            align-items: center;
+            justify-content: center;
+
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+        }
+        /* hide player when disable */
+        .player:has(> input:checked)  {
+            display: none;
+        }
+        .player > input {
+            display: none;
+        }
+        /* flex item - video player*/
+        .player > iframe {
+            /* layout - demension */
+            width: min(100%, 1920px);
+            aspect-ratio: 16 / 9;
+        }
+        /* close button */
+        .player > label {
+            /* decoration */
+            cursor: pointer;
+
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            top: 0;
+        }
+        /* prevent background scroll when playing a video */
+        /* it may not be worked on Safari */
+        html {
+            overflow: hidden;
+        }
+        html:has(.player input:checked) {
+            overflow: auto;
+        }
+
+
+        /*
+         * about me
+         */
+        aside > section {
+            /* layout - demension */
+            padding-block-end: 128px;
+        }
+        aside p {
+            /* layout - demension */
+            margin-block: 16px;
+        }
+        /* auto indentation */
+        aside p::before {
+            content: '　';
+        }
+        aside em {
+            /* decoration */
+            color: var(--main-color);
+        }
+
+
+        /*
+         * footer
+         */
+        footer {
+            /* decoration */
+            color: var(--background-color);
+            background-color: var(--main-color);
+
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+
+            /* layout - dimension */
+            width: 100%;
+            padding: 4px;
+
+            /* layout - alignment */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero" id="home">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
+        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
+    </div>
+
+    <header>
+        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#home"><em>h</em>ome</a></li>
+                <li><a href="#music-videos"><em>m</em>usic videos</a></li>
+                <li><a href="#about-me"><em>a</em>bout me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="music-videos" id="music-videos">
+            <header>
+                <h2>music videos.</h2>
+            </header>
+            <div class="player">
+                <input type="radio" name="video" id="player-close" checked>
+                <label for="player-close">Close</label>
+                <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="music-tags">
+                <label class="tabs-close">
+                    <input type="radio" name="tag" id="close">
+                    <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                        <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="all">
+                    <p>All</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="recomended" checked>
+                    <p>Recomended</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="rock">
+                    <p>Rock</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="anime">
+                    <p>Anime</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="heavy-metal">
+                    <p>Metal</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="melodic-hardcore">
+                    <p>Melodic Hardcore</p>
+                </label>
+            </div>
+
+            <ul>
+                <li class="video-close">
+                    <p>Select a tag to display videos.</p>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="kKOkybfh9bE">
+                    <figure>
+                        <label for="kKOkybfh9bE">
+                            <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">平行線</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="L72R8VFVNEY">
+                    <figure>
+                        <label for="L72R8VFVNEY">
+                            <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">酸欠少女</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="9LhUlEeeSF0">
+                    <figure>
+                        <label for="9LhUlEeeSF0">
+                            <img src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">来世で会おう</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="M1ajQuujwKk">
+                    <figure>
+                        <label for="M1ajQuujwKk">
+                            <img src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">それは小さな光のような</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="PWbg7ShjOPk">
+                    <figure>
+                        <label for="PWbg7ShjOPk">
+                            <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">エイトビート・バーサーカー</span>
+                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="Bds3FALcR7M">
+                    <figure>
+                        <label for="Bds3FALcR7M">
+                            <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">All is One</span>
+                            <span class="artist">Orphaned Land</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="msuO_KuHwVY">
+                    <figure>
+                        <label for="msuO_KuHwVY">
+                            <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">Shadows Flap Their Black Wings</span>
+                            <span class="artist">In Vain</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="RGqA1lNXYhg">
+                    <figure>
+                        <label for="RGqA1lNXYhg">
+                            <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">New Dark Age</span>
+                            <span class="artist">Bad Religion</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="melodic-hardcore"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <input type="radio" name="video" id="ZRtdQ81jPUQ">
+                    <figure>
+                        <label for="ZRtdQ81jPUQ">
+                            <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
+                        </label>
+                        <figcaption>
+                            <span class="song">アイドル</span>
+                            <span class="artist">YOASOBI</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <aside>
+        <section id="about-me">
+            <header>
+                <h2>about me.</h2>
+            </header>
+            <p>
+                lulliecatのproducerです。
+                好きな音楽のジャンルはヘヴィメタルとアニソンです。
+                中学生の頃からヘヴィメタルを聞き始めました。
+                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を目の当たりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
+                他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+            </p>
+            <p>
+                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
+                友だちは<em>Ride the Lightning</em>を買っていました。
+                どちらも名作ですね。
+            </p>
+            <p>
+                そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
+                それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                <em>Insanity and Genious</em>の頃です。
+            </p>
+            <p>
+                当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
+                何買ったかな、色々かった気がするな。
+                Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                本当に凄いよ。おすすめだよ。
+            </p>
+            <p>
+                その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
+                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、<em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+            </p>
+            <p>
+                すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
+                <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
+            </p>
+            <p>
+                こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
+                正直、記憶は曖昧なので実際に聞いた順番は前後していると思います。
+                ですが、これらのバンドがぼくに衝撃を与えたのは本当に大きかったですね。
+                1992年近辺、本当に凄かったな...ぼくの音楽人生を決めたといっても過言ではありません。
+                もう私もいい歳ですが、いまだにSomewhere Far Beyondとかしてるもんな...最高の趣味だぜ...
+            </p>
+            <p>
+                アニソンについては、機会があればまた！
+                アニソンは本格的には1990年代後半から聞き始めましたが、これもまた良いものですね。
+            </p>
+        </section>
+    </aside>
+
+    <footer>
+        © 2024 lulliecat
+    </footer>
+    <script>
+        const cards         = document.querySelectorAll(".card");
+        const player_label  = document.querySelector(".player > label");
+        const player        = document.querySelector(".player > iframe");
+        cards.forEach((card) => {
+            const img_label = card.querySelector("figure > label");
+            const id        = img_label.getAttribute("for");
+
+            // open
+            img_label.addEventListener('click', (e) => player.src = `https://www.youtube.com/embed/${id}`);
+
+            // close
+            player_label.addEventListener('click', (e) => player.src = "");
+        });
+    </script>
+</body>
+</html>
