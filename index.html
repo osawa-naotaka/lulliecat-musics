@@ -309,12 +309,14 @@
         }
         .tag-tabs > label > p {
             cursor: pointer;
-            border: 1px solid;
+            border: 1px solid var(--lulliecat-main-color);
             border-radius: 4px;
             min-width: 60px;
             text-align: center;
             padding-inline: 8px;
             font-weight: bold;
+            transition: color 0.1s;
+            transition: background-color 0.1s;
         }
         .tag-tabs > .tabs-close {
             position: absolute;
@@ -324,7 +326,9 @@
         .tag-tabs > label > input:checked + p {
             background-color: var(--lulliecat-accent-color);
             color: var(--lulliecat-background-color);
+            border: 1px solid var(--lulliecat-accent-color);
         }
+
         .musicvideos:has( .tag-tabs #all:checked ) .card {
             display: block;
         }
