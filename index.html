@@ -275,18 +275,10 @@
             /* scroll-margin-block-start: var(--lulliecat-header-height); */
             padding-bottom: 100px;
         }
-        .musicvideos img {
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            padding: 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px var(--lulliecat-shadow-color);
-
-            cursor: pointer;
-        }
         .musicvideos > ul {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }
 
         /* tag tabs */
@@ -299,7 +291,8 @@
             top: var(--lulliecat-header-height);
             left: 0;
             right: 0;
-            padding: 16px 40px 0px 16px;
+            padding: 16px 34px 0px 0px;
+            margin-bottom: 16px;
             background-color: var(--lulliecat-background-color-header);
         }
         .tag-tabs > label > input {
@@ -320,7 +313,7 @@
         .tag-tabs > .tabs-close {
             position: absolute;
             top: 12px;
-            right: 8px;
+            right: -5px;
         }
         .tag-tabs > label > input:checked + p {
             background-color: var(--lulliecat-accent-color);
@@ -349,8 +342,6 @@
 
         /* card */
         .card, .video-close {
-            padding: 16px;
-
             /* for tabs */
             display: none;
         }
@@ -359,6 +350,16 @@
         }
         .card .artist::before {
             content: " / ";
+        }
+        .card > figure  img {
+            aspect-ratio: 16 / 9;
+            width: 100%; /* この指定がないと、元画像が包含ブロックより大きい場合にアスペクト比の切り出しをしてくれない */
+            object-fit: cover;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px var(--lulliecat-shadow-color);
+
+            cursor: pointer;
         }
 
         /* music videos main player */
