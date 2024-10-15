@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>lulliecat musics</title>
     <style>
-        /* reset css */
+        /* initialize */
         * {
             margin: 0;
             padding: 0;
@@ -40,6 +40,7 @@
             --shadow-color: #c0c0c0;
 
             --header-height: 42px;
+            --phone-width: 700px;
         }
 
         /*
@@ -52,7 +53,7 @@
             color: var(--main-color);
         }
 
-        /* container decoration and layout */
+        /* container */
         main, aside {
             /* layout - dimension */
             width: 100%;
@@ -67,7 +68,7 @@
             background-color: var(--background-color-dark);
         }
 
-        /* section decoration and layout */
+        /* section */
         section {
             /* layout - dimension */
             width: 100%;
@@ -84,7 +85,7 @@
             /* decoration */
             color: var(--accent-color);
         }
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: var(--phone-width)) {
             section > header > h2 {
                 /* decoration */
                 font-size: 48px;
@@ -203,7 +204,7 @@
                 opacity: 1;
             }
         }
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: var(--phone-width)) {
             .site-name-1 {
                 bottom: 160px;
             }
@@ -262,9 +263,18 @@
             /* layout - dimension */
             gap: 24px;
         }
-        @media screen and (max-width: 700px) {
-            body > header > nav {
-                display: none;
+
+        /* phone header */
+        @media screen and (max-width: var(--phone-width)) {
+            body > header {
+                /* make header 2-line */
+                display: block;
+                height: calc(var(--header-height) * 2);
+            }
+            .navigation {
+                /* align right */
+                display: flex;
+                justify-content: flex-end;
             }
         }
 
@@ -329,6 +339,13 @@
             margin-bottom: 16px;
             padding: 16px 34px 0px 0px;
         }
+        /* phone header */
+        @media screen and (max-width: var(--phone-width)) {
+            .music-tags {
+                top: calc( var(--header-height) * 2);
+            }
+        }
+
 
         /* flex items (tag) */
         .music-tags > label {
@@ -551,7 +568,7 @@
                 </label>
                 <label>
                     <input type="radio" name="tag" id="heavy-metal">
-                    <p>Heavy Metal</p>
+                    <p>Metal</p>
                 </label>
                 <!-- <label>
                     <input type="radio" name="tag" id="prog-metal">
@@ -1258,45 +1275,34 @@
                 lulliecatのproducerです。
                 好きな音楽のジャンルはヘヴィメタルとアニソンです。
                 中学生の頃からヘヴィメタルを聞き始めました。
-                なんかやばい音楽が聴きたい、とおもいたち、当時買っていた
-                FM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を
-                まのあたりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
-                他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、
-                最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を目の当たりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
+                他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
             </p>
             <p>
-                その後、どうやらスラッシュメタルというジャンルがすごいらしい、
-                と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
-                友だちは<em>Ride the Lightning</em>を買っていました。どちらも名作ですね。
+                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
+                友だちは<em>Ride the Lightning</em>を買っていました。
+                どちらも名作ですね。
             </p>
             <p>
                 そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
-                それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、
-                ジャーマンメタル熱も最初は冷めようとしていました。
-                ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました）、
-                再びチェックしてみる気になり、そしてかなりはまりました。<em>Insanity and Genious</em>の頃です。
+                それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                <em>Insanity and Genious</em>の頃です。
             </p>
             <p>
-                当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、
-                それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
+                当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
                 何買ったかな、色々かった気がするな。
-                Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、
-                <em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、
-                今でも聞いています。本当に凄いよ。おすすめだよ。
+                Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                本当に凄いよ。おすすめだよ。
             </p>
             <p>
                 その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
-                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、
-                <em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、<em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
             </p>
             <p>
                 すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
-                <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onは
-                テープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
-                同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中から
-                Hanging on a Stringを聞き、これもメロディアスで凄く気に入って、
-                買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては
-                大切な一枚になりました。
+                <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
             </p>
             <p>
                 こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
