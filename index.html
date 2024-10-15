@@ -292,13 +292,14 @@
         /* tag tabs */
         .tag-tabs {
             display: flex;
-            position: relative;
             justify-content: flex-start;
             flex-wrap: wrap;
             column-gap: 16px;
             position: sticky;
             top: var(--lulliecat-header-height);
-            width: 100%;
+            left: 0;
+            right: 0;
+            /* width: 100%; */
             /* padding: 16px 40px 0px 16px; */
             background-color: var(--lulliecat-background-color-header);
         }
@@ -317,11 +318,11 @@
             padding-inline: 8px;
             font-weight: bold;
         }
-        /* .tag-tabs > .tabs-close {
+        .tag-tabs > .tabs-close {
             position: absolute;
             top: 12px;
             right: 8px;
-        } */
+        }
         .tag-tabs > label > input:checked + p {
             background-color: var(--lulliecat-accent-color);
             color: var(--lulliecat-background-color);
