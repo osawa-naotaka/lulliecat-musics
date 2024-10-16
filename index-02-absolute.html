@@ -105,18 +105,61 @@
         /*
          * Hero
          */
+        /* 02修正: ヒーロー画像の上にサイト名を表示する */
         .hero {
+            /* reference block for .hero > img, .site-name-1,2 */
+            position: relative;
+
+            /* clip for carousel scaling animation */
+            overflow: clip;
+
             /* layout - dimension */
             width: 100%;
+            height: 100svh;
         }
 
         /* hero image */
         .hero > img {
+            /* absolutely positioned respect to .hero */
+            position: absolute;
+            top: 0;
+
             /* scaling image to viewport */
             width: 100%;
-            aspect-ratio: 16 / 9;
+            height: 100svh; /* viewport height without address bar etc... */
             object-fit: cover; /* Scaling with aspect ratio preserved  */
         }
+
+
+        /* hero text - site name */
+        .site-name-1, .site-name-2 {
+            /* decolation */
+            font-size: 128px;
+            font-weight: bold;
+            color: var(--accent-color);
+
+            /* absolutely positioned respect to .hero  */
+            position: absolute;
+            left: 32px;
+        }
+        .site-name-1 {
+            bottom: 166px;
+        }
+        .site-name-2 {
+            bottom: 48px;
+        }
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 160px;
+            }
+            .site-name-2 {
+                bottom: 90px;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 72px;
+            }
+        }
+        /* 02追加修正ここまで */
 
 
         /*
@@ -196,23 +239,34 @@
         /*
          * footer
          */
+        /* 02修正: フッターを画面下に固定する */
         footer {
             /* decoration */
             color: var(--background-color);
             background-color: var(--main-color);
 
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+
             /* layout - dimension */
+            width: 100%;
             padding: 4px;
 
             /* layout - alignment */
             text-align: center;
         }
+        /* 02修正ここまで */
     </style>
 </head>
 <body>
 
     <div class="hero" id="home">
+        <!-- 02追加: ヒーロー画像の上にサイト名を挿入 -->
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
     </div>
 
     <header>

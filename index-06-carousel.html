@@ -32,9 +32,12 @@
         :root {
             --background-color: #f0f0f0;
             --background-color-dark: #e0e0e0;
+            --background-color-header: #f0f0f0c0;
             --accent-color: #d7003a;
             --main-color: #303030;
             --shadow-color: #c0c0c0;
+
+            --header-height: 42px;
         }
 
         /*
@@ -48,11 +51,11 @@
         }
 
         /* container */
-        main, aside, body > header {
+        main, aside {
             /* layout - dimension */
             padding-inline: 16px; /* padding for width < 1200px */
         }
-        main, body > header {
+        main {
             /* decoration */
             background-color: var(--background-color);
         }
@@ -106,41 +109,175 @@
          * Hero
          */
         .hero {
+            /* reference block for .hero > h1 */
+            position: relative;
+
+            /* clip for carousel scaling animation */
+            overflow: clip;
+
             /* layout - dimension */
             width: 100%;
+            height: 100svh;
         }
 
         /* hero image */
         .hero > img {
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            top: 0;
+            z-index: -1;
+
             /* scaling image to viewport */
             width: 100%;
-            aspect-ratio: 16 / 9;
+            height: 100svh; /* viewport height without address bar etc... */
             object-fit: cover; /* Scaling with aspect ratio preserved  */
+        }
+
+        /* 06修正: カルーセルアニメーション */
+        /* hero image carousel animation */
+        .hero > img {
+            opacity: 0; /* transparent at first */
+            animation: carousel 16s infinite;
+        }
+        .hero > img:nth-of-type(2) {
+            animation-delay: 4s;
+        }
+        .hero > img:nth-of-type(3) {
+            animation-delay: 8s;
+        }
+        .hero > img:nth-of-type(4) {
+            animation-delay: 12s;
+        }
+        /* depends on the number of pictures */
+        @keyframes carousel {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            35% {
+                opacity: 0;
+                scale: 1.03;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        /* 06修正ここまで */
+
+        /* hero text - site name */
+        .site-name-1, .site-name-2 {
+            /* decolation */
+            font-size: 128px;
+            font-weight: bold;
+            color: var(--accent-color);
+
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            left: 32px;
+            z-index: -1;
+        }
+        .site-name-1 {
+            bottom: 166px;
+        }
+        .site-name-2 {
+            bottom: 48px;
+        }
+
+        /* 06修正: ヒーローテキストアニメーション */
+        /* hero text slide-in animation */
+        .site-name-1 {
+            opacity: 0; /* transparent at first */
+            animation: sitename ease-out 0.5s forwards 1s;
+        }
+        .site-name-2 {
+            opacity: 0;
+            animation: sitename ease-out 0.5s forwards 1.5s;
+        }
+        @keyframes sitename {
+            0% {
+                transform: translateY(32px);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        /* 06修正ここまで */
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 160px;
+            }
+            .site-name-2 {
+                bottom: 90px;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 72px;
+            }
         }
 
 
         /*
          * header
          */
-        body > header > h1, body > header > nav {
+        /* flex container for h1 and nav */
+        body > header {
+            /* decolation */
+            background-color: var(--background-color-header);
+            font-weight: bold;
+
+            /* this block is flex container */
+            display: flex;
+
+            /* stickily positioned block */
+            position: sticky;
+
             /* layout - dimension */
             width: 100%;
-            max-width: 1200px;
-            margin-inline: auto; /* align center */
+            height: var(--header-height);
+            top: 0;
+            z-index: 1;
+
+            /* layout - alignment */
+            align-items: baseline;
+            justify-content: space-between;
         }
         body > header > h1 {
             /* decolation */
-            font-size: 128px;
-            line-height: 1;
+            font-size: 32px;
+            border-bottom: none;
+
+            /* layout - dimension */
+            margin-left: 16px;
         }
-        body > header > nav {
-            /* decoration */
-            font-weight: bold;
+        .navigation {
+            /* layout - dimension */
+            margin-right: 16px;
         }
+
+        /* flex container for nav list items */
+        .navigation > ul {
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - dimension */
+            gap: 24px;
+        }
+
+        /* phone header */
         @media screen and (max-width: 700px) {
-            body > header > h1 {
-                /* decoration */
-                font-size: 96px;
+            body > header {
+                /* make header 2-line */
+                display: block;
+                height: calc(var(--header-height) * 2);
+            }
+            .navigation {
+                /* align right */
+                display: flex;
+                justify-content: flex-end;
             }
         }
 
@@ -153,10 +290,15 @@
             padding-bottom: 100px;
         }
 
-        /* card */
-        .card {
-            margin-bottom: 64px;
+        /* grid container for .card */
+        .music-videos > ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }
+
+        /* card */
+        /* grid items */
         .card > figure img {
             /* decoration */
             border-radius: 8px;
@@ -201,7 +343,13 @@
             color: var(--background-color);
             background-color: var(--main-color);
 
+            /* absolutely positioned respect to viewport */
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+
             /* layout - dimension */
+            width: 100%;
             padding: 4px;
 
             /* layout - alignment */
@@ -211,8 +359,14 @@
 </head>
 <body>
 
+    <!-- カルーセル用画像追加 -->
     <div class="hero" id="home">
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
+        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
+        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
     </div>
 
     <header>

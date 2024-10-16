@@ -31,12 +31,10 @@
          */
         :root {
             --background-color: #f0f0f0;
-            --background-color-dim: #f0f0f080;
             --background-color-dark: #e0e0e0;
             --background-color-header: #f0f0f0c0;
             --accent-color: #d7003a;
             --main-color: #303030;
-            --main-color-dim: #303030f0;
             --shadow-color: #c0c0c0;
 
             --header-height: 42px;
@@ -55,8 +53,7 @@
         /* container */
         main, aside {
             /* layout - dimension */
-            width: 100%;
-            padding-inline: 16px;
+            padding-inline: 16px; /* padding for width < 1200px */
         }
         main {
             /* decoration */
@@ -111,7 +108,7 @@
         /*
          * Hero
          */
-         .hero {
+        .hero {
             /* reference block for .hero > h1 */
             position: relative;
 
@@ -128,7 +125,7 @@
             /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            z-index: -2;
+            z-index: -1;
 
             /* scaling image to viewport */
             width: 100%;
@@ -302,17 +299,112 @@
             /* decoration */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
-            cursor: pointer;
  
             /* layout - dimension */
-            width: 100%; /* scaling image to grid container */
+            width: 100%; /* scaling image to containing block */
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            padding: 0;
         }
         .card .artist::before {
             content: " / ";
         }
+
+
+        /* 1. filtering by tags */
+        /* flex container for tag list */
+        .music-tags {
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - alignment */
+            justify-content: flex-start;
+
+            /* layout scheme for flex items */
+            column-gap: 16px;
+            flex-wrap: wrap;
+
+            /* decoration */
+            background-color: var(--background-color-header);
+
+            /* stickily positioned block */
+            position: sticky;
+
+            /* layout - dimension */
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            margin-bottom: 16px;
+            padding: 16px 34px 0px 0px;
+        }
+        /* phone header */
+        @media screen and (max-width: 700px) {
+            .music-tags {
+                top: calc( var(--header-height) * 2);
+            }
+        }
+
+
+        /* 07修正: タグのリストと.cardの選択 */
+        /* flex items (tag) */
+        .music-tags > label {
+            /* dimension */
+            margin-bottom: 8px;
+        }
+        .music-tags > label > input {
+            /* decoration */
+            display: none;
+        }
+        .music-tags > label > p {
+            /* decoration */
+            font-weight: bold;
+            border: 1px solid var(--main-color);
+            border-radius: 4px;
+            cursor: pointer;
+
+            /* layout - demension */
+            padding-inline: 8px;
+            min-width: 80px;
+            text-align: center;
+
+            /* transient animation */
+            transition: color 0.1s, background-color 0.1s;
+        }
+        .music-tags > .tabs-close {
+            /* absolutely positioned block respect to flex container */
+            position: absolute;
+
+            /* layout - demension */
+            top: 12px;
+            right: -5px;
+        }
+        .music-tags > label > input:checked + p {
+            /* decoration */
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        /* 2. display selected card */
+        /* display: none by default */
+        .card, .video-close {
+            display: none;
+        }
+        .card > input {
+            display: none;
+        }
+        .music-videos:has( .music-tags #all:checked ) .card {
+            display: block;
+        }
+        .music-videos:has( .music-tags #close:checked ) .video-close,
+        .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+        .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
+        .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
+        .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+        .music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore )
+        {
+            display: block;
+        }
+        /* 07修正ここまで */
 
 
         /*
@@ -360,17 +452,18 @@
 </head>
 <body>
 
+    <!-- カルーセル用画像追加 -->
     <div class="hero" id="home">
-        <div class="site-name-1">lulliecat</div>
-        <div class="site-name-2">musics.</div>
-        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
         <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
         <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
     </div>
 
     <header>
-        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <h1>lulliecat <em>m</em>usics.</h1>
         <nav class="navigation">
             <ul>
                 <li><a href="#home"><em>h</em>ome</a></li>
@@ -385,7 +478,48 @@
             <header>
                 <h2>music videos.</h2>
             </header>
+            <!-- タグのリスト追加 -->
+            <div class="music-tags">
+                <label class="tabs-close">
+                    <input type="radio" name="tag" id="close">
+                    <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                        <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="all">
+                    <p>All</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="recomended" checked>
+                    <p>Recomended</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="rock">
+                    <p>Rock</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="anime">
+                    <p>Anime</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="heavy-metal">
+                    <p>Metal</p>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="melodic-hardcore">
+                    <p>Melodic Hardcore</p>
+                </label>
+            </div>
+            <!-- タグのリスト追加ここまで -->
             <ul>
+                <!-- ×ボタンを押した時に表示される要素 -->
+                <li class="video-close">
+                    <p>Select a tag to display videos.</p>
+                </li>
+                <!-- ×ボタンを押した時に表示される要素ここまで -->
                 <li class="card">
                     <figure>
                         <a href="https://www.youtube.com/watch?v=kKOkybfh9bE">
@@ -396,6 +530,13 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -407,6 +548,12 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -418,6 +565,13 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -429,6 +583,13 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -440,6 +601,13 @@
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -451,6 +619,12 @@
                             <span class="artist">Orphaned Land</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -462,6 +636,12 @@
                             <span class="artist">In Vain</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -473,6 +653,12 @@
                             <span class="artist">Bad Religion</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="melodic-hardcore"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
                 <li class="card">
                     <figure>
@@ -484,6 +670,13 @@
                             <span class="artist">YOASOBI</span>
                         </figcaption>
                     </figure>
+                    <!-- タグの追加 -->
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                    <!-- タグの追加ここまで -->
                 </li>
             </ul>
         </section>

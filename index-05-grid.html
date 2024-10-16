@@ -31,12 +31,10 @@
          */
         :root {
             --background-color: #f0f0f0;
-            --background-color-dim: #f0f0f080;
             --background-color-dark: #e0e0e0;
             --background-color-header: #f0f0f0c0;
             --accent-color: #d7003a;
             --main-color: #303030;
-            --main-color-dim: #303030f0;
             --shadow-color: #c0c0c0;
 
             --header-height: 42px;
@@ -55,8 +53,7 @@
         /* container */
         main, aside {
             /* layout - dimension */
-            width: 100%;
-            padding-inline: 16px;
+            padding-inline: 16px; /* padding for width < 1200px */
         }
         main {
             /* decoration */
@@ -111,7 +108,7 @@
         /*
          * Hero
          */
-         .hero {
+        .hero {
             /* reference block for .hero > h1 */
             position: relative;
 
@@ -128,7 +125,7 @@
             /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            z-index: -2;
+            z-index: -1;
 
             /* scaling image to viewport */
             width: 100%;
@@ -154,6 +151,17 @@
         }
         .site-name-2 {
             bottom: 48px;
+        }
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 160px;
+            }
+            .site-name-2 {
+                bottom: 90px;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 72px;
+            }
         }
 
 
@@ -227,6 +235,7 @@
             padding-bottom: 100px;
         }
 
+        /* 05修正: gridコンテナの設定 */
         /* grid container for .card */
         .music-videos > ul {
             display: grid;
@@ -236,17 +245,16 @@
 
         /* card */
         /* grid items */
+        /* 05修正ここまで */
         .card > figure img {
             /* decoration */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
-            cursor: pointer;
  
             /* layout - dimension */
-            width: 100%; /* scaling image to grid container */
+            width: 100%; /* scaling image to containing block */
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            padding: 0;
         }
         .card .artist::before {
             content: " / ";
@@ -299,13 +307,13 @@
 <body>
 
     <div class="hero" id="home">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
         <div class="site-name-1">lulliecat</div>
         <div class="site-name-2">musics.</div>
-        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
     </div>
 
     <header>
-        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <h1>lulliecat <em>m</em>usics.</h1>
         <nav class="navigation">
             <ul>
                 <li><a href="#home"><em>h</em>ome</a></li>
@@ -367,56 +375,11 @@
                 </li>
                 <li class="card">
                     <figure>
-                        <a href="https://www.youtube.com/watch?v=PgRd17Qvji4">
-                            <img src="https://img.youtube.com/vi/PgRd17Qvji4/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">アノニマス</span>
-                            <span class="artist">さユり</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=0q6c0AKDKU4">
-                            <img src="https://img.youtube.com/vi/0q6c0AKDKU4/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">ミカヅキ</span>
-                            <span class="artist">さユり</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=EzgE7CbTs3o">
-                            <img src="https://img.youtube.com/vi/EzgE7CbTs3o/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">航海の歌</span>
-                            <span class="artist">さユり</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                
-                <li class="card">
-                    <figure>
                         <a href="https://www.youtube.com/watch?v=PWbg7ShjOPk">
                             <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
                         </a>
                         <figcaption>
                             <span class="song">エイトビート・バーサーカー</span>
-                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=trrEWoMWSQg">
-                            <img src="https://img.youtube.com/vi/trrEWoMWSQg/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">転生したら剣でした</span>
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
                         </figcaption>
                     </figure>
@@ -434,78 +397,12 @@
                 </li>
                 <li class="card">
                     <figure>
-                        <a href="https://www.youtube.com/watch?v=AbCliCQnBUo">
-                            <img src="https://img.youtube.com/vi/AbCliCQnBUo/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Sapari</span>
-                            <span class="artist">Orphaned Land</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=4SZDVcNUiI0">
-                            <img src="https://img.youtube.com/vi/4SZDVcNUiI0/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Architect of Fortune</span>
-                            <span class="artist">Circus Maximus</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=SiH5FNKKcjQ">
-                            <img src="https://img.youtube.com/vi/SiH5FNKKcjQ/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">At The Heart Of Wintervale</span>
-                            <span class="artist">Twilight Force</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=LaTI4XF8PAY">
-                            <img src="https://img.youtube.com/vi/LaTI4XF8PAY/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Twilight Force</span>
-                            <span class="artist">Twilight Force</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=WM8bTdBs-cw">
-                            <img src="https://img.youtube.com/vi/WM8bTdBs-cw/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">One</span>
-                            <span class="artist">Metallica</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
                         <a href="https://www.youtube.com/watch?v=msuO_KuHwVY">
                             <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
                         </a>
                         <figcaption>
                             <span class="song">Shadows Flap Their Black Wings</span>
                             <span class="artist">In Vain</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=12kcpP-8jfM">
-                            <img src="https://img.youtube.com/vi/12kcpP-8jfM/hqdefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">American Jesus</span>
-                            <span class="artist">Bad Religion</span>
                         </figcaption>
                     </figure>
                 </li>
@@ -522,72 +419,6 @@
                 </li>
                 <li class="card">
                     <figure>
-                        <a href="https://www.youtube.com/watch?v=n7-YIZhwvKI">
-                            <img src="https://img.youtube.com/vi/n7-YIZhwvKI/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Reason</span>
-                            <span class="artist">DGM</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=YjPZgtm3Dmk">
-                            <img src="https://img.youtube.com/vi/YjPZgtm3Dmk/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Trust</span>
-                            <span class="artist">DGM</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=CbI79e5iZKs">
-                            <img src="https://img.youtube.com/vi/CbI79e5iZKs/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">無情のスキャット</span>
-                            <span class="artist">人間椅子</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=woGfOQ6Ze90">
-                            <img src="https://img.youtube.com/vi/woGfOQ6Ze90/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Integral</span>
-                            <span class="artist">Cynic</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=MM62wjLrgmA">
-                            <img src="https://img.youtube.com/vi/MM62wjLrgmA/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Schism</span>
-                            <span class="artist">Tool</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=-_nQhGR0K8M">
-                            <img src="https://img.youtube.com/vi/-_nQhGR0K8M/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Parabola</span>
-                            <span class="artist">Tool</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
                         <a href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ">
                             <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
                         </a>
@@ -597,184 +428,8 @@
                         </figcaption>
                     </figure>
                 </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=3V9952osjnc">
-                            <img src="https://img.youtube.com/vi/3V9952osjnc/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">シル・ヴ・プレジデント</span>
-                            <span class="artist">P丸様。</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=_ZvxNcITgfo">
-                            <img src="https://img.youtube.com/vi/_ZvxNcITgfo/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">絶対闘争イデオロギー</span>
-                            <span class="artist">貢献Girls</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=9YkPC2fx_iQ">
-                            <img src="https://img.youtube.com/vi/9YkPC2fx_iQ/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">イバラララバイ</span>
-                            <span class="artist">パンナ</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=Rkc4JfpowRQ">
-                            <img src="https://img.youtube.com/vi/Rkc4JfpowRQ/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">輝く空の静寂には</span>
-                            <span class="artist">Kalafina</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=YDLafQ-Rg-k">
-                            <img src="https://img.youtube.com/vi/YDLafQ-Rg-k/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">雑踏、僕らの街</span>
-                            <span class="artist">トゲナシトゲアリ</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=guzvN9tiDd8">
-                            <img src="https://img.youtube.com/vi/guzvN9tiDd8/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">空、星、海の夜</span>
-                            <span class="artist">THE BACK HORN</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=QPdhZR_CIck">
-                            <img src="https://img.youtube.com/vi/QPdhZR_CIck/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">戦う君よ</span>
-                            <span class="artist">THE BACK HORN</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=yf_xwI865gg">
-                            <img src="https://img.youtube.com/vi/yf_xwI865gg/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">コバルトブルー</span>
-                            <span class="artist">THE BACK HORN</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=T5vVKFfrgkk">
-                            <img src="https://img.youtube.com/vi/T5vVKFfrgkk/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">紅蓮</span>
-                            <span class="artist">DOES</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=pA2Xw4C7gcw">
-                            <img src="https://img.youtube.com/vi/pA2Xw4C7gcw/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Wanderland</span>
-                            <span class="artist">9mm Parabellum Bullet</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=BgE_MccITtU">
-                            <img src="https://img.youtube.com/vi/BgE_MccITtU/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">キャンドルの灯を</span>
-                            <span class="artist">9mm Parabellum Bullet</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=X6AzbA6U4N8">
-                            <img src="https://img.youtube.com/vi/X6AzbA6U4N8/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Cold Edge</span>
-                            <span class="artist">9mm Parabellum Bullet</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=kmawA9Jns14">
-                            <img src="https://img.youtube.com/vi/kmawA9Jns14/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">Supernova</span>
-                            <span class="artist">9mm Parabellum Bullet</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=oYN2C2ppGc0">
-                            <img src="https://img.youtube.com/vi/oYN2C2ppGc0/hqdefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">dead start</span>
-                            <span class="artist">COCK ROACH</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=cKOlWLswxuM">
-                            <img src="https://img.youtube.com/vi/cKOlWLswxuM/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">新進化論エレクトロニカルパレーダー</span>
-                            <span class="artist">COCK ROACH</span>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="card">
-                    <figure>
-                        <a href="https://www.youtube.com/watch?v=WIKKyrGGaDk">
-                            <img src="https://img.youtube.com/vi/WIKKyrGGaDk/sddefault.jpg" alt="">
-                        </a>
-                        <figcaption>
-                            <span class="song">花の塔</span>
-                            <span class="artist">さユり</span>
-                        </figcaption>
-                    </figure>
-                </li>
             </ul>
-        </section>    
+        </section>
     </main>
 
     <aside>

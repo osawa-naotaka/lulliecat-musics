@@ -29,18 +29,18 @@
         /*
          * parameter
          */
+        /* 04修正: ヘッダー用の背景色と高さのパラメータ追加 */
         :root {
             --background-color: #f0f0f0;
-            --background-color-dim: #f0f0f080;
             --background-color-dark: #e0e0e0;
             --background-color-header: #f0f0f0c0;
             --accent-color: #d7003a;
             --main-color: #303030;
-            --main-color-dim: #303030f0;
             --shadow-color: #c0c0c0;
 
             --header-height: 42px;
         }
+        /* 04修正ここまで */
 
         /*
          * grobal settings
@@ -53,15 +53,16 @@
         }
 
         /* container */
+        /* 04修正: ヘッダを上部張り付きににするので、コンテナから除外 */
         main, aside {
             /* layout - dimension */
-            width: 100%;
-            padding-inline: 16px;
+            padding-inline: 16px; /* padding for width < 1200px */
         }
         main {
             /* decoration */
             background-color: var(--background-color);
         }
+        /* 04修正ここまで */
         aside {
             /* decoration */
             background-color: var(--background-color-dark);
@@ -111,7 +112,7 @@
         /*
          * Hero
          */
-         .hero {
+        .hero {
             /* reference block for .hero > h1 */
             position: relative;
 
@@ -128,7 +129,7 @@
             /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            z-index: -2;
+            z-index: -1;
 
             /* scaling image to viewport */
             width: 100%;
@@ -155,11 +156,23 @@
         .site-name-2 {
             bottom: 48px;
         }
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 160px;
+            }
+            .site-name-2 {
+                bottom: 90px;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 72px;
+            }
+        }
 
 
         /*
          * header
          */
+        /* 04修正: flexによる横並びとstickyによる張り付き */
         /* flex container for h1 and nav */
         body > header {
             /* decolation */
@@ -217,6 +230,7 @@
                 justify-content: flex-end;
             }
         }
+        /* 04修正ここまで */
 
 
         /*
@@ -227,26 +241,19 @@
             padding-bottom: 100px;
         }
 
-        /* grid container for .card */
-        .music-videos > ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-        }
-
         /* card */
-        /* grid items */
+        .card {
+            margin-bottom: 64px;
+        }
         .card > figure img {
             /* decoration */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
-            cursor: pointer;
  
             /* layout - dimension */
-            width: 100%; /* scaling image to grid container */
+            width: 100%; /* scaling image to containing block */
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            padding: 0;
         }
         .card .artist::before {
             content: " / ";
@@ -299,13 +306,13 @@
 <body>
 
     <div class="hero" id="home">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
         <div class="site-name-1">lulliecat</div>
         <div class="site-name-2">musics.</div>
-        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
     </div>
 
     <header>
-        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <h1>lulliecat <em>m</em>usics.</h1>
         <nav class="navigation">
             <ul>
                 <li><a href="#home"><em>h</em>ome</a></li>

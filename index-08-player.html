@@ -31,12 +31,11 @@
          */
         :root {
             --background-color: #f0f0f0;
-            --background-color-dim: #f0f0f080;
             --background-color-dark: #e0e0e0;
             --background-color-header: #f0f0f0c0;
             --accent-color: #d7003a;
             --main-color: #303030;
-            --main-color-dim: #303030f0;
+            --main-color-dim: #303030f0; /* 08修正: 動画プレイヤーの背景色追加 */
             --shadow-color: #c0c0c0;
 
             --header-height: 42px;
@@ -55,8 +54,7 @@
         /* container */
         main, aside {
             /* layout - dimension */
-            width: 100%;
-            padding-inline: 16px;
+            padding-inline: 16px; /* padding for width < 1200px */
         }
         main {
             /* decoration */
@@ -111,7 +109,7 @@
         /*
          * Hero
          */
-         .hero {
+        .hero {
             /* reference block for .hero > h1 */
             position: relative;
 
@@ -128,7 +126,7 @@
             /* absolutely positioned respect to viewport */
             position: fixed;
             top: 0;
-            z-index: -2;
+            z-index: -1;
 
             /* scaling image to viewport */
             width: 100%;
@@ -302,13 +300,12 @@
             /* decoration */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
-            cursor: pointer;
+            cursor: pointer; /* 08修正: サムネイル画像へのポインタを変更 */
  
             /* layout - dimension */
-            width: 100%; /* scaling image to grid container */
+            width: 100%; /* scaling image to containing block */
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            padding: 0;
         }
         .card .artist::before {
             content: " / ";
@@ -410,14 +407,15 @@
         }
 
 
+        /* 08修正: 動画プレイヤー */
         /* music video player */
         .player {
             /* decoration */
             background-color: var(--main-color-dim);
             color: var(--background-color);
 
-            /* this block is flex container */
-            display: flex;
+            /* default disable */
+            display: none;
 
             /* layout - alignment (centering iframe) */
             align-items: center;
@@ -427,13 +425,12 @@
             position: fixed;
             inset: 0;
             z-index: 10;
+
         }
         /* hide player when disable */
-        .player:has(> input:checked)  {
-            display: none;
-        }
-        .player > input {
-            display: none;
+        .player.show {
+            /* this block is flex container */
+            display: flex;
         }
         /* flex item - video player*/
         .player > iframe {
@@ -442,7 +439,7 @@
             aspect-ratio: 16 / 9;
         }
         /* close button */
-        .player > label {
+        .player > .close {
             /* decoration */
             cursor: pointer;
 
@@ -452,12 +449,10 @@
         }
         /* prevent background scroll when playing a video */
         /* it may not be worked on Safari */
-        html {
+        html:has(.player.show) {
             overflow: hidden;
         }
-        html:has(.player input:checked) {
-            overflow: auto;
-        }
+        /* 08修正ここまで */
 
 
         /*
@@ -505,17 +500,18 @@
 </head>
 <body>
 
+    <!-- カルーセル用画像追加 -->
     <div class="hero" id="home">
-        <div class="site-name-1">lulliecat</div>
-        <div class="site-name-2">musics.</div>
-        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
         <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
         <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
     </div>
 
     <header>
-        <h1><a href="#"> lulliecat <em>m</em>usics.</a></h1>
+        <h1>lulliecat <em>m</em>usics.</h1>
         <nav class="navigation">
             <ul>
                 <li><a href="#home"><em>h</em>ome</a></li>
@@ -530,11 +526,12 @@
             <header>
                 <h2>music videos.</h2>
             </header>
+            <!-- 動画プレイヤー -->
             <div class="player">
-                <input type="radio" name="video" id="player-close" checked>
-                <label for="player-close">Close</label>
+                <div class="close">Close</div>
                 <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+            <!-- 動画プレイヤーここまで -->
             <div class="music-tags">
                 <label class="tabs-close">
                     <input type="radio" name="tag" id="close">
@@ -569,17 +566,15 @@
                     <p>Melodic Hardcore</p>
                 </label>
             </div>
-
             <ul>
                 <li class="video-close">
                     <p>Select a tag to display videos.</p>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="kKOkybfh9bE">
                     <figure>
-                        <label for="kKOkybfh9bE">
-                            <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="kKOkybfh9bE" src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">平行線</span>
                             <span class="artist">さユり</span>
@@ -592,11 +587,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="L72R8VFVNEY">
                     <figure>
-                        <label for="L72R8VFVNEY">
-                            <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="L72R8VFVNEY" src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">酸欠少女</span>
                             <span class="artist">さユり</span>
@@ -608,11 +602,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="9LhUlEeeSF0">
                     <figure>
-                        <label for="9LhUlEeeSF0">
-                            <img src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="9LhUlEeeSF0" src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">来世で会おう</span>
                             <span class="artist">さユり</span>
@@ -625,11 +618,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="M1ajQuujwKk">
                     <figure>
-                        <label for="M1ajQuujwKk">
-                            <img src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="M1ajQuujwKk" src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">それは小さな光のような</span>
                             <span class="artist">さユり</span>
@@ -642,11 +634,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="PWbg7ShjOPk">
                     <figure>
-                        <label for="PWbg7ShjOPk">
-                            <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="PWbg7ShjOPk" src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">エイトビート・バーサーカー</span>
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
@@ -659,11 +650,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="Bds3FALcR7M">
                     <figure>
-                        <label for="Bds3FALcR7M">
-                            <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="Bds3FALcR7M" src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">All is One</span>
                             <span class="artist">Orphaned Land</span>
@@ -675,11 +665,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="msuO_KuHwVY">
                     <figure>
-                        <label for="msuO_KuHwVY">
-                            <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="msuO_KuHwVY" src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">Shadows Flap Their Black Wings</span>
                             <span class="artist">In Vain</span>
@@ -691,11 +680,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="RGqA1lNXYhg">
                     <figure>
-                        <label for="RGqA1lNXYhg">
-                            <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="RGqA1lNXYhg" src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">New Dark Age</span>
                             <span class="artist">Bad Religion</span>
@@ -707,11 +695,10 @@
                     </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="ZRtdQ81jPUQ">
                     <figure>
-                        <label for="ZRtdQ81jPUQ">
-                            <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
-                        </label>
+                        <!-- 動画リンク修正 -->
+                        <img id="ZRtdQ81jPUQ" src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
+                        <!-- 動画リンク修正ここまで -->
                         <figcaption>
                             <span class="song">アイドル</span>
                             <span class="artist">YOASOBI</span>
@@ -782,20 +769,31 @@
     <footer>
         © 2024 lulliecat
     </footer>
+    <!-- 動画プレイヤー用コード -->
     <script>
+        const player        = document.querySelector(".player");
+        const player_iframe = player.querySelector("iframe");
+
+        // open player
         const cards         = document.querySelectorAll(".card");
-        const player_label  = document.querySelector(".player > label");
-        const player        = document.querySelector(".player > iframe");
         cards.forEach((card) => {
-            const img_label = card.querySelector("figure > label");
-            const id        = img_label.getAttribute("for");
+            const img = card.querySelector("figure > img");
+            const id  = img.getAttribute("id");
 
             // open
-            img_label.addEventListener('click', (e) => player.src = `https://www.youtube.com/embed/${id}`);
+            img.addEventListener('click', (e) => {
+                player_iframe.src = `https://www.youtube.com/embed/${id}`;
+                player.classList.add('show');
+            });
+        });
 
-            // close
-            player_label.addEventListener('click', (e) => player.src = "");
+        // close
+        const player_close  = player.querySelector(".close");
+        player_close.addEventListener('click', (e) => {
+            player_iframe.src ="";
+            player.classList.remove('show');
         });
     </script>
+    <!-- 動画プレイヤー用コードここまで -->
 </body>
 </html>

@@ -136,39 +136,6 @@
             object-fit: cover; /* Scaling with aspect ratio preserved  */
         }
 
-        /* hero image carousel animation */
-        .hero > img {
-            opacity: 0; /* transparent at first */
-            animation: carousel 16s infinite;
-        }
-        .hero > img:nth-of-type(2) {
-            animation-delay: 4s;
-        }
-        .hero > img:nth-of-type(3) {
-            animation-delay: 8s;
-        }
-        .hero > img:nth-of-type(4) {
-            animation-delay: 12s;
-        }
-        /* depends on the number of pictures */
-        @keyframes carousel {
-            0% {
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            25% {
-                opacity: 1;
-            }
-            35% {
-                opacity: 0;
-                scale: 1.03;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
 
         /* hero text - site name */
         .site-name-1, .site-name-2 {
@@ -187,35 +154,6 @@
         }
         .site-name-2 {
             bottom: 48px;
-        }
-
-        /* hero text slide-in animation */
-        .site-name-1 {
-            opacity: 0; /* transparent at first */
-            animation: sitename ease-out 0.5s forwards 1s;
-        }
-        .site-name-2 {
-            opacity: 0;
-            animation: sitename ease-out 0.5s forwards 1.5s;
-        }
-        @keyframes sitename {
-            0% {
-                transform: translateY(32px);
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        @media screen and (max-width: 700px) {
-            .site-name-1 {
-                bottom: 160px;
-            }
-            .site-name-2 {
-                bottom: 90px;
-            }
-            .site-name-1, .site-name-2 {
-                font-size: 72px;
-            }
         }
 
 
@@ -315,159 +253,6 @@
         }
 
 
-        /* 1. filtering by tags */
-        /* flex container for tag list */
-        .music-tags {
-            /* this block is flex container */
-            display: flex;
-
-            /* layout - alignment */
-            justify-content: flex-start;
-
-            /* layout scheme for flex items */
-            column-gap: 16px;
-            flex-wrap: wrap;
-
-            /* decoration */
-            background-color: var(--background-color-header);
-
-            /* stickily positioned block */
-            position: sticky;
-
-            /* layout - dimension */
-            top: var(--header-height);
-            left: 0;
-            right: 0;
-            margin-bottom: 16px;
-            padding: 16px 34px 0px 0px;
-        }
-        /* phone header */
-        @media screen and (max-width: 700px) {
-            .music-tags {
-                top: calc( var(--header-height) * 2);
-            }
-        }
-
-
-        /* flex items (tag) */
-        .music-tags > label {
-            /* dimension */
-            margin-bottom: 8px;
-        }
-        .music-tags > label > input {
-            /* decoration */
-            display: none;
-        }
-        .music-tags > label > p {
-            /* decoration */
-            font-weight: bold;
-            border: 1px solid var(--main-color);
-            border-radius: 4px;
-            cursor: pointer;
-
-            /* layout - demension */
-            padding-inline: 8px;
-            min-width: 80px;
-            text-align: center;
-
-            /* transient animation */
-            transition: color 0.1s, background-color 0.1s;
-        }
-        .music-tags > .tabs-close {
-            /* absolutely positioned block respect to flex container */
-            position: absolute;
-
-            /* layout - demension */
-            top: 12px;
-            right: -5px;
-        }
-        .music-tags > label > input:checked + p {
-            /* decoration */
-            background-color: var(--accent-color);
-            color: var(--background-color);
-            border: 1px solid var(--accent-color);
-        }
-
-        /* 2. display selected card */
-        /* display: none by default */
-        .card, .video-close {
-            display: none;
-        }
-        .card > input {
-            display: none;
-        }
-        .music-videos:has( .music-tags #all:checked ) .card {
-            display: block;
-        }
-        .music-videos:has( .music-tags #close:checked ) .video-close,
-        .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
-        .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
-        .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
-        .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
-        .music-videos:has( .music-tags #prog-metal:checked ) .card:has( .tags .prog-metal ),
-        .music-videos:has( .music-tags #epic-metal:checked ) .card:has( .tags .epic-metal ),
-        .music-videos:has( .music-tags #death-metal:checked ) .card:has( .tags .death-metal ),
-        .music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
-        .music-videos:has( .music-tags #doom-metal:checked ) .card:has( .tags .doom-metal ),
-        .music-videos:has( .music-tags #alternative-metal:checked ) .card:has( .tags .altanative-metal ),
-        .music-videos:has( .music-tags #vtuber:checked ) .card:has( .tags .vtuber ),
-        .music-videos:has( .music-tags #game:checked ) .card:has( .tags .game ),
-        .music-videos:has( .music-tags #symphonic-rock:checked ) .card:has( .tags .symphonic-rock )
-        {
-            display: block;
-        }
-
-
-        /* music video player */
-        .player {
-            /* decoration */
-            background-color: var(--main-color-dim);
-            color: var(--background-color);
-
-            /* this block is flex container */
-            display: flex;
-
-            /* layout - alignment (centering iframe) */
-            align-items: center;
-            justify-content: center;
-
-            /* absolutely positioned respect to viewport */
-            position: fixed;
-            inset: 0;
-            z-index: 10;
-        }
-        /* hide player when disable */
-        .player:has(> input:checked)  {
-            display: none;
-        }
-        .player > input {
-            display: none;
-        }
-        /* flex item - video player*/
-        .player > iframe {
-            /* layout - demension */
-            width: min(100%, 1920px);
-            aspect-ratio: 16 / 9;
-        }
-        /* close button */
-        .player > label {
-            /* decoration */
-            cursor: pointer;
-
-            /* absolutely positioned respect to viewport */
-            position: fixed;
-            top: 0;
-        }
-        /* prevent background scroll when playing a video */
-        /* it may not be worked on Safari */
-        html {
-            overflow: hidden;
-        }
-        html:has(.player input:checked) {
-            overflow: auto;
-        }
-
-
         /*
          * about me
          */
@@ -514,10 +299,7 @@
 <body>
 
     <div class="hero" id="home">
-        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
-        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
-        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
         <div class="site-name-1">lulliecat</div>
         <div class="site-name-2">musics.</div>
     </div>
@@ -538,732 +320,458 @@
             <header>
                 <h2>music videos.</h2>
             </header>
-            <div class="player">
-                <input type="radio" name="video" id="player-close" checked>
-                <label for="player-close">Close</label>
-                <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="music-tags">
-                <label class="tabs-close">
-                    <input type="radio" name="tag" id="close">
-                    <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
-                        <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="all">
-                    <p>All</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="recomended" checked>
-                    <p>Recomended</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="rock">
-                    <p>Rock</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="anime">
-                    <p>Anime</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="heavy-metal">
-                    <p>Metal</p>
-                </label>
-                <!-- <label>
-                    <input type="radio" name="tag" id="prog-metal">
-                    <p>Prog Metal</p>
-                </label> -->
-                <!-- <label>
-                    <input type="radio" name="tag" id="epic-metal">
-                    <p>Epic Metal</p>
-                </label> -->
-                <!-- <label>
-                    <input type="radio" name="tag" id="death-metal">
-                    <p>Death Metal</p>
-                </label> -->
-                <!-- <label>
-                    <input type="radio" name="tag" id="doom-metal">
-                    <p>Doom Metal</p>
-                </label> -->
-                <!-- <label>
-                    <input type="radio" name="tag" id="alternative-metal">
-                    <p>Alternative Metal</p>
-                </label> -->
-                <label>
-                    <input type="radio" name="tag" id="vtuber">
-                    <p>Vtuber</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="game">
-                    <p>Game</p>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="melodic-hardcore">
-                    <p>Melodic Hardcore</p>
-                </label>
-                <!-- <label>
-                    <input type="radio" name="tag" id="symphonic-rock">
-                    <p>Symphonic Rock</p>
-                </label> -->
-            </div>
             <ul>
-                <li class="video-close">
-                    <p>Select a tag to display videos.</p>
-                </li>
                 <li class="card">
-                    <input type="radio" name="video" id="kKOkybfh9bE">
                     <figure>
-                        <label for="kKOkybfh9bE">
+                        <a href="https://www.youtube.com/watch?v=kKOkybfh9bE">
                             <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">平行線</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="anime"></span>
-                        <span class="rock"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="L72R8VFVNEY">
                     <figure>
-                        <label for="L72R8VFVNEY">
+                        <a href="https://www.youtube.com/watch?v=L72R8VFVNEY">
                             <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">酸欠少女</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="9LhUlEeeSF0">
                     <figure>
-                        <label for="9LhUlEeeSF0">
+                        <a href="https://www.youtube.com/watch?v=9LhUlEeeSF0">
                             <img src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">来世で会おう</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="M1ajQuujwKk">
                     <figure>
-                        <label for="M1ajQuujwKk">
+                        <a href="https://www.youtube.com/watch?v=M1ajQuujwKk">
                             <img src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">それは小さな光のような</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="PgRd17Qvji4">
                     <figure>
-                        <label for="PgRd17Qvji4">
+                        <a href="https://www.youtube.com/watch?v=PgRd17Qvji4">
                             <img src="https://img.youtube.com/vi/PgRd17Qvji4/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">アノニマス</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="0q6c0AKDKU4">
                     <figure>
-                        <label for="0q6c0AKDKU4">
+                        <a href="https://www.youtube.com/watch?v=0q6c0AKDKU4">
                             <img src="https://img.youtube.com/vi/0q6c0AKDKU4/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">ミカヅキ</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="EzgE7CbTs3o">
                     <figure>
-                        <label for="EzgE7CbTs3o">
+                        <a href="https://www.youtube.com/watch?v=EzgE7CbTs3o">
                             <img src="https://img.youtube.com/vi/EzgE7CbTs3o/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">航海の歌</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 
                 <li class="card">
-                    <input type="radio" name="video" id="PWbg7ShjOPk">
                     <figure>
-                        <label for="PWbg7ShjOPk">
+                        <a href="https://www.youtube.com/watch?v=PWbg7ShjOPk">
                             <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">エイトビート・バーサーカー</span>
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="anime"></span>
-                        <span class="rock"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="trrEWoMWSQg">
                     <figure>
-                        <label for="trrEWoMWSQg">
+                        <a href="https://www.youtube.com/watch?v=trrEWoMWSQg">
                             <img src="https://img.youtube.com/vi/trrEWoMWSQg/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">転生したら剣でした</span>
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="anime"></span>
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="Bds3FALcR7M">
                     <figure>
-                        <label for="Bds3FALcR7M">
+                        <a href="https://www.youtube.com/watch?v=Bds3FALcR7M">
                             <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">All is One</span>
                             <span class="artist">Orphaned Land</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="AbCliCQnBUo">
                     <figure>
-                        <label for="AbCliCQnBUo">
+                        <a href="https://www.youtube.com/watch?v=AbCliCQnBUo">
                             <img src="https://img.youtube.com/vi/AbCliCQnBUo/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Sapari</span>
                             <span class="artist">Orphaned Land</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="4SZDVcNUiI0">
                     <figure>
-                        <label for="4SZDVcNUiI0">
+                        <a href="https://www.youtube.com/watch?v=4SZDVcNUiI0">
                             <img src="https://img.youtube.com/vi/4SZDVcNUiI0/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Architect of Fortune</span>
                             <span class="artist">Circus Maximus</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="SiH5FNKKcjQ">
                     <figure>
-                        <label for="SiH5FNKKcjQ">
+                        <a href="https://www.youtube.com/watch?v=SiH5FNKKcjQ">
                             <img src="https://img.youtube.com/vi/SiH5FNKKcjQ/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">At The Heart Of Wintervale</span>
                             <span class="artist">Twilight Force</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="epic-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="LaTI4XF8PAY">
                     <figure>
-                        <label for="LaTI4XF8PAY">
+                        <a href="https://www.youtube.com/watch?v=LaTI4XF8PAY">
                             <img src="https://img.youtube.com/vi/LaTI4XF8PAY/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Twilight Force</span>
                             <span class="artist">Twilight Force</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="epic-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="WM8bTdBs-cw">
                     <figure>
-                        <label for="WM8bTdBs-cw">
+                        <a href="https://www.youtube.com/watch?v=WM8bTdBs-cw">
                             <img src="https://img.youtube.com/vi/WM8bTdBs-cw/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">One</span>
                             <span class="artist">Metallica</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="msuO_KuHwVY">
                     <figure>
-                        <label for="msuO_KuHwVY">
+                        <a href="https://www.youtube.com/watch?v=msuO_KuHwVY">
                             <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Shadows Flap Their Black Wings</span>
                             <span class="artist">In Vain</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="death-metal"></span>
-                        <span class="prog-metal"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="12kcpP-8jfM">
                     <figure>
-                        <label for="12kcpP-8jfM">
+                        <a href="https://www.youtube.com/watch?v=12kcpP-8jfM">
                             <img src="https://img.youtube.com/vi/12kcpP-8jfM/hqdefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">American Jesus</span>
                             <span class="artist">Bad Religion</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="melodic-hardcore"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="RGqA1lNXYhg">
                     <figure>
-                        <label for="RGqA1lNXYhg">
+                        <a href="https://www.youtube.com/watch?v=RGqA1lNXYhg">
                             <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">New Dark Age</span>
                             <span class="artist">Bad Religion</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="melodic-hardcore"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="n7-YIZhwvKI">
                     <figure>
-                        <label for="n7-YIZhwvKI">
+                        <a href="https://www.youtube.com/watch?v=n7-YIZhwvKI">
                             <img src="https://img.youtube.com/vi/n7-YIZhwvKI/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Reason</span>
                             <span class="artist">DGM</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="YjPZgtm3Dmk">
                     <figure>
-                        <label for="YjPZgtm3Dmk">
+                        <a href="https://www.youtube.com/watch?v=YjPZgtm3Dmk">
                             <img src="https://img.youtube.com/vi/YjPZgtm3Dmk/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Trust</span>
                             <span class="artist">DGM</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="CbI79e5iZKs">
                     <figure>
-                        <label for="CbI79e5iZKs">
+                        <a href="https://www.youtube.com/watch?v=CbI79e5iZKs">
                             <img src="https://img.youtube.com/vi/CbI79e5iZKs/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">無情のスキャット</span>
                             <span class="artist">人間椅子</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="doom-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="woGfOQ6Ze90">
                     <figure>
-                        <label for="woGfOQ6Ze90">
+                        <a href="https://www.youtube.com/watch?v=woGfOQ6Ze90">
                             <img src="https://img.youtube.com/vi/woGfOQ6Ze90/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Integral</span>
                             <span class="artist">Cynic</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="MM62wjLrgmA">
                     <figure>
-                        <label for="MM62wjLrgmA">
+                        <a href="https://www.youtube.com/watch?v=MM62wjLrgmA">
                             <img src="https://img.youtube.com/vi/MM62wjLrgmA/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Schism</span>
                             <span class="artist">Tool</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                        <span class="alternative-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="-_nQhGR0K8M">
                     <figure>
-                        <label for="-_nQhGR0K8M">
+                        <a href="https://www.youtube.com/watch?v=-_nQhGR0K8M">
                             <img src="https://img.youtube.com/vi/-_nQhGR0K8M/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Parabola</span>
                             <span class="artist">Tool</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="heavy-metal"></span>
-                        <span class="prog-metal"></span>
-                        <span class="alternative-metal"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="ZRtdQ81jPUQ">
                     <figure>
-                        <label for="ZRtdQ81jPUQ">
+                        <a href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ">
                             <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">アイドル</span>
                             <span class="artist">YOASOBI</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                        <span class="recomended"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="3V9952osjnc">
                     <figure>
-                        <label for="3V9952osjnc">
+                        <a href="https://www.youtube.com/watch?v=3V9952osjnc">
                             <img src="https://img.youtube.com/vi/3V9952osjnc/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">シル・ヴ・プレジデント</span>
                             <span class="artist">P丸様。</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="vtuber"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="_ZvxNcITgfo">
                     <figure>
-                        <label for="_ZvxNcITgfo">
+                        <a href="https://www.youtube.com/watch?v=_ZvxNcITgfo">
                             <img src="https://img.youtube.com/vi/_ZvxNcITgfo/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">絶対闘争イデオロギー</span>
                             <span class="artist">貢献Girls</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="game"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="9YkPC2fx_iQ">
                     <figure>
-                        <label for="9YkPC2fx_iQ">
+                        <a href="https://www.youtube.com/watch?v=9YkPC2fx_iQ">
                             <img src="https://img.youtube.com/vi/9YkPC2fx_iQ/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">イバラララバイ</span>
                             <span class="artist">パンナ</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="game"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="Rkc4JfpowRQ">
                     <figure>
-                        <label for="Rkc4JfpowRQ">
+                        <a href="https://www.youtube.com/watch?v=Rkc4JfpowRQ">
                             <img src="https://img.youtube.com/vi/Rkc4JfpowRQ/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">輝く空の静寂には</span>
                             <span class="artist">Kalafina</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="symphonic-rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="YDLafQ-Rg-k">
                     <figure>
-                        <label for="YDLafQ-Rg-k">
+                        <a href="https://www.youtube.com/watch?v=YDLafQ-Rg-k">
                             <img src="https://img.youtube.com/vi/YDLafQ-Rg-k/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">雑踏、僕らの街</span>
                             <span class="artist">トゲナシトゲアリ</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="guzvN9tiDd8">
                     <figure>
-                        <label for="guzvN9tiDd8">
+                        <a href="https://www.youtube.com/watch?v=guzvN9tiDd8">
                             <img src="https://img.youtube.com/vi/guzvN9tiDd8/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">空、星、海の夜</span>
                             <span class="artist">THE BACK HORN</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="QPdhZR_CIck">
                     <figure>
-                        <label for="QPdhZR_CIck">
+                        <a href="https://www.youtube.com/watch?v=QPdhZR_CIck">
                             <img src="https://img.youtube.com/vi/QPdhZR_CIck/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">戦う君よ</span>
                             <span class="artist">THE BACK HORN</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="yf_xwI865gg">
                     <figure>
-                        <label for="yf_xwI865gg">
+                        <a href="https://www.youtube.com/watch?v=yf_xwI865gg">
                             <img src="https://img.youtube.com/vi/yf_xwI865gg/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">コバルトブルー</span>
                             <span class="artist">THE BACK HORN</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="T5vVKFfrgkk">
                     <figure>
-                        <label for="T5vVKFfrgkk">
+                        <a href="https://www.youtube.com/watch?v=T5vVKFfrgkk">
                             <img src="https://img.youtube.com/vi/T5vVKFfrgkk/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">紅蓮</span>
                             <span class="artist">DOES</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="pA2Xw4C7gcw">
                     <figure>
-                        <label for="pA2Xw4C7gcw">
+                        <a href="https://www.youtube.com/watch?v=pA2Xw4C7gcw">
                             <img src="https://img.youtube.com/vi/pA2Xw4C7gcw/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Wanderland</span>
                             <span class="artist">9mm Parabellum Bullet</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="anime"></span>
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="BgE_MccITtU">
                     <figure>
-                        <label for="BgE_MccITtU">
+                        <a href="https://www.youtube.com/watch?v=BgE_MccITtU">
                             <img src="https://img.youtube.com/vi/BgE_MccITtU/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">キャンドルの灯を</span>
                             <span class="artist">9mm Parabellum Bullet</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="X6AzbA6U4N8">
                     <figure>
-                        <label for="X6AzbA6U4N8">
+                        <a href="https://www.youtube.com/watch?v=X6AzbA6U4N8">
                             <img src="https://img.youtube.com/vi/X6AzbA6U4N8/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Cold Edge</span>
                             <span class="artist">9mm Parabellum Bullet</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="kmawA9Jns14">
                     <figure>
-                        <label for="kmawA9Jns14">
+                        <a href="https://www.youtube.com/watch?v=kmawA9Jns14">
                             <img src="https://img.youtube.com/vi/kmawA9Jns14/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">Supernova</span>
                             <span class="artist">9mm Parabellum Bullet</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="oYN2C2ppGc0">
                     <figure>
-                        <label for="oYN2C2ppGc0">
+                        <a href="https://www.youtube.com/watch?v=oYN2C2ppGc0">
                             <img src="https://img.youtube.com/vi/oYN2C2ppGc0/hqdefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">dead start</span>
                             <span class="artist">COCK ROACH</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="cKOlWLswxuM">
                     <figure>
-                        <label for="cKOlWLswxuM">
+                        <a href="https://www.youtube.com/watch?v=cKOlWLswxuM">
                             <img src="https://img.youtube.com/vi/cKOlWLswxuM/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">新進化論エレクトロニカルパレーダー</span>
                             <span class="artist">COCK ROACH</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                    </div>
                 </li>
                 <li class="card">
-                    <input type="radio" name="video" id="WIKKyrGGaDk">
                     <figure>
-                        <label for="WIKKyrGGaDk">
+                        <a href="https://www.youtube.com/watch?v=WIKKyrGGaDk">
                             <img src="https://img.youtube.com/vi/WIKKyrGGaDk/sddefault.jpg" alt="">
-                        </label>
+                        </a>
                         <figcaption>
                             <span class="song">花の塔</span>
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
-                    <div class="tags">
-                        <span class="rock"></span>
-                        <span class="anime"></span>
-                    </div>
                 </li>
             </ul>
         </section>    
@@ -1324,20 +832,5 @@
     <footer>
         © 2024 lulliecat
     </footer>
-    <script>
-        const cards         = document.querySelectorAll(".card");
-        const player_label  = document.querySelector(".player > label");
-        const player        = document.querySelector(".player > iframe");
-        cards.forEach((card) => {
-            const img_label = card.querySelector("figure > label");
-            const id        = img_label.getAttribute("for");
-
-            // open
-            img_label.addEventListener('click', (e) => player.src = `https://www.youtube.com/embed/${id}`);
-
-            // close
-            player_label.addEventListener('click', (e) => player.src = "");
-        });
-    </script>
 </body>
 </html>
