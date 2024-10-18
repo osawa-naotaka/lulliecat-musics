@@ -191,7 +191,7 @@
 
         /* hero text - site name */
         .site-name-1, .site-name-2 {
-            /* decolation */
+            /* decoration */
             font-size: 7rem;
             font-weight: bold;
             color: var(--accent-color);
@@ -206,6 +206,18 @@
         }
         .site-name-2 {
             bottom: 2rem;
+        }
+
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 6rem;
+            }
+            .site-name-2 {
+                bottom: 2rem;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 4rem;
+            }
         }
 
         /* hero text slide-in animation */
@@ -225,17 +237,6 @@
                 opacity: 1;
             }
         }
-        @media screen and (max-width: 700px) {
-            .site-name-1 {
-                bottom: 6rem;
-            }
-            .site-name-2 {
-                bottom: 2rem;
-            }
-            .site-name-1, .site-name-2 {
-                font-size: 4rem;
-            }
-        }
 
 
         /*
@@ -243,7 +244,7 @@
          */
         /* flex container for h1 and nav */
         .page-header {
-            /* decolation */
+            /* decoration */
             background-color: var(--background-color-header);
             font-weight: bold;
 
@@ -265,11 +266,11 @@
             justify-content: space-between;
         }
         .page-header h1 {
-            /* decolation */
+            /* decoration */
             font-size: 2rem;
         }
         .page-header h1 strong {
-            /* decolation */
+            /* decoration */
             color: var(--accent-color);
         }
 
@@ -346,6 +347,7 @@
 
             /* layout scheme for flex items */
             column-gap: 1rem;
+            row-gap: 0.5rem;
             flex-wrap: wrap;
 
             /* decoration */
@@ -358,9 +360,9 @@
             top: var(--header-height);
             left: 0;
             right: 0;
-            margin-bottom: 1rlh;
-            padding: 1rem 2rem 0px 0px;
+            padding: 1rem 2rem 1rem 0;
         }
+
         /* phone header */
         @media screen and (max-width: 700px) {
             .music-tags {
@@ -370,15 +372,11 @@
 
 
         /* flex items (tag) */
-        .music-tags > label {
-            /* dimension */
-            margin-bottom: 0.5rem;
-        }
         .music-tags > label > input {
             /* decoration */
             display: none;
         }
-        .music-tags > label:not(.tabs-close)  {
+        .music-tags > label:not(.no-select)  {
             /* decoration */
             font-weight: bold;
             border: 1px solid var(--main-color);
@@ -393,19 +391,19 @@
             /* transient animation */
             transition: color 0.1s, background-color 0.1s;
         }
-        .music-tags > .tabs-close {
+        .music-tags > label:has(input:checked) {
+            /* decoration */
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            border: 1px solid var(--accent-color);
+        }
+        .music-tags > .no-select {
             /* absolutely positioned block respect to flex container */
             position: absolute;
 
             /* layout - demension */
             top: 1rem;
             right: -5px;
-        }
-        .music-tags > label:has(input:checked) {
-            /* decoration */
-            background-color: var(--accent-color);
-            color: var(--background-color);
-            border: 1px solid var(--accent-color);
         }
 
         /* 2. display selected card */
@@ -460,6 +458,7 @@
             inset: 0;
             z-index: 10;
         }
+
         /* flex item - video player*/
         .player > iframe {
             /* decoration */
@@ -469,6 +468,7 @@
             width: min(100%, 1920px);
             aspect-ratio: 16 / 9;
         }
+
         /* close button */
         .player > .close {
             /* decoration */
@@ -478,6 +478,7 @@
             position: fixed;
             top: 0;
         }
+
         /* prevent background scroll when playing a video */
         /* it may not be worked on Safari */
         html:has(.player.show) {
@@ -493,15 +494,18 @@
             margin-block: 1rlh;
             max-width: 40rem;
         }
+
         /* auto indentation */
         #about-me p::before {
             content: '　';
         }
+
         /* default 2-column */
         #about-me .columns {
             display: flex;
             gap: 2rem;
         }
+
         @media screen and (max-width: 40rem) {
             /* 1-column at width < 40rem */
             #about-me .columns {
@@ -559,12 +563,14 @@
             <header>
                 <h2>music videos.</h2>
             </header>
+
             <div class="player">
                 <div class="close">Close</div>
                 <iframe loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+
             <div class="music-tags">
-                <label class="tabs-close">
+                <label class="no-select">
                     <input type="radio" name="tag" id="close">
                     <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
@@ -629,6 +635,7 @@
                     <span>Symphonic Rock</p>
                 </label> -->
             </div>
+
             <ul class="card-container">
                 <li class="video-close">
                     <p>Select a tag to display videos.</p>
@@ -1227,6 +1234,7 @@
     <footer class="page-footer">
         © 2024 lulliecat
     </footer>
+
     <script>
         function ad_hock_sanitize(str)
         {
@@ -1256,5 +1264,6 @@
             player.classList.remove('show');
         });
     </script>
+
 </body>
 </html>

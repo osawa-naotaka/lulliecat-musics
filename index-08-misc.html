@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- 08修正: ヘッダーの情報 -->
     <!-- web font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- favicon  -->
+    <link rel="icon" type="image/png" href="/lulliecat-musics/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="/lulliecat-musics/favicon.svg">
+    <link rel="shortcut icon" href="/lulliecat-musics/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lulliecat-musics/apple-touch-icon.png">
+    <link rel="manifest" href="/lulliecat-musics/site.webmanifest">
+
+    <!-- OpenGraph  -->
+    <meta property="og:title" content="lulliecat musics.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/lulliecat-musics/favicon.svg">
+    <meta property="og:url" content="https://osawa-naotaka.github.io/lulliecat-musics/">
+    <meta property="og:description" content="lulliecat musics.では作者の好きな音楽をご紹介します。">
+
+    <!-- description  -->
+    <meta name="description" content="lulliecat musics.では作者の好きな音楽をご紹介します。">
+    <!-- 08修正ここまで -->
 
     <title>lulliecat musics</title>
     <style>
@@ -137,6 +156,40 @@
             object-fit: cover; /* Scaling with aspect ratio preserved  */
         }
 
+        /* hero image carousel animation */
+        .hero > img {
+            opacity: 0; /* transparent at first */
+            animation: carousel 16s infinite;
+        }
+        .hero > img:nth-of-type(2) {
+            animation-delay: 4s;
+        }
+        .hero > img:nth-of-type(3) {
+            animation-delay: 8s;
+        }
+        .hero > img:nth-of-type(4) {
+            animation-delay: 12s;
+        }
+        /* depends on the number of pictures */
+        @keyframes carousel {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            35% {
+                opacity: 0;
+                scale: 1.03;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
         /* hero text - site name */
         .site-name-1, .site-name-2 {
             /* decoration */
@@ -165,6 +218,24 @@
             }
             .site-name-1, .site-name-2 {
                 font-size: 4rem;
+            }
+        }
+
+        /* hero text slide-in animation */
+        .site-name-1 {
+            opacity: 0; /* transparent at first */
+            animation: sitename ease-out 0.5s forwards 1s;
+        }
+        .site-name-2 {
+            opacity: 0;
+            animation: sitename ease-out 0.5s forwards 1.5s;
+        }
+        @keyframes sitename {
+            0% {
+                transform: translateY(32px);
+            }
+            100% {
+                opacity: 1;
             }
         }
 
@@ -237,7 +308,6 @@
         /*
          * music videos
          */
-        /* 05修正: gridコンテナの設定 */
         /* grid container for .card */
         .card-container {
             display: grid;
@@ -246,7 +316,6 @@
         }
 
         /* grid items */
-        /* 05修正ここまで */
         /* card */
         .card img {
             /* decoration */
@@ -261,6 +330,99 @@
         }
         .card .artist::before {
             content: " / ";
+        }
+
+        /* 1. filtering by tags */
+        /* flex container for tag list */
+        .music-tags {
+            /* this block is flex container */
+            display: flex;
+
+            /* layout - alignment */
+            justify-content: flex-start;
+
+            /* layout scheme for flex items */
+            column-gap: 1rem;
+            row-gap: 0.5rem;
+            flex-wrap: wrap;
+
+            /* decoration */
+            background-color: var(--background-color-header);
+
+            /* stickily positioned block */
+            position: sticky;
+
+            /* layout - dimension */
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem 1rem 0;
+        }
+
+        /* phone header */
+        @media screen and (max-width: 700px) {
+            .music-tags {
+                top: calc(var(--header-height) + var(--nav-height));
+            }
+        }
+
+
+        /* flex items (tag) */
+        .music-tags > label > input {
+            /* decoration */
+            display: none;
+        }
+        .music-tags > label:not(.no-select)  {
+            /* decoration */
+            font-weight: bold;
+            border: 1px solid var(--main-color);
+            border-radius: 4px;
+            cursor: pointer;
+
+            /* layout - demension */
+            padding-inline: 0.5rem;
+            min-width: 4rem;
+            text-align: center;
+
+            /* transient animation */
+            transition: color 0.1s, background-color 0.1s;
+        }
+        .music-tags > label:has(input:checked) {
+            /* decoration */
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            border: 1px solid var(--accent-color);
+        }
+        .music-tags > .no-select {
+            /* absolutely positioned block respect to flex container */
+            position: absolute;
+
+            /* layout - demension */
+            top: 1rem;
+            right: -5px;
+        }
+
+        /* 2. display selected card */
+        /* hide input and .tags */
+        .card > input, .card .tags {
+            display: none;
+        }
+
+        /* display: none by default */
+        .card, .video-close {
+            display: none;
+        }
+        .music-videos:has( .music-tags #all:checked ) .card {
+            display: block;
+        }
+        .music-videos:has( .music-tags #close:checked ) .video-close,
+        .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+        .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
+        .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
+        .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+        .music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore )
+        {
+            display: block;
         }
 
 
@@ -318,6 +480,9 @@
 
     <div class="hero" id="home">
         <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
+        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
+        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
         <div class="site-name-1">lulliecat</div>
         <div class="site-name-2">musics.</div>
     </div>
@@ -338,7 +503,46 @@
             <header>
                 <h2>music videos.</h2>
             </header>
+
+            <div class="music-tags">
+                <label class="no-select">
+                    <input type="radio" name="tag" id="close">
+                    <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                        <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="all">
+                    <span>All</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="recomended" checked>
+                    <span>Recomended</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="rock">
+                    <span>Rock</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="anime">
+                    <span>Anime</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="heavy-metal">
+                    <span>Metal</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="melodic-hardcore">
+                    <span>Melodic Hardcore</span>
+                </label>
+            </div>
+
             <ul class="card-container">
+                <li class="video-close">
+                    <p>Select a tag to display videos.</p>
+                </li>
                 <li class="card">
                     <figure>
                         <a href="https://www.youtube.com/watch?v=kKOkybfh9bE">
@@ -349,6 +553,11 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -360,6 +569,10 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -371,6 +584,11 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -382,6 +600,11 @@
                             <span class="artist">さユり</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -393,6 +616,11 @@
                             <span class="artist">岸田教団＆THE明星ロケッツ</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -404,6 +632,10 @@
                             <span class="artist">Orphaned Land</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -415,6 +647,10 @@
                             <span class="artist">In Vain</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -426,6 +662,10 @@
                             <span class="artist">Bad Religion</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="melodic-hardcore"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
                 <li class="card">
                     <figure>
@@ -437,11 +677,15 @@
                             <span class="artist">YOASOBI</span>
                         </figcaption>
                     </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
                 </li>
             </ul>
         </section>
     </main>
-
 
     <aside>
         <section id="about-me">

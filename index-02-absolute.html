@@ -3,56 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- web font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <title>lulliecat musics</title>
     <style>
         /* initialize */
         * {
+            /* reset all margin and padding */
             margin: 0;
             padding: 0;
+
+            /* set width = content width + padding width + border width */
             box-sizing: border-box;
         }
-        ul {
-            list-style-type: none;
-        }
-        body {
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
         img, svg {
+            /* make img and svg to block element */
             display: block;
             max-width: 100%;
+        }
+        ul {
+            /* remove marker box */
+            list-style-type: none;
+        }
+        a {
+            /* reset decoration */
+            color: inherit;
+            text-decoration: none;
         }
 
         /*
          * parameter
          */
-        :root {
+         :root {
             --background-color: #f0f0f0;
             --background-color-dark: #e0e0e0;
             --accent-color: #d7003a;
             --main-color: #303030;
+            --main-color-dim: #303030f0;
             --shadow-color: #c0c0c0;
+
+            --max-content-width: 1200px;
         }
 
         /*
          * grobal settings
          */
-        body {
+         :root {
             /* decoration */
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* container */
-        main, aside, body > header {
+        main, aside, .page-header {
             /* layout - dimension */
-            padding-inline: 16px; /* padding for width < 1200px */
+            padding-inline: 1rem;
+            padding-block: 2rlh;
         }
-        main, body > header {
+        main, .page-header {
             /* decoration */
             background-color: var(--background-color);
         }
@@ -65,17 +80,16 @@
         section {
             /* layout - dimension */
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
-            padding-block: 32px;
         }
         section > header > h2 {
             /* decoration */
-            font-size: 64px;
+            font-size: 4rem;
             border-bottom: 8px solid;
 
             /* layout - demension */
-            margin-bottom: 24px;
+            margin-bottom: 1rlh;
         }
         section > header > h2::first-letter {
             /* decoration */
@@ -84,41 +98,24 @@
         @media screen and (max-width: 700px) {
             section > header > h2 {
                 /* decoration */
-                font-size: 48px;
+                font-size: 2rem;
             }
-        }
-
-        /* inline elements */
-        em {
-            /* decoration */
-            font-style: normal;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-        a {
-            /* decolation */
-            color: var(--main-color);
-            text-decoration: none;
         }
 
 
         /*
          * Hero
          */
+        /* hero image */
         /* 02修正: ヒーロー画像の上にサイト名を表示する */
         .hero {
             /* reference block for .hero > img, .site-name-1,2 */
             position: relative;
 
-            /* clip for carousel scaling animation */
-            overflow: clip;
-
             /* layout - dimension */
             width: 100%;
             height: 100svh;
         }
-
-        /* hero image */
         .hero > img {
             /* absolutely positioned respect to .hero */
             position: absolute;
@@ -130,60 +127,60 @@
             object-fit: cover; /* Scaling with aspect ratio preserved  */
         }
 
-
         /* hero text - site name */
         .site-name-1, .site-name-2 {
-            /* decolation */
-            font-size: 128px;
+            /* decoration */
+            font-size: 7rem;
             font-weight: bold;
             color: var(--accent-color);
 
-            /* absolutely positioned respect to .hero  */
+            /* absolutely positioned respect to .hero */
             position: absolute;
-            left: 32px;
+            left: 2rem;
         }
         .site-name-1 {
-            bottom: 166px;
+            bottom: 9rem;
         }
         .site-name-2 {
-            bottom: 48px;
+            bottom: 2rem;
         }
+
         @media screen and (max-width: 700px) {
             .site-name-1 {
-                bottom: 160px;
+                bottom: 6rem;
             }
             .site-name-2 {
-                bottom: 90px;
+                bottom: 2rem;
             }
             .site-name-1, .site-name-2 {
-                font-size: 72px;
+                font-size: 4rem;
             }
         }
-        /* 02追加修正ここまで */
+        /* 02修正ここまで */
 
 
         /*
          * header
          */
-        body > header > h1, body > header > nav {
-            /* layout - dimension */
-            width: 100%;
-            max-width: 1200px;
-            margin-inline: auto; /* align center */
-        }
-        body > header > h1 {
-            /* decolation */
-            font-size: 128px;
-            line-height: 1;
-        }
-        body > header > nav {
+        .page-header h1 {
             /* decoration */
-            font-weight: bold;
+            font-size: 7rem;
         }
+        .page-header h1 strong {
+            /* decoration */
+            color: var(--accent-color);
+        }
+        .page-header nav li:hover {
+            border-bottom: 2px solid var(--main-color-dim);
+        }
+        .page-header nav li::first-letter {
+            color: var(--accent-color);
+        }
+
         @media screen and (max-width: 700px) {
             body > header > h1 {
                 /* decoration */
-                font-size: 96px;
+                font-size: 5rem;
             }
         }
 
@@ -191,24 +188,17 @@
         /*
          * music videos
          */
-        .music-videos {
-            /* layout - dimension */
-            padding-bottom: 100px;
-        }
-
         /* card */
-        .card {
-            margin-bottom: 64px;
-        }
-        .card > figure img {
+        .card img {
             /* decoration */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
- 
+
             /* layout - dimension */
-            width: 100%; /* scaling image to containing block */
+            width: 100%; /* scaling image to grid container */
             aspect-ratio: 16 / 9;
             object-fit: cover;
+            padding: 0;
         }
         .card .artist::before {
             content: " / ";
@@ -218,33 +208,25 @@
         /*
          * about me
          */
-        aside > section {
+        #about-me p {
             /* layout - demension */
-            padding-block-end: 128px;
-        }
-        aside p {
-            /* layout - demension */
-            margin-block: 16px;
+            margin-block: 1rlh;
         }
         /* auto indentation */
-        aside p::before {
+        #about-me p::before {
             content: '　';
-        }
-        aside em {
-            /* decoration */
-            color: var(--main-color);
         }
 
 
         /*
          * footer
          */
-        /* 02修正: フッターを画面下に固定する */
-        footer {
+         .page-footer {
             /* decoration */
             color: var(--background-color);
             background-color: var(--main-color);
 
+            /* 02修正: フッターを画面下に固定する */
             /* absolutely positioned respect to viewport */
             position: fixed;
             bottom: 0;
@@ -253,11 +235,11 @@
             /* layout - dimension */
             width: 100%;
             padding: 4px;
+            /* 02修正ここまで */
 
             /* layout - alignment */
             text-align: center;
         }
-        /* 02修正ここまで */
     </style>
 </head>
 <body>
@@ -269,13 +251,13 @@
         <div class="site-name-2">musics.</div>
     </div>
 
-    <header>
-        <h1>lulliecat <em>m</em>usics.</h1>
-        <nav class="navigation">
+    <header class="page-header">
+        <h1>lulliecat <strong>m</strong>usics.</h1>
+        <nav>
             <ul>
-                <li><a href="#home"><em>h</em>ome</a></li>
-                <li><a href="#music-videos"><em>m</em>usic videos</a></li>
-                <li><a href="#about-me"><em>a</em>bout me</a></li>
+                <li><a href="#home">home</a></li>
+                <li><a href="#music-videos">music videos</a></li>
+                <li><a href="#about-me">about me</a></li>
             </ul>
         </nav>
     </header>
@@ -285,7 +267,7 @@
             <header>
                 <h2>music videos.</h2>
             </header>
-            <ul>
+            <ul class="card-container">
                 <li class="card">
                     <figure>
                         <a href="https://www.youtube.com/watch?v=kKOkybfh9bE">
@@ -398,34 +380,34 @@
                 lulliecatのproducerです。
                 好きな音楽のジャンルはヘヴィメタルとアニソンです。
                 中学生の頃からヘヴィメタルを聞き始めました。
-                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を目の当たりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
-                他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<strong>Skid Row</strong>でした)を目の当たりにして、CDを買わざるを得ませんでした。<strong>Slave to the Grind</strong>ですね。
+                他には<strong>Judas Priest</strong>の<strong>Painkiller</strong>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
             </p>
             <p>
-                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
-                友だちは<em>Ride the Lightning</em>を買っていました。
+                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<strong>Metallica</strong>の<strong>Master of Puppets</strong>を買って盛り上がりまくっていました。
+                友だちは<strong>Ride the Lightning</strong>を買っていました。
                 どちらも名作ですね。
             </p>
             <p>
                 そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
-                それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
-                ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
-                <em>Insanity and Genious</em>の頃です。
+                それで、真っ先に手に入れたのが<strong>Helloween</strong>の<strong>Cameleon</strong>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                ですが、当時放送していたヘヴィメタルのTV番組に<strong>Gamma Ray</strong>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                <strong>Insanity and Genious</strong>の頃です。
             </p>
             <p>
                 当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
                 何買ったかな、色々かった気がするな。
-                Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                Helloweenもめでたく<strong>守護神伝I, II</strong>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<strong>Blind Gurdian</strong>の<strong>Somewhere Far Beyond</strong>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
                 本当に凄いよ。おすすめだよ。
             </p>
             <p>
                 その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
-                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、<em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<strong>Carcass</strong>の<strong>Heartwork</strong>からの楽曲や、<strong>Cathedral</strong>の<strong>The Ethereal Mirror</strong>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
             </p>
             <p>
                 すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
-                <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
-                同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
+                <strong>Angra</strong>がデビューして<strong>Angel's Cry</strong>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                同じくキャプテン和田誠さんのラジオで<strong>Psychotic Waltz</strong>の<strong>Into the Everflow</strong>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
             </p>
             <p>
                 こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
@@ -441,7 +423,7 @@
         </section>
     </aside>
 
-    <footer>
+    <footer class="page-footer">
         © 2024 lulliecat
     </footer>
 </body>
