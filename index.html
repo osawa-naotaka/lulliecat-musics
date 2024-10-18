@@ -3,23 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- web font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- favicon  -->
+    <link rel="icon" type="image/png" href="/lulliecat-musics/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="/lulliecat-musics/favicon.svg">
+    <link rel="shortcut icon" href="/lulliecat-musics/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lulliecat-musics/apple-touch-icon.png">
+    <link rel="manifest" href="/lulliecat-musics/site.webmanifest">
+
+    <!-- OpenGraph  -->
+    <meta property="og:title" content="lulliecat musics.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/lulliecat-musics/favicon.svg">
+    <meta property="og:url" content="https://osawa-naotaka.github.io/lulliecat-musics/">
+    <meta property="og:description" content="lulliecat musics.では作者の好きな音楽をご紹介します。">
+
+    <!-- description  -->
+    <meta name="description" content="lulliecat musicsは作者の好きな音楽をご紹介します。">
+
     <title>lulliecat musics</title>
     <style>
         /* initialize */
+        /* reset all margin and padding */
+        /* set width = content width + padding width + border width */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        :root {
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
         ul {
             list-style-type: none;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
         }
         img, svg {
             display: block;
@@ -27,7 +49,7 @@
         }
 
         /*
-         * parameter
+         * parameters
          */
         :root {
             --background-color: #f0f0f0;
@@ -40,6 +62,7 @@
 
             --header-height: 2rlh;
             --nav-height: 1rlh;
+            --max-content-width: 1200px;
         }
 
         /*
@@ -50,6 +73,8 @@
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* container */
@@ -71,8 +96,11 @@
         section {
             /* layout - dimension */
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
+
+            /* block-start margin when anchor jump */
+            scroll-margin-block-start: var(--header-height);
         }
         section > header > h2 {
             /* decoration */
@@ -87,21 +115,14 @@
             color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
+            section {
+                /* block-start margin when anchor jump */
+                scroll-margin-block-start: calc(var(--header-height) + var(--nav-height));
+            }
             section > header > h2 {
                 /* decoration */
                 font-size: 2rem;
             }
-        }
-
-        /* inline elements */
-        strong {
-            /* decoration */
-            color: var(--accent-color);
-        }
-        a {
-            /* decolation */
-            color: var(--main-color);
-            text-decoration: none;
         }
 
 
@@ -243,6 +264,10 @@
             /* decolation */
             font-size: 2rem;
         }
+        .page-header h1 strong {
+            /* decolation */
+            color: var(--accent-color);
+        }
 
         /* flex container for nav list items */
         .page-header nav > ul {
@@ -251,6 +276,12 @@
 
             /* layout - dimension */
             gap: 1.5rem;
+        }
+        .page-header nav li:hover {
+            border-bottom: 2px solid var(--main-color-dim);
+        }
+        .page-header nav li::first-letter {
+            color: var(--accent-color);
         }
 
         /* phone header */
@@ -294,6 +325,9 @@
         }
         .card .artist::before {
             content: " / ";
+        }
+        .card .tags {
+            display: none;
         }
 
 
@@ -340,7 +374,7 @@
             /* decoration */
             display: none;
         }
-        .music-tags > label > p {
+        .music-tags > label  {
             /* decoration */
             font-weight: bold;
             border: 1px solid var(--main-color);
@@ -363,7 +397,7 @@
             top: 1rem;
             right: -5px;
         }
-        .music-tags > label > input:checked + p {
+        .music-tags > label:has(input:checked) {
             /* decoration */
             background-color: var(--accent-color);
             color: var(--background-color);
@@ -402,12 +436,16 @@
 
         /* music video player */
         .player {
+            /* default disable */
+            display: none;
+        }
+        .player.show {
             /* decoration */
             background-color: var(--main-color-dim);
             color: var(--background-color);
 
-            /* default disable */
-            display: none;
+            /* this block is flex container */
+            display: flex;
 
             /* layout - alignment (centering iframe) */
             align-items: center;
@@ -417,15 +455,12 @@
             position: fixed;
             inset: 0;
             z-index: 10;
-
-        }
-        /* hide player when disable */
-        .player.show {
-            /* this block is flex container */
-            display: flex;
         }
         /* flex item - video player*/
         .player > iframe {
+            /* decoration */
+            border: none;
+
             /* layout - demension */
             width: min(100%, 1920px);
             aspect-ratio: 16 / 9;
@@ -449,17 +484,25 @@
         /*
          * about me
          */
-        aside p {
+        #about-me p {
             /* layout - demension */
             margin-block: 1rlh;
+            max-width: 40rem;
         }
         /* auto indentation */
-        aside p::before {
+        #about-me p::before {
             content: '　';
         }
-        aside strong {
-            /* decoration */
-            color: var(--main-color);
+        /* default 2-column */
+        #about-me .columns {
+            display: flex;
+            gap: 2rem;
+        }
+        @media screen and (max-width: 40rem) {
+            /* 1-column at width < 40rem */
+            #about-me .columns {
+                display: block;
+            }
         }
 
 
@@ -500,9 +543,9 @@
         <h1>lulliecat <strong>m</strong>usics.</h1>
         <nav>
             <ul>
-                <li><a href="#home"><strong>h</strong>ome</a></li>
-                <li><a href="#music-videos"><strong>m</strong>usic videos</a></li>
-                <li><a href="#about-me"><strong>a</strong>bout me</a></li>
+                <li><a href="#home">home</a></li>
+                <li><a href="#music-videos">music videos</a></li>
+                <li><a href="#about-me">about me</a></li>
             </ul>
         </nav>
     </header>
@@ -514,7 +557,7 @@
             </header>
             <div class="player">
                 <div class="close">Close</div>
-                <iframe loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="music-tags">
                 <label class="tabs-close">
@@ -527,59 +570,59 @@
                 </label>
                 <label>
                     <input type="radio" name="tag" id="all">
-                    <p>All</p>
+                    <span>All</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="recomended" checked>
-                    <p>Recomended</p>
+                    <span>Recomended</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="rock">
-                    <p>Rock</p>
+                    <span>Rock</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="anime">
-                    <p>Anime</p>
+                    <span>Anime</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="heavy-metal">
-                    <p>Metal</p>
+                    <span>Metal</span>
                 </label>
                 <!-- <label>
                     <input type="radio" name="tag" id="prog-metal">
-                    <p>Prog Metal</p>
+                    <span>Prog Metal</span>
                 </label> -->
                 <!-- <label>
                     <input type="radio" name="tag" id="epic-metal">
-                    <p>Epic Metal</p>
+                    <span>Epic Metal</span>
                 </label> -->
                 <!-- <label>
                     <input type="radio" name="tag" id="death-metal">
-                    <p>Death Metal</p>
+                    <span>Death Metal</span>
                 </label> -->
                 <!-- <label>
                     <input type="radio" name="tag" id="doom-metal">
-                    <p>Doom Metal</p>
+                    <span>Doom Metal</span>
                 </label> -->
                 <!-- <label>
                     <input type="radio" name="tag" id="alternative-metal">
-                    <p>Alternative Metal</p>
+                    <span>Alternative Metal</span>
                 </label> -->
                 <label>
                     <input type="radio" name="tag" id="vtuber">
-                    <p>Vtuber</p>
+                    <span>Vtuber</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="game">
-                    <p>Game</p>
+                    <span>Game</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="melodic-hardcore">
-                    <p>Melodic Hardcore</p>
+                    <span>Melodic Hardcore</span>
                 </label>
                 <!-- <label>
                     <input type="radio" name="tag" id="symphonic-rock">
-                    <p>Symphonic Rock</p>
+                    <span>Symphonic Rock</p>
                 </label> -->
             </div>
             <ul class="card-container">
@@ -1124,50 +1167,56 @@
             <header>
                 <h2>about me.</h2>
             </header>
-            <p>
-                lulliecatのproducerです。
-                好きな音楽のジャンルはヘヴィメタルとアニソンです。
-                中学生の頃からヘヴィメタルを聞き始めました。
-                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<strong>Skid Row</strong>でした)を目の当たりにして、CDを買わざるを得ませんでした。<strong>Slave to the Grind</strong>ですね。
-                他には<strong>Judas Priest</strong>の<strong>Painkiller</strong>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
-            </p>
-            <p>
-                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<strong>Metallica</strong>の<strong>Master of Puppets</strong>を買って盛り上がりまくっていました。
-                友だちは<strong>Ride the Lightning</strong>を買っていました。
-                どちらも名作ですね。
-            </p>
-            <p>
-                そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
-                それで、真っ先に手に入れたのが<strong>Helloween</strong>の<strong>Cameleon</strong>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
-                ですが、当時放送していたヘヴィメタルのTV番組に<strong>Gamma Ray</strong>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
-                <strong>Insanity and Genious</strong>の頃です。
-            </p>
-            <p>
-                当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
-                何買ったかな、色々かった気がするな。
-                Helloweenもめでたく<strong>守護神伝I, II</strong>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<strong>Blind Gurdian</strong>の<strong>Somewhere Far Beyond</strong>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
-                本当に凄いよ。おすすめだよ。
-            </p>
-            <p>
-                その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
-                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<strong>Carcass</strong>の<strong>Heartwork</strong>からの楽曲や、<strong>Cathedral</strong>の<strong>The Ethereal Mirror</strong>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
-            </p>
-            <p>
-                すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
-                <strong>Angra</strong>がデビューして<strong>Angel's Cry</strong>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
-                同じくキャプテン和田誠さんのラジオで<strong>Psychotic Waltz</strong>の<strong>Into the Everflow</strong>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
-            </p>
-            <p>
-                こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
-                正直、記憶は曖昧なので実際に聞いた順番は前後していると思います。
-                ですが、これらのバンドがぼくに衝撃を与えたのは本当に大きかったですね。
-                1992年近辺、本当に凄かったな...ぼくの音楽人生を決めたといっても過言ではありません。
-                もう私もいい歳ですが、いまだにSomewhere Far Beyondとかしてるもんな...最高の趣味だぜ...
-            </p>
-            <p>
-                アニソンについては、機会があればまた！
-                アニソンは本格的には1990年代後半から聞き始めましたが、これもまた良いものですね。
-            </p>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        lulliecatのproducerです。
+                        好きな音楽のジャンルはヘヴィメタルとアニソンです。
+                        中学生の頃からヘヴィメタルを聞き始めました。
+                        なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<strong>Skid Row</strong>でした)を目の当たりにして、CDを買わざるを得ませんでした。<strong>Slave to the Grind</strong>ですね。
+                        他には<strong>Judas Priest</strong>の<strong>Painkiller</strong>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+                    </p>
+                    <p>
+                        その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<strong>Metallica</strong>の<strong>Master of Puppets</strong>を買って盛り上がりまくっていました。
+                        友だちは<strong>Ride the Lightning</strong>を買っていました。
+                        どちらも名作ですね。
+                    </p>
+                    <p>
+                        そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
+                        それで、真っ先に手に入れたのが<strong>Helloween</strong>の<strong>Cameleon</strong>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                        ですが、当時放送していたヘヴィメタルのTV番組に<strong>Gamma Ray</strong>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                        <strong>Insanity and Genious</strong>の頃です。
+                    </p>
+                    <p>
+                        当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
+                        何買ったかな、色々かった気がするな。
+                        Helloweenもめでたく<strong>守護神伝I, II</strong>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<strong>Blind Gurdian</strong>の<strong>Somewhere Far Beyond</strong>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                        本当に凄いよ。おすすめだよ。
+                    </p>
+                </div>
+                <div class="column">
+                    <p>
+                        その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
+                        いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<strong>Carcass</strong>の<strong>Heartwork</strong>からの楽曲や、<strong>Cathedral</strong>の<strong>The Ethereal Mirror</strong>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+                    </p>
+                    <p>
+                        すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
+                        <strong>Angra</strong>がデビューして<strong>Angel's Cry</strong>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                        同じくキャプテン和田誠さんのラジオで<strong>Psychotic Waltz</strong>の<strong>Into the Everflow</strong>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
+                    </p>
+                    <p>
+                        こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
+                        正直、記憶は曖昧なので実際に聞いた順番は前後していると思います。
+                        ですが、これらのバンドがぼくに衝撃を与えたのは本当に大きかったですね。
+                        1992年近辺、本当に凄かったな...ぼくの音楽人生を決めたといっても過言ではありません。
+                        もう私もいい歳ですが、いまだにSomewhere Far Beyondとかしてるもんな...最高の趣味だぜ...
+                    </p>
+                    <p>
+                        アニソンについては、機会があればまた！
+                        アニソンは本格的には1990年代後半から聞き始めましたが、これもまた良いものですね。
+                    </p>    
+                </div>
+            </div>
         </section>
     </aside>
 
@@ -1175,6 +1224,11 @@
         © 2024 lulliecat
     </footer>
     <script>
+        function ad_hock_sanitize(str)
+        {
+            return str.replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/"/g, '').replace(/'/g, '');
+        }
+
         const player        = document.querySelector(".player");
         const player_iframe = player.querySelector("iframe");
 
@@ -1182,7 +1236,7 @@
         const cards         = document.querySelectorAll(".card");
         cards.forEach((card) => {
             const img = card.querySelector("figure > img");
-            const id  = img.getAttribute("id");
+            const id  = ad_hock_sanitize(img.getAttribute("id"));
 
             // open
             img.addEventListener('click', (e) => {
