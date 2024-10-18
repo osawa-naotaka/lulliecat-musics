@@ -67,6 +67,9 @@
             --header-height: 2rlh;
             --nav-height: 1rlh;
             --max-content-width: 1200px;
+            --max-num-column: 3;
+            --max-num-column-1: calc(var(--max-num-column) + 1);
+            --grid-column-width: calc(var(--max-content-width) / var(--max-num-column-1));
         }
 
         /*
@@ -311,7 +314,10 @@
         /* grid container for .card */
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(
+                auto-fill, 
+                minmax(var(--grid-column-width), 1fr)
+            );
             gap: 1rem;
         }
 
