@@ -387,7 +387,7 @@
             /* transient animation */
             transition: color 0.1s, background-color 0.1s;
         }
-        .music-tags > label:has(input:checked) {
+        .music-tags > label:not(.no-select):has(input:checked) {
             /* decoration */
             background-color: var(--accent-color);
             color: var(--background-color);
