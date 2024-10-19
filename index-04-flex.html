@@ -11,32 +11,32 @@
 
     <title>lulliecat musics</title>
     <style>
-        /* initialize */
+        /* 初期化 */
         * {
-            /* reset all margin and padding */
+            /* マージンとパディングを全てリセット */
             margin: 0;
             padding: 0;
 
-            /* set width = content width + padding width + border width */
+            /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
             box-sizing: border-box;
         }
         img, svg {
-            /* make img and svg to block element */
+            /* img要素とsvg要素をブロック要素に指定 */
             display: block;
             max-width: 100%;
         }
         ul {
-            /* remove marker box */
+            /* マーカーボックスを削除 */
             list-style-type: none;
         }
         a {
-            /* reset decoration */
+            /* 装飾を初期化 */
             color: inherit;
-            text-decoration: none;
+            text-装飾: none;
         }
 
         /*
-         * parameter
+         * パラメータ
          */
         /* 04修正: ヘッダー用の背景色と高さのパラメータ追加 */
         :root {
@@ -55,10 +55,10 @@
         /* 04修正ここまで */
 
         /*
-         * grobal settings
+         * 全体的な設定
          */
          :root {
-            /* decoration */
+            /* 装飾 */
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
@@ -66,52 +66,52 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* container */
+        /* コンテナ */
         /* 04修正: ヘッダを上部張り付きににするので、コンテナから除外 */
         main, aside {
-            /* layout - dimension */
+            /* 寸法 */
             padding-inline: 1rem;
             padding-block: 2rlh;
         }
         main {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color);
         }
         /* 04修正ここまで */
         aside {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-dark);
         }
 
-        /* section */
+        /* セクション */
         section {
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
 
-            /* block-start margin when anchor jump */
+            /* スクロールマージン(navリンクからのジャンプ時用) */
             scroll-margin-block-start: var(--header-height); /* 04修正: アンカーリンクでとんだ先のマージン確保 */
         }
         section > header > h2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
 
-            /* layout - demension */
+            /* 配置 */
             margin-bottom: 1rlh;
         }
         section > header > h2::first-letter {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
             section {
-                /* block-start margin when anchor jump */
+                /* スクロールマージン(navリンクからのジャンプ時用) */
                 scroll-margin-block-start: calc(var(--header-height) + var(--nav-height)); /* 04修正: アンカーリンクでとんだ先のマージン確保 */
             }
             section > header > h2 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 2rem;
             }
         }
@@ -120,35 +120,32 @@
         /*
          * Hero
          */
-        /* hero image */
+        /* ヒーロー画像 */
         .hero {
-            /* reference block for .hero > img, .site-name-1,2 */
-            position: relative;
-
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 100svh;
         }
         .hero > img {
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             top: 0;
             z-index: -1;
 
-            /* scaling image to viewport */
+            /* 画像をビューポートサイズに拡大縮小 */
             width: 100%;
-            height: 100svh; /* viewport height without address bar etc... */
-            object-fit: cover; /* Scaling with aspect ratio preserved  */
+            height: 100svh; /* スマホでのアドレスバーなどを含まない場合のビューポートの高さ */
+            object-fit: cover; /* アスペクト比を保ったまま拡大縮小。width/heightで指定した領域を全部カバーさせるように拡大縮小し、はみ出た部分はクリップする */
         }
 
-        /* hero text - site name */
+        /* ヒーロー画像上に表示するウェブサイト名 */
         .site-name-1, .site-name-2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 7rem;
             font-weight: bold;
             color: var(--accent-color);
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             left: 2rem;
             z-index: -1;
@@ -177,46 +174,51 @@
          * header
          */
         /* 04修正: flexによる横並びとstickyによる張り付き */
-        /* flex container for h1 and nav */
+        /* h1とnavをフレックスアイテムとするフレックスコンテナ */
         .page-header {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-header);
             font-weight: bold;
 
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* stickily positioned block */
+            /* 粘着位置指定(スティッキー) */
             position: sticky;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: var(--header-height);
             top: 0;
             z-index: 1;
             padding-inline: 1rem;
 
-            /* layout - alignment */
+            /* 整列 */
             align-items: baseline;
             justify-content: space-between;
         }
+
+        /* フレックスアイテム1: h1 */
         .page-header h1 {
-            /* decoration */
+            /* 装飾 */
             font-size: 2rem;
         }
         .page-header h1 strong {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
 
-        /* flex container for nav list items */
+        /* フレックスアイテム2: nav */
+        /* navのリスト項目をフレックスアイテムとするフレックスコンテナ */
         .page-header nav > ul {
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* layout - dimension */
+            /* 寸法 */
             gap: 1.5rem;
         }
+
+        /* フレックスアイテム2.1 li */
         .page-header nav li:hover {
             border-bottom: 2px solid var(--main-color-dim);
         }
@@ -224,15 +226,15 @@
             color: var(--accent-color);
         }
 
-        /* phone header */
+        /* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
         @media screen and (max-width: 700px) {
             .page-header {
-                /* make header 2-line */
+                /* ヘッダーを2行にする */
                 display: block;
                 height: calc(var(--header-height) + var(--nav-height));
             }
             .page-header nav {
-                /* align right */
+                /* navはflex-end(日本語の場合は右)に寄せる */
                 display: flex;
                 justify-content: flex-end;
             }
@@ -245,11 +247,11 @@
          */
         /* card */
         .card img {
-            /* decoration */
+            /* 装飾 */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%; /* scaling image to grid container */
             aspect-ratio: 16 / 9;
             object-fit: cover;
@@ -265,24 +267,24 @@
          */
         /* 04修正: about meをデフォルト二段組に変更 */
         #about-me p {
-            /* layout - demension */
+            /* 配置 */
             margin-block: 1rlh;
             max-width: 40rem;
         }
 
-        /* auto indentation */
+        /* 字下げ */
         #about-me p::before {
             content: '　';
         }
 
-        /* default 2-column */
+        /* 標準で二段組 */
         #about-me .columns {
             display: flex;
             gap: 2rem;
         }
 
         @media screen and (max-width: 40rem) {
-            /* 1-column at width < 40rem */
+            /* ビューポート幅が40文字分を下回ったら2段組を解除する */
             #about-me .columns {
                 display: block;
             }
@@ -294,20 +296,20 @@
          * footer
          */
          .page-footer {
-            /* decoration */
+            /* 装飾 */
             color: var(--background-color);
             background-color: var(--main-color);
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             bottom: 0;
             z-index: 1;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 1rlh;
 
-            /* layout - alignment */
+            /* 整列 */
             text-align: center;
         }
     </style>

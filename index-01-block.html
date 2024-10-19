@@ -11,34 +11,34 @@
 
     <title>lulliecat musics</title>
     <style>
-        /* initialize */
+        /* 初期化 */
         /* 01修正: 配置用の初期化スタイルを追加 */
         * {
-            /* reset all margin and padding */
+            /* マージンとパディングを全てリセット */
             margin: 0;
             padding: 0;
 
-            /* set width = content width + padding width + border width */
+            /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
             box-sizing: border-box;
         }
         img, svg {
-            /* make img and svg to block element */
+            /* img要素とsvg要素をブロック要素に指定 */
             display: block;
             max-width: 100%;
         }
         /* 01修正ここまで */
         ul {
-            /* remove marker box */
+            /* マーカーボックスを削除 */
             list-style-type: none;
         }
         a {
-            /* reset decoration */
+            /* 装飾を初期化 */
             color: inherit;
-            text-decoration: none;
+            text-装飾: none;
         }
 
         /*
-         * parameter
+         * パラメータ
          */
          :root {
             --background-color: #f0f0f0;
@@ -52,10 +52,10 @@
         }
 
         /*
-         * grobal settings
+         * 全体的な設定
          */
          :root {
-            /* decoration */
+            /* 装飾 */
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
@@ -63,47 +63,47 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* container */
+        /* コンテナ */
         /* 01修正: コンテナにパディング設定 */
         main, aside, .page-header {
-            /* layout - dimension */
+            /* 寸法 */
             padding-inline: 1rem;
             padding-block: 2rlh;
         }
         /* 01修正ここまで */
         main, .page-header {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color);
         }
         aside {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-dark);
         }
 
-        /* section */
+        /* セクション */
         /* 01修正: コンテンツの最大幅 */
         section {
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
         }
         /* 01修正ここまで */
         section > header > h2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
 
-            /* layout - demension */
+            /* 配置 */
             margin-bottom: 1rlh;    /* 01修正: section headerのマージン追加 */
         }
         section > header > h2::first-letter {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
             section > header > h2 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 2rem;
             }
         }
@@ -113,11 +113,11 @@
          * header
          */
         .page-header h1 {
-            /* decoration */
+            /* 装飾 */
             font-size: 7rem;
         }
         .page-header h1 strong {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         .page-header nav li:hover {
@@ -129,7 +129,7 @@
 
         @media screen and (max-width: 700px) {
             body > header > h1 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 5rem;
             }
         }
@@ -140,12 +140,12 @@
          */
         /* card */
         .card img {
-            /* decoration */
+            /* 装飾 */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
 
             /* 01修正: 画像を横幅いっぱい16:9に広げる */
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%; /* scaling image to grid container */
             aspect-ratio: 16 / 9;
             object-fit: cover;
@@ -162,11 +162,11 @@
          */
         /* 01修正: about meの段落のマージンを追加 */
         #about-me p {
-            /* layout - demension */
+            /* 配置 */
             margin-block: 1rlh;
         }
         /* 01修正ここまで */
-        /* auto indentation */
+        /* 字下げ */
         #about-me p::before {
             content: '　';
         }
@@ -176,11 +176,11 @@
          * footer
          */
         footer {
-            /* decoration */
+            /* 装飾 */
             color: var(--background-color);
             background-color: var(--main-color);
 
-            /* layout - alignment */
+            /* 整列 */
             text-align: center;
         }
     </style>

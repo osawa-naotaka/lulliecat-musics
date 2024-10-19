@@ -28,32 +28,32 @@
 
     <title>lulliecat musics</title>
     <style>
-        /* initialize */
+        /* 初期化 */
         * {
-            /* reset all margin and padding */
+            /* マージンとパディングを全てリセット */
             margin: 0;
             padding: 0;
 
-            /* set width = content width + padding width + border width */
+            /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
             box-sizing: border-box;
         }
         ul {
-            /* remove marker box */
+            /* マーカーボックスを削除 */
             list-style-type: none;
         }
         a {
-            /* reset decoration */
+            /* 装飾を初期化 */
             color: inherit;
-            text-decoration: none;
+            text-装飾: none;
         }
         img, svg {
-            /* make img and svg to block element */
+            /* img要素とsvg要素をブロック要素に指定 */
             display: block;
             max-width: 100%;
         }
 
         /*
-         * parameters
+         * パラメータ
          */
         :root {
             --background-color: #f0f0f0;
@@ -73,10 +73,10 @@
         }
 
         /*
-         * grobal settings
+         * 全体的な設定
          */
         :root {
-            /* decoration */
+            /* 装飾 */
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
@@ -84,50 +84,50 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* container */
+        /* コンテナ */
         main, aside {
-            /* layout - dimension */
+            /* 寸法 */
             padding-inline: 1rem;
             padding-block: 2rlh;
         }
         main {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color);
         }
         aside {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-dark);
         }
 
-        /* section */
+        /* セクション */
         section {
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
 
-            /* block-start margin when anchor jump */
+            /* スクロールマージン(navリンクからのジャンプ時用) */
             scroll-margin-block-start: var(--header-height);
         }
         section > header > h2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
 
-            /* layout - demension */
+            /* 配置 */
             margin-bottom: 1rlh;
         }
         section > header > h2::first-letter {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
             section {
-                /* block-start margin when anchor jump */
+                /* スクロールマージン(navリンクからのジャンプ時用) */
                 scroll-margin-block-start: calc(var(--header-height) + var(--nav-height));
             }
             section > header > h2 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 2rem;
             }
         }
@@ -137,30 +137,30 @@
          * Hero
          */
         .hero {
-            /* clip for carousel scaling animation */
+            /* カルーセル画像の拡大時にはみ出た画像をクリップする */
             overflow: clip;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 100svh;
         }
 
-        /* hero image */
+        /* ヒーロー画像 */
         .hero > img {
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             top: 0;
             z-index: -1;
 
-            /* scaling image to viewport */
+            /* 画像をビューポートサイズに拡大縮小 */
             width: 100%;
-            height: 100svh; /* viewport height without address bar etc... */
-            object-fit: cover; /* Scaling with aspect ratio preserved  */
+            height: 100svh; /* スマホでのアドレスバーなどを含まない場合のビューポートの高さ */
+            object-fit: cover; /* アスペクト比を保ったまま拡大縮小。width/heightで指定した領域を全部カバーさせるように拡大縮小し、はみ出た部分はクリップする */
         }
 
-        /* hero image carousel animation */
+        /* ヒーロー画像のカルーセルアニメーション */
         .hero > img {
-            opacity: 0; /* transparent at first */
+            opacity: 0; /* アニメーション開始時は画像は透明 */
             animation: carousel 16s infinite;
         }
         .hero > img:nth-of-type(2) {
@@ -172,7 +172,7 @@
         .hero > img:nth-of-type(4) {
             animation-delay: 12s;
         }
-        /* depends on the number of pictures */
+        /* キーフレームの設定は、カルーセルで表示する画像の枚数に依存する */
         @keyframes carousel {
             0% {
                 opacity: 0;
@@ -192,14 +192,14 @@
             }
         }
 
-        /* hero text - site name */
+        /* ヒーロー画像上に表示するウェブサイト名 */
         .site-name-1, .site-name-2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 7rem;
             font-weight: bold;
             color: var(--accent-color);
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             left: 2rem;
             z-index: -1;
@@ -223,9 +223,9 @@
             }
         }
 
-        /* hero text slide-in animation */
+        /* ヒーロー画像上のウェブサイト名のスライドインアニメーション */
         .site-name-1 {
-            opacity: 0; /* transparent at first */
+            opacity: 0; /* アニメーション開始時は画像は透明 */
             animation: sitename ease-out 0.5s forwards 1s;
         }
         .site-name-2 {
@@ -245,46 +245,51 @@
         /*
          * header
          */
-        /* flex container for h1 and nav */
+        /* h1とnavをフレックスアイテムとするフレックスコンテナ */
         .page-header {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-header);
             font-weight: bold;
 
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* stickily positioned block */
+            /* 粘着位置指定(スティッキー) */
             position: sticky;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: var(--header-height);
             top: 0;
             z-index: 1;
             padding-inline: 1rem;
 
-            /* layout - alignment */
+            /* 整列 */
             align-items: baseline;
             justify-content: space-between;
         }
+
+        /* フレックスアイテム1: h1 */
         .page-header h1 {
-            /* decoration */
+            /* 装飾 */
             font-size: 2rem;
         }
         .page-header h1 strong {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
 
-        /* flex container for nav list items */
+        /* フレックスアイテム2: nav */
+        /* navのリスト項目をフレックスアイテムとするフレックスコンテナ */
         .page-header nav > ul {
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* layout - dimension */
+            /* 寸法 */
             gap: 1.5rem;
         }
+
+        /* フレックスアイテム2.1 li */
         .page-header nav li:hover {
             border-bottom: 2px solid var(--main-color-dim);
         }
@@ -292,15 +297,15 @@
             color: var(--accent-color);
         }
 
-        /* phone header */
+        /* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
         @media screen and (max-width: 700px) {
             .page-header {
-                /* make header 2-line */
+                /* ヘッダーを2行にする */
                 display: block;
                 height: calc(var(--header-height) + var(--nav-height));
             }
             .page-header nav {
-                /* align right */
+                /* navはflex-end(日本語の場合は右)に寄せる */
                 display: flex;
                 justify-content: flex-end;
             }
@@ -311,28 +316,31 @@
          * music videos
          */
         /* card */
-        /* grid container for .card */
+        /* .cardをグリッドアイテムとするグリッドコンテナ */
         .card-container {
+            /* このボックスをグリッドコンテナに指定する */
             display: grid;
+
+            /* グリッドアイテムの幅が--grid-column-widthと仮定し、列トラック数を決める。列トラック幅は等分になる */
             grid-template-columns: repeat(
                 auto-fill, 
                 minmax(var(--grid-column-width), 1fr)
             );
+
+            /* グリッドコンテナ間の間隔 - 縦 横 */
             gap: 3rem 1rem;
         }
 
-        /* grid items */
+        /* グリッドアイテム */
         .card img {
-            /* decoration */
+            /* 装飾 */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
             cursor: pointer;
  
-            /* layout - dimension */
-            width: 100%; /* scaling image to grid container */
+            /* 寸法 */
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            padding: 0;
         }
         .card .artist::before {
             content: " / ";
@@ -342,84 +350,94 @@
         }
 
 
-        /* 1. filtering by tags */
-        /* flex container for tag list */
+        /* 1. 表示する動画を指定する */
+        /* タグのリストをフレックスアイテムとするフレックスコンテナ */
         .music-tags {
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* layout - alignment */
+            /* 整列 */
             justify-content: flex-start;
 
-            /* layout scheme for flex items */
+            /* フレックスアイテム間の間隔 */
             column-gap: 1rem;
             row-gap: 0.5rem;
+
+            /* フレックスアイテムが1行で収まらない時は2行またはそれ以上に折り返す */
             flex-wrap: wrap;
 
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-header);
 
-            /* stickily positioned block */
+            /* 粘着位置指定(スティッキー) */
             position: sticky;
 
-            /* layout - dimension */
+            /* 寸法 */
             top: var(--header-height);
             left: 0;
             right: 0;
             padding: 1rem 2rem 1rem 0;
         }
 
-        /* phone header */
+        /* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
         @media screen and (max-width: 700px) {
             .music-tags {
                 top: calc(var(--header-height) + var(--nav-height));
             }
         }
 
-
-        /* flex items (tag) */
+        /* フレックスアイテム */
+        /* タグのリスト */
+        /* タグの項目はラジオボタンとして実装する */
+        /* ラジオボタン自体は非表示 */
         .music-tags > label > input {
-            /* decoration */
+            /* 装飾 */
             display: none;
         }
+
+        /* .no-select（×:閉じるボタン）以外の装飾・配置 */
         .music-tags > label:not(.no-select)  {
-            /* decoration */
+            /* 装飾 */
             font-weight: bold;
             border: 1px solid var(--main-color);
             border-radius: 4px;
             cursor: pointer;
 
-            /* layout - demension */
+            /* 配置 */
             padding-inline: 0.5rem;
             min-width: 4rem;
             text-align: center;
 
-            /* transient animation */
+            /* 遷移アニメーション */
             transition: color 0.1s, background-color 0.1s;
         }
+
+        /* チェックの入ったラジオボタンのタグは色を反転させる */
         .music-tags > label:not(.no-select):has(input:checked) {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--accent-color);
             color: var(--background-color);
             border: 1px solid var(--accent-color);
         }
+
+        /* .no-select（×:閉じるボタン）の配置 */
         .music-tags > .no-select {
-            /* absolutely positioned block respect to flex container */
+            /* フレックスコンテナを基準とした絶対位置指定 */
             position: absolute;
 
-            /* layout - demension */
+            /* 配置 */
             top: 1rem;
             right: -5px;
         }
 
-        /* 2. display selected card */
-        /* display: none by default */
+
+        /* 2. 選ばれた動画を表示する */
+        /* デフォルトでは動画はすべて表示しない */
         .card, .video-close {
             display: none;
         }
-        .card > input {
-            display: none;
-        }
+
+        /* チェックの入ったラジオボタンをタグとして持つ動画のみ表示 */
         .music-videos:has( .music-tags #all:checked ) .card {
             display: block;
         }
@@ -442,51 +460,54 @@
         }
 
 
-        /* music video player */
+        /* 動画プレイヤー */
         .player {
-            /* default disable */
+            /* デフォルトで表示しない */
             display: none;
         }
+
+        /* .showクラスがついている時表示する */
+        /* 動画プレイヤー本体(iframeと閉じるボタン)をフレックスアイテムとするフレックスコンテナ */
         .player.show {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--main-color-dim);
             color: var(--background-color);
 
-            /* this block is flex container */
+            /* このボックスをフレックスコンテナに指定する */
             display: flex;
 
-            /* layout - alignment (centering iframe) */
+            /* 整列 (centering iframe) */
             align-items: center;
             justify-content: center;
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             inset: 0;
             z-index: 10;
         }
 
-        /* flex item - video player*/
+        /* フレックスアイテム1 - 動画プレイヤー本体(iframe) */
         .player > iframe {
-            /* decoration */
+            /* 装飾 */
             border: none;
 
-            /* layout - demension */
+            /* 配置 */
             width: min(100%, 1920px);
             aspect-ratio: 16 / 9;
         }
 
-        /* close button */
+        /* フレックスアイテム2 - 閉じるボタン */
         .player > .close {
-            /* decoration */
+            /* 装飾 */
             cursor: pointer;
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             top: 0;
         }
 
-        /* prevent background scroll when playing a video */
-        /* it may not be worked on Safari */
+        /* メインカラムのスクロールを止める */
+        /* Safariでは動かないかもしれない */
         html:has(.player.show) {
             overflow: hidden;
         }
@@ -495,26 +516,26 @@
         /*
          * about me
          */
-        #about-me p {
-            /* layout - demension */
+        .about-me p {
+            /* 配置 */
             margin-block: 1rlh;
             max-width: 40rem;
         }
 
-        /* auto indentation */
-        #about-me p::before {
+        /* 字下げ */
+        .about-me p::before {
             content: '　';
         }
 
-        /* default 2-column */
-        #about-me .columns {
+        /* 標準で二段組 */
+        .about-me .columns {
             display: flex;
             gap: 2rem;
         }
 
         @media screen and (max-width: 40rem) {
-            /* 1-column at width < 40rem */
-            #about-me .columns {
+            /* ビューポート幅が40文字分を下回ったら2段組を解除する */
+            .about-me .columns {
                 display: block;
             }
         }
@@ -524,20 +545,20 @@
          * footer
          */
         .page-footer {
-            /* decoration */
+            /* 装飾 */
             color: var(--background-color);
             background-color: var(--main-color);
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             bottom: 0;
             z-index: 1;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 1rlh;
 
-            /* layout - alignment */
+            /* 整列 */
             text-align: center;
         }
     </style>
@@ -557,7 +578,7 @@
         <h1>lulliecat <strong>m</strong>usics.</h1>
         <nav>
             <ul>
-                <li><a href="#home">home</a></li>
+                <li><a href="#hero">home</a></li>
                 <li><a href="#music-videos">music videos</a></li>
                 <li><a href="#about-me">about me</a></li>
             </ul>
@@ -1180,7 +1201,7 @@
     </main>
 
     <aside>
-        <section id="about-me">
+        <section class="about-me" id="about-me">
             <header>
                 <h2>about me.</h2>
             </header>

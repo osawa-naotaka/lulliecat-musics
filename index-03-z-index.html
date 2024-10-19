@@ -11,32 +11,32 @@
 
     <title>lulliecat musics</title>
     <style>
-        /* initialize */
+        /* 初期化 */
         * {
-            /* reset all margin and padding */
+            /* マージンとパディングを全てリセット */
             margin: 0;
             padding: 0;
 
-            /* set width = content width + padding width + border width */
+            /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
             box-sizing: border-box;
         }
         img, svg {
-            /* make img and svg to block element */
+            /* img要素とsvg要素をブロック要素に指定 */
             display: block;
             max-width: 100%;
         }
         ul {
-            /* remove marker box */
+            /* マーカーボックスを削除 */
             list-style-type: none;
         }
         a {
-            /* reset decoration */
+            /* 装飾を初期化 */
             color: inherit;
-            text-decoration: none;
+            text-装飾: none;
         }
 
         /*
-         * parameter
+         * パラメータ
          */
          :root {
             --background-color: #f0f0f0;
@@ -50,10 +50,10 @@
         }
 
         /*
-         * grobal settings
+         * 全体的な設定
          */
          :root {
-            /* decoration */
+            /* 装飾 */
             font-family: "Roboto", "Noto Sans JP", serif;
             font-size: 18px;
             color: var(--main-color);
@@ -61,43 +61,43 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* container */
+        /* コンテナ */
         main, aside, .page-header {
-            /* layout - dimension */
+            /* 寸法 */
             padding-inline: 1rem;
             padding-block: 2rlh;
         }
         main, .page-header {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color);
         }
         aside {
-            /* decoration */
+            /* 装飾 */
             background-color: var(--background-color-dark);
         }
 
-        /* section */
+        /* セクション */
         section {
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             max-width: var(--max-content-width);
             margin-inline: auto; /* align center */
         }
         section > header > h2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
 
-            /* layout - demension */
+            /* 配置 */
             margin-bottom: 1rlh;
         }
         section > header > h2::first-letter {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         @media screen and (max-width: 700px) {
             section > header > h2 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 2rem;
             }
         }
@@ -106,38 +106,37 @@
         /*
          * Hero
          */
-        /* hero image */
+        /* ヒーロー画像 */
         .hero {
-            /* reference block for .hero > img, .site-name-1,2 */
-            position: relative;
+            /* 03修正: .hero img, .hero .site-name-1,2はfixedになったので、.heroをリファレンスブロックにする必要はなくなった。position: relative指定は削除 */
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 100svh;
         }
         .hero > img {
             /* 03修正: bodyの下層に.heroを配置固定する */
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             top: 0;
             z-index: -1;
             /* 03修正ここまで */
 
-            /* scaling image to viewport */
+            /* 画像をビューポートサイズに拡大縮小 */
             width: 100%;
-            height: 100svh; /* viewport height without address bar etc... */
-            object-fit: cover; /* Scaling with aspect ratio preserved  */
+            height: 100svh; /* スマホでのアドレスバーなどを含まない場合のビューポートの高さ */
+            object-fit: cover; /* アスペクト比を保ったまま拡大縮小。width/heightで指定した領域を全部カバーさせるように拡大縮小し、はみ出た部分はクリップする */
         }
 
-        /* hero text - site name */
+        /* ヒーロー画像上に表示するウェブサイト名 */
         .site-name-1, .site-name-2 {
-            /* decoration */
+            /* 装飾 */
             font-size: 7rem;
             font-weight: bold;
             color: var(--accent-color);
 
             /* 03修正: bodyの下層に.heroを配置固定する */
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             left: 2rem;
             z-index: -1;
@@ -167,11 +166,11 @@
          * header
          */
         .page-header h1 {
-            /* decoration */
+            /* 装飾 */
             font-size: 7rem;
         }
         .page-header h1 strong {
-            /* decoration */
+            /* 装飾 */
             color: var(--accent-color);
         }
         .page-header nav li:hover {
@@ -183,7 +182,7 @@
 
         @media screen and (max-width: 700px) {
             body > header > h1 {
-                /* decoration */
+                /* 装飾 */
                 font-size: 5rem;
             }
         }
@@ -194,11 +193,11 @@
          */
         /* card */
         .card img {
-            /* decoration */
+            /* 装飾 */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%; /* scaling image to grid container */
             aspect-ratio: 16 / 9;
             object-fit: cover;
@@ -213,10 +212,10 @@
          * about me
          */
         #about-me p {
-            /* layout - demension */
+            /* 配置 */
             margin-block: 1rlh;
         }
-        /* auto indentation */
+        /* 字下げ */
         #about-me p::before {
             content: '　';
         }
@@ -226,20 +225,20 @@
          * footer
          */
          .page-footer {
-            /* decoration */
+            /* 装飾 */
             color: var(--background-color);
             background-color: var(--main-color);
 
-            /* absolutely positioned respect to viewport */
+            /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             bottom: 0;
             z-index: 1;
 
-            /* layout - dimension */
+            /* 寸法 */
             width: 100%;
             height: 1rlh;
 
-            /* layout - alignment */
+            /* 整列 */
             text-align: center;
         }
     </style>
