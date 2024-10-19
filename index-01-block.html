@@ -34,7 +34,7 @@
         a {
             /* 装飾を初期化 */
             color: inherit;
-            text-装飾: none;
+            text-decoration: none;
         }
 
         /*
@@ -161,13 +161,13 @@
          * about me
          */
         /* 01修正: about meの段落のマージンを追加 */
-        #about-me p {
+        .about-me p {
             /* 配置 */
             margin-block: 1rlh;
         }
         /* 01修正ここまで */
         /* 字下げ */
-        #about-me p::before {
+        .about-me p::before {
             content: '　';
         }
 
@@ -312,7 +312,7 @@
     </main>
 
     <aside>
-        <section id="about-me">
+        <section class="about-me" id="about-me">
             <header>
                 <h2>about me.</h2>
             </header>

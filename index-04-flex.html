@@ -32,7 +32,7 @@
         a {
             /* 装飾を初期化 */
             color: inherit;
-            text-装飾: none;
+            text-decoration: none;
         }
 
         /*
@@ -266,26 +266,26 @@
          * about me
          */
         /* 04修正: about meをデフォルト二段組に変更 */
-        #about-me p {
+        .about-me p {
             /* 配置 */
             margin-block: 1rlh;
-            max-width: 40rem;
+            max-width: 40rem; /* 横幅30-40文字程度が読みやすい */
         }
 
         /* 字下げ */
-        #about-me p::before {
+        .about-me p::before {
             content: '　';
         }
 
         /* 標準で二段組 */
-        #about-me .columns {
+        .about-me .columns {
             display: flex;
             gap: 2rem;
         }
 
         @media screen and (max-width: 40rem) {
             /* ビューポート幅が40文字分を下回ったら2段組を解除する */
-            #about-me .columns {
+            .about-me .columns {
                 display: block;
             }
         }
@@ -444,7 +444,7 @@
 
 
     <aside>
-        <section id="about-me">
+        <section id="about-me" class="about-me">
             <header>
                 <h2>about me.</h2>
             </header>
