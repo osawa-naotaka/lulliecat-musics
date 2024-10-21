@@ -378,8 +378,8 @@ p {
     display: none;
 }
 
-/* .no-select（×:閉じるボタン）以外の装飾・配置 */
-.music-tags > label:not(.no-select)  {
+/* タグの装飾・配置 */
+.music-tags > label {
     /* 装飾 */
     font-weight: bold;
     border: 1px solid var(--main-color);
@@ -396,27 +396,17 @@ p {
 }
 
 /* チェックの入ったラジオボタンのタグは色を反転させる */
-.music-tags > label:not(.no-select):has(input:checked) {
+.music-tags > label:has(input:checked) {
     /* 装飾 */
     background-color: var(--accent-color);
     color: var(--background-color);
     border: 1px solid var(--accent-color);
 }
 
-/* .no-select（×:閉じるボタン）の配置 */
-.music-tags > .no-select {
-    /* フレックスコンテナを基準とした絶対位置指定 */
-    position: absolute;
-
-    /* 配置 */
-    top: 1rem;
-    right: -5px;
-}
-
 
 /* 2. 選ばれた動画を表示する */
 /* デフォルトでは動画はすべて表示しない */
-.card, .video-close {
+.card {
     display: none;
 }
 
@@ -424,7 +414,6 @@ p {
 .music-videos:has( .music-tags #all:checked ) .card {
     display: block;
 }
-.music-videos:has( .music-tags #close:checked ) .video-close,
 .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
 .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
 .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
