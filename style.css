@@ -359,7 +359,8 @@ p {
     top: var(--header-height);
     left: 0;
     right: 0;
-    padding: 1rem 2rem 1rem 0;
+    /* padding: 1rem 2rem 1rem 0; */
+    padding-block: 1rem;
 }
 
 /* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
