@@ -405,8 +405,8 @@
             display: none;
         }
 
-        /* .no-select（×:閉じるボタン）以外の装飾・配置 */
-        .music-tags > label:not(.no-select)  {
+        /* タグの装飾・配置 */
+        .music-tags > label {
             /* 装飾 */
             font-weight: bold;
             border: 1px solid var(--main-color);
@@ -423,27 +423,17 @@
         }
 
         /* チェックの入ったラジオボタンのタグは色を反転させる */
-        .music-tags > label:not(.no-select):has(input:checked) {
+        .music-tags > label:has(input:checked) {
             /* 装飾 */
             background-color: var(--accent-color);
             color: var(--background-color);
             border: 1px solid var(--accent-color);
         }
 
-        /* .no-select（×:閉じるボタン）の配置 */
-        .music-tags > .no-select {
-            /* フレックスコンテナを基準とした絶対位置指定 */
-            position: absolute;
-
-            /* 配置 */
-            top: 1rem;
-            right: -5px;
-        }
-
 
         /* 2. 選ばれた動画を表示する */
         /* デフォルトでは動画はすべて表示しない */
-        .card, .video-close {
+        .card {
             display: none;
         }
 
@@ -451,7 +441,6 @@
         .music-videos:has( .music-tags #all:checked ) .card {
             display: block;
         }
-        .music-videos:has( .music-tags #close:checked ) .video-close,
         .music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
         .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
         .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
@@ -597,21 +586,9 @@
             <!-- 09修正ここまで -->
 
             <div class="music-tags">
-                <label class="no-select">
-                    <input type="radio" name="tag" id="close">
-                    <svg width="32px" height="32px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
-                        <path d="M14 14L34 34" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14 34L34 14" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </label>
                 <label>
                     <input type="radio" name="tag" id="all">
                     <span>All</span>
-                </label>
-                <label>
-                    <input type="radio" name="tag" id="recomended" checked>
-                    <span>Recomended</span>
                 </label>
                 <label>
                     <input type="radio" name="tag" id="rock">
@@ -629,12 +606,13 @@
                     <input type="radio" name="tag" id="melodic-hardcore">
                     <span>Melodic Hardcore</span>
                 </label>
+                <label>
+                    <input type="radio" name="tag" id="recomended" checked>
+                    <span>Recomended</span>
+                </label>
             </div>
 
             <ul class="card-container">
-                <li class="video-close">
-                    <span>Select a tag to display videos.</span>
-                </li>
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
@@ -858,7 +836,7 @@
         const cards         = document.querySelectorAll(".card");
         cards.forEach((card) => {
             const img = card.querySelector("figure > img");
-            const id  = ad_hock_sanitize(img.getAttribute("data-video-id"));
+            const id  = ad_hock_sanitize(img.dataset.videoId);
 
             // open
             img.addEventListener('click', (e) => {

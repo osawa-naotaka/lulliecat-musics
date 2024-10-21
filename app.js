@@ -12,7 +12,7 @@ const player_iframe = player.querySelector("iframe");
 const cards         = document.querySelectorAll(".card");
 cards.forEach((card) => {
     const img = card.querySelector("figure > img");
-    const id  = ad_hock_sanitize(img.getAttribute("data-video-id"));
+    const id  = ad_hock_sanitize(img.dataset.videoId);
 
     // open
     img.addEventListener('click', (e) => {
