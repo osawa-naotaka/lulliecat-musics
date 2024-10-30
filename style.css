@@ -1,0 +1,532 @@
+@charset "utf-8";
+
+/* 初期化 */
+* {
+    /* マージンとパディングを全てリセット */
+    margin: 0;
+    padding: 0;
+
+    /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
+    box-sizing: border-box;
+}
+ul {
+    /* マーカーボックスを削除 */
+    list-style-type: none;
+}
+a {
+    /* 装飾を初期化 */
+    color: inherit;
+    text-decoration: none;
+}
+img, svg {
+    /* img要素とsvg要素をブロック要素に指定 */
+    display: block;
+    max-width: 100%;
+}
+
+/*
+ * パラメータ
+ */
+:root {
+    --background-color: #f0f0f0;
+    --background-color-dark: #e0e0e0;
+    --background-color-header: #f0f0f0c0;
+    --accent-color: #d7003a;
+    --main-color: #303030;
+    --main-color-dim: #303030f0;
+    --shadow-color: #c0c0c0;
+
+    --header-height: 2rlh;
+    --nav-height: 1rlh;
+    --max-content-width: 1200px;
+    --max-num-column: 3;
+    --max-num-column-1: calc(var(--max-num-column) + 1);
+    --grid-column-width: calc(var(--max-content-width) / var(--max-num-column-1));
+}
+
+/*
+    * 全体的な設定
+    */
+:root {
+    /* 装飾 */
+    font-family: "Roboto", "Noto Sans JP", serif;
+    font-size: 18px;
+    color: var(--main-color);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* コンテナ */
+main, aside {
+    /* 寸法 */
+    padding-inline: 1rem;
+    padding-block: 2rlh;
+}
+main {
+    /* 装飾 */
+    background-color: var(--background-color);
+}
+aside {
+    /* 装飾 */
+    background-color: var(--background-color-dark);
+}
+
+/* セクション */
+section {
+    /* 寸法 */
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin-inline: auto; /* 中央寄せ - widthを指定してmargin-inlineをautoにすることにより中央寄せができる */
+
+    /* スクロールマージン(navリンクからのジャンプ時用) */
+    scroll-margin-block-start: var(--header-height);
+}
+section > header > h2 {
+    /* 装飾 */
+    font-size: 4rem;
+    border-bottom: 8px solid;
+
+    /* 配置 */
+    margin-bottom: 1rlh;
+}
+section > header > h2::first-letter {
+    /* 装飾 */
+    color: var(--accent-color);
+}
+@media screen and (max-width: 700px) {
+    section {
+        /* スクロールマージン(navリンクからのジャンプ時用) */
+        scroll-margin-block-start: calc(var(--header-height) + var(--nav-height));
+    }
+    section > header > h2 {
+        /* 装飾 */
+        font-size: 2rem;
+    }
+}
+
+/* 要素 */
+em {
+    font-style: normal;
+    font-weight: bold;
+}
+
+p {
+    /* 字下げ */
+    text-indent: 1rem;
+}
+
+
+/*
+ * Hero
+ */
+.hero {
+    /* カルーセル画像の拡大時にはみ出た画像をクリップする */
+    overflow: clip;
+
+    /* 寸法 */
+    width: 100%;
+    height: 100svh;
+}
+
+/* ヒーロー画像 */
+.hero > img {
+    /* ビューポートを基準にして絶対位置指定 */
+    position: fixed;
+    top: 0;
+    z-index: -1;
+
+    /* 画像をビューポートサイズに拡大縮小 */
+    width: 100%;
+    height: 100svh; /* スマホでのアドレスバーなどを含まない場合のビューポートの高さ */
+    object-fit: cover; /* アスペクト比を保ったまま拡大縮小。width/heightで指定した領域を全部カバーさせるように拡大縮小し、はみ出た部分はクリップする */
+}
+
+/* ヒーロー画像のカルーセルアニメーション */
+.hero > img {
+    opacity: 0; /* アニメーション開始時は画像は透明 */
+    animation: carousel 16s infinite;
+}
+.hero > img:nth-of-type(2) {
+    animation-delay: 4s;
+}
+.hero > img:nth-of-type(3) {
+    animation-delay: 8s;
+}
+.hero > img:nth-of-type(4) {
+    animation-delay: 12s;
+}
+/* キーフレームの設定は、カルーセルで表示する画像の枚数に依存する */
+@keyframes carousel {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    35% {
+        opacity: 0;
+        scale: 1.03;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ヒーロー画像上に表示するウェブサイト名 */
+.site-name-1, .site-name-2 {
+    /* 装飾 */
+    font-size: 7rem;
+    font-weight: bold;
+    color: var(--accent-color);
+
+    /* ビューポートを基準にして絶対位置指定 */
+    position: fixed;
+    left: 2rem;
+    z-index: -1;
+}
+.site-name-1 {
+    bottom: 9rem;
+}
+.site-name-2 {
+    bottom: 2rem;
+}
+
+@media screen and (max-width: 700px) {
+    .site-name-1 {
+        bottom: 6rem;
+    }
+    .site-name-2 {
+        bottom: 2rem;
+    }
+    .site-name-1, .site-name-2 {
+        font-size: 4rem;
+    }
+}
+
+/* ヒーロー画像上のウェブサイト名のスライドインアニメーション */
+.site-name-1 {
+    opacity: 0; /* アニメーション開始時は画像は透明 */
+    animation: sitename ease-out 0.5s forwards 1s;
+}
+.site-name-2 {
+    opacity: 0;
+    animation: sitename ease-out 0.5s forwards 1.5s;
+}
+@keyframes sitename {
+    0% {
+        transform: translateY(32px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*
+ * header
+ */
+/* h1とnavをフレックスアイテムとするフレックスコンテナ */
+.page-header {
+    /* 装飾 */
+    background-color: var(--background-color-header);
+    font-weight: bold;
+
+    /* このボックスをフレックスコンテナに指定する */
+    display: flex;
+
+    /* 粘着位置指定(スティッキー) */
+    position: sticky;
+
+    /* 寸法 */
+    width: 100%;
+    height: var(--header-height);
+    top: 0;
+    z-index: 1;
+    padding-inline: 1rem;
+
+    /* 整列 */
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+/* フレックスアイテム1: h1 */
+.page-header h1 {
+    /* 装飾 */
+    font-size: 2rem;
+}
+.page-header h1 em {
+    /* 装飾 */
+    color: var(--accent-color);
+}
+
+/* フレックスアイテム2: nav */
+/* navのリスト項目をフレックスアイテムとするフレックスコンテナ */
+.page-header nav > ul {
+    /* このボックスをフレックスコンテナに指定する */
+    display: flex;
+
+    /* 寸法 */
+    gap: 1.5rem;
+}
+
+/* フレックスアイテム2.1 li */
+.page-header nav li:hover {
+    border-bottom: 2px solid var(--main-color-dim);
+}
+.page-header nav li::first-letter {
+    color: var(--accent-color);
+}
+
+/* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
+@media screen and (max-width: 700px) {
+    .page-header {
+        /* ヘッダーを2行にする */
+        display: block;
+        height: calc(var(--header-height) + var(--nav-height));
+    }
+    .page-header nav {
+        /* navはflex-end(日本語の場合は右)に寄せる */
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+
+/*
+ * music videos
+ */
+/* card */
+/* .cardをグリッドアイテムとするグリッドコンテナ */
+.card-container {
+    /* このボックスをグリッドコンテナに指定する */
+    display: grid;
+
+    /* グリッドアイテムの幅が--grid-column-widthと仮定し、列トラック数を決める。列トラック幅は等分になる */
+    grid-template-columns: repeat(
+        auto-fill, 
+        minmax(var(--grid-column-width), 1fr)
+    );
+
+    /* グリッドコンテナ間の間隔 - 縦 横 */
+    gap: 3rem 1rem;
+}
+
+/* グリッドアイテム */
+.card img {
+    /* 装飾 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--shadow-color);
+    cursor: pointer;
+
+    /* 寸法 */
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.card .artist::before {
+    content: " / ";
+}
+.card .tags {
+    display: none;
+}
+
+
+/* 1. 表示する動画を指定する */
+/* タグのリストをフレックスアイテムとするフレックスコンテナ */
+.music-tags {
+    /* このボックスをフレックスコンテナに指定する */
+    display: flex;
+
+    /* 整列 */
+    justify-content: flex-start;
+
+    /* フレックスアイテム間の間隔 */
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+
+    /* フレックスアイテムが1行で収まらない時は2行またはそれ以上に折り返す */
+    flex-wrap: wrap;
+
+    /* 装飾 */
+    background-color: var(--background-color-header);
+
+    /* 粘着位置指定(スティッキー) */
+    position: sticky;
+
+    /* 寸法 */
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    /* padding: 1rem 2rem 1rem 0; */
+    padding-block: 1rem;
+}
+
+/* ヘッダーが2行に溢れるくらいのビューポート幅になった場合の設定 */
+@media screen and (max-width: 700px) {
+    .music-tags {
+        top: calc(var(--header-height) + var(--nav-height));
+    }
+}
+
+/* フレックスアイテム */
+/* タグのリスト */
+/* タグの項目はラジオボタンとして実装する */
+/* ラジオボタン自体は非表示 */
+.music-tags > label > input {
+    /* 装飾 */
+    display: none;
+}
+
+/* タグの装飾・配置 */
+.music-tags > label {
+    /* 装飾 */
+    font-weight: bold;
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+    cursor: pointer;
+
+    /* 配置 */
+    padding-inline: 0.5rem;
+    min-width: 4rem;
+    text-align: center;
+
+    /* 遷移アニメーション */
+    transition: color 0.1s, background-color 0.1s;
+}
+
+/* チェックの入ったラジオボタンのタグは色を反転させる */
+.music-tags > label:has(input:checked) {
+    /* 装飾 */
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: 1px solid var(--accent-color);
+}
+
+
+/* 2. 選ばれた動画を表示する */
+/* デフォルトでは動画はすべて表示しない */
+.card {
+    display: none;
+}
+
+/* チェックの入ったラジオボタンをタグとして持つ動画のみ表示 */
+.music-videos:has( .music-tags #all:checked ) .card {
+    display: block;
+}
+.music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+.music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
+.music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
+.music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
+.music-videos:has( .music-tags #prog-metal:checked ) .card:has( .tags .prog-metal ),
+.music-videos:has( .music-tags #epic-metal:checked ) .card:has( .tags .epic-metal ),
+.music-videos:has( .music-tags #death-metal:checked ) .card:has( .tags .death-metal ),
+.music-videos:has( .music-tags #melodic-hardcore:checked ) .card:has( .tags .melodic-hardcore ),
+.music-videos:has( .music-tags #doom-metal:checked ) .card:has( .tags .doom-metal ),
+.music-videos:has( .music-tags #alternative-metal:checked ) .card:has( .tags .altanative-metal ),
+.music-videos:has( .music-tags #vtuber:checked ) .card:has( .tags .vtuber ),
+.music-videos:has( .music-tags #game:checked ) .card:has( .tags .game ),
+.music-videos:has( .music-tags #symphonic-rock:checked ) .card:has( .tags .symphonic-rock ),
+.music-videos:has( .music-tags #pop:checked ) .card:has( .tags .pop )
+{
+    display: block;
+}
+
+
+/* 動画プレイヤー */
+.player {
+    /* デフォルトで表示しない */
+    display: none;
+}
+
+/* .showクラスがついている時表示する */
+/* 動画プレイヤー本体(iframeと閉じるボタン)をフレックスアイテムとするフレックスコンテナ */
+.player.show {
+    /* 装飾 */
+    background-color: var(--main-color-dim);
+    color: var(--background-color);
+
+    /* このボックスをフレックスコンテナに指定する */
+    display: flex;
+
+    /* 整列 (centering iframe) */
+    align-items: center;
+    justify-content: center;
+
+    /* ビューポートを基準にして絶対位置指定 */
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+}
+
+/* フレックスアイテム1 - 動画プレイヤー本体(iframe) */
+.player > iframe {
+    /* 装飾 */
+    border: none;
+
+    /* 配置 */
+    width: min(100%, 1920px);
+    aspect-ratio: 16 / 9;
+}
+
+/* フレックスアイテム2 - 閉じるボタン */
+.player > .close {
+    /* 装飾 */
+    cursor: pointer;
+
+    /* ビューポートを基準にして絶対位置指定 */
+    position: fixed;
+    top: 0;
+}
+
+/* メインカラムのスクロールを止める */
+/* Safariでは動かないかもしれない */
+html:has(.player.show) {
+    overflow: hidden;
+}
+
+
+/*
+    * about me
+    */
+.about-me p {
+    /* 配置 */
+    margin-block: 1rlh;
+    max-width: 40rem;
+}
+
+/* 標準で二段組 */
+.about-me .columns {
+    display: flex;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 40rem) {
+    /* ビューポート幅が40文字分を下回ったら2段組を解除する */
+    .about-me .columns {
+        display: block;
+    }
+}
+
+
+/*
+ * footer
+ */
+.page-footer {
+    /* 装飾 */
+    color: var(--background-color);
+    background-color: var(--main-color);
+
+    /* ビューポートを基準にして絶対位置指定 */
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+
+    /* 寸法 */
+    width: 100%;
+    height: 1rlh;
+
+    /* 整列 */
+    text-align: center;
+}

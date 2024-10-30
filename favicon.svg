@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1011)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(4.861111111111111,0,0,4.861111111111111,159.94896263546417,146.43332836363055)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="144" height="144"><svg width="144" height="144" viewBox="0 0 38.099999 38.1" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"><clipPath id="SvgjsClipPath1011"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs>
+  <g id="layer1">
+    <path d="M 10.0956,32.435387 V 6.1534248 h 6.314727 V 27.143717 h 10.230562 v 5.29167 z" id="text6" style="font-size:21.1667px;font-family:'Noto Sans JP';-inkscape-font-specification:'Noto Sans JP, @wght=900';font-variation-settings:'wght' 900;stroke-width:0.264583" aria-label="
+L"></path>
+  </g>
+</svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1012)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(4.861111111111111,0,0,4.861111111111111,159.94896263546417,146.43332836363055)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="144" height="144"><svg width="144" height="144" viewBox="0 0 38.099999 38.1" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"><clipPath id="SvgjsClipPath1012"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs>
+  <g id="layer1">
+    <path d="M 10.0956,32.435387 V 6.1534248 h 6.314727 V 27.143717 h 10.230562 v 5.29167 z" id="text6" style="font-size:21.1667px;font-family:'Noto Sans JP';-inkscape-font-specification:'Noto Sans JP, @wght=900';font-variation-settings:'wght' 900;stroke-width:0.264583" aria-label="
+L"></path>
+  </g>
+</svg></svg></g></g></svg></g></svg>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://img.youtube.com; frame-src https://www.youtube.com; style-src 'self' https://fonts.googleapis.com;font-src https://fonts.gstatic.com;">
+
+    <!-- web font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- favicon  -->
+    <link rel="icon" type="image/png" href="/lulliecat-musics/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="/lulliecat-musics/favicon.svg">
+    <link rel="shortcut icon" href="/lulliecat-musics/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lulliecat-musics/apple-touch-icon.png">
+    <link rel="manifest" href="/lulliecat-musics/site.webmanifest">
+
+    <!-- OpenGraph  -->
+    <meta property="og:site_name" content="lulliecat musics.">
+    <meta property="og:title" content="lulliecat musics.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://osawa-naotaka.github.io/lulliecat-musics/favicon.svg">
+    <meta property="og:url" content="https://osawa-naotaka.github.io/lulliecat-musics/">
+    <meta property="og:description" content="lulliecat musics.では作者の好きな音楽をご紹介します。">
+
+    <!-- description  -->
+    <meta name="description" content="lulliecat musicsは作者の好きな音楽をご紹介します。">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+
+    <title>lulliecat musics</title>
+</head>
+<body>
+
+    <div class="hero" id="hero">
+        <img src="./robbie-noble-hSygsHzG9ok-unsplash.jpg" alt="">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="hero image 1">
+        <img src="./michael-dobrinski-JxufJsFmvW0-unsplash.jpg" alt="">
+        <img src="./joshua-fuller-ta7rN3NcWyM-unsplash-resized.jpg" alt="">
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
+    </div>
+
+    <header class="page-header">
+        <h1>lulliecat <em>m</em>usics.</h1>
+        <nav>
+            <ul>
+                <li><a href="#hero">home</a></li>
+                <li><a href="#music-videos">music videos</a></li>
+                <li><a href="#about-me">about me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="music-videos" id="music-videos">
+            <header>
+                <h2>music videos.</h2>
+            </header>
+
+            <div class="player">
+                <div class="close">Close</div>
+                <iframe loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="music-tags">
+                <label>
+                    <input type="radio" name="tag" id="all">
+                    <span>All</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="rock">
+                    <span>Rock</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="anime">
+                    <span>Anime</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="heavy-metal">
+                    <span>Metal</span>
+                </label>
+                <!-- <label>
+                    <input type="radio" name="tag" id="prog-metal">
+                    <span>Prog Metal</span>
+                </label> -->
+                <!-- <label>
+                    <input type="radio" name="tag" id="epic-metal">
+                    <span>Epic Metal</span>
+                </label> -->
+                <!-- <label>
+                    <input type="radio" name="tag" id="death-metal">
+                    <span>Death Metal</span>
+                </label> -->
+                <!-- <label>
+                    <input type="radio" name="tag" id="doom-metal">
+                    <span>Doom Metal</span>
+                </label> -->
+                <!-- <label>
+                    <input type="radio" name="tag" id="alternative-metal">
+                    <span>Alternative Metal</span>
+                </label> -->
+                <label>
+                    <input type="radio" name="tag" id="vtuber">
+                    <span>Vtuber</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="game">
+                    <span>Game</span>
+                </label>
+                <!-- <label>
+                    <input type="radio" name="tag" id="symphonic-rock">
+                    <span>Symphonic Rock</p>
+                </label> -->
+                <label>
+                    <input type="radio" name="tag" id="pop">
+                    <span>Pop</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="melodic-hardcore">
+                    <span>Melodic Hardcore</span>
+                </label>
+                <label>
+                    <input type="radio" name="tag" id="recomended" checked>
+                    <span>Recomended</span>
+                </label>
+            </div>
+
+            <ul class="card-container">
+                <li class="card">
+                    <figure>
+                        <img data-video-id="kKOkybfh9bE" src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="楽曲 平行線 YouTube動画">
+                        <figcaption>
+                            <span class="song">平行線</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="L72R8VFVNEY" src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="楽曲 酸欠少女YouTube動画">
+                        <figcaption>
+                            <span class="song">酸欠少女</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="9LhUlEeeSF0" src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="楽曲 来世で会おう YouTube動画">
+                        <figcaption>
+                            <span class="song">来世で会おう</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="M1ajQuujwKk" src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="楽曲 それは小さな光のような YouTube動画">
+                        <figcaption>
+                            <span class="song">それは小さな光のような</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="PgRd17Qvji4" src="https://img.youtube.com/vi/PgRd17Qvji4/sddefault.jpg" alt="楽曲  YouTube動画">
+                        <figcaption>
+                            <span class="song">アノニマス</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="0q6c0AKDKU4" src="https://img.youtube.com/vi/0q6c0AKDKU4/sddefault.jpg" alt="楽曲 ミカヅキ YouTube動画">
+                        <figcaption>
+                            <span class="song">ミカヅキ</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="EzgE7CbTs3o" src="https://img.youtube.com/vi/EzgE7CbTs3o/sddefault.jpg" alt="楽曲 航海の歌 YouTube動画">
+                        <figcaption>
+                            <span class="song">航海の歌</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                
+                <li class="card">
+                    <figure>
+                        <img data-video-id="PWbg7ShjOPk" src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="楽曲 エイトビート・バーサーカー YouTube動画">
+                        <figcaption>
+                            <span class="song">エイトビート・バーサーカー</span>
+                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="trrEWoMWSQg" src="https://img.youtube.com/vi/trrEWoMWSQg/sddefault.jpg" alt="楽曲 転生したら剣でした YouTube動画">
+                        <figcaption>
+                            <span class="song">転生したら剣でした</span>
+                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="Bds3FALcR7M" src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="楽曲 all is one YouTube動画">
+                        <figcaption>
+                            <span class="song">All is One</span>
+                            <span class="artist">Orphaned Land</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="AbCliCQnBUo" src="https://img.youtube.com/vi/AbCliCQnBUo/sddefault.jpg" alt="楽曲 Sapari YouTube動画">
+                        <figcaption>
+                            <span class="song">Sapari</span>
+                            <span class="artist">Orphaned Land</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="hurWzo01FpM" src="https://img.youtube.com/vi/hurWzo01FpM/sddefault.jpg" alt="楽曲 Like Orpheus YouTube動画">
+                        <figcaption>
+                            <span class="song">Like Orpheus</span>
+                            <span class="artist">Orphaned Land</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="4SZDVcNUiI0" src="https://img.youtube.com/vi/4SZDVcNUiI0/sddefault.jpg" alt="楽曲 Architect of Fortune YouTube動画">
+                        <figcaption>
+                            <span class="song">Architect of Fortune</span>
+                            <span class="artist">Circus Maximus</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="SiH5FNKKcjQ" src="https://img.youtube.com/vi/SiH5FNKKcjQ/sddefault.jpg" alt="楽曲 At the Heart of Wintervale YouTube動画">
+                        <figcaption>
+                            <span class="song">At The Heart Of Wintervale</span>
+                            <span class="artist">Twilight Force</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="epic-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="LaTI4XF8PAY" src="https://img.youtube.com/vi/LaTI4XF8PAY/sddefault.jpg" alt="楽曲 Twilight Force YouTube動画">
+                        <figcaption>
+                            <span class="song">Twilight Force</span>
+                            <span class="artist">Twilight Force</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="epic-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="WM8bTdBs-cw" src="https://img.youtube.com/vi/WM8bTdBs-cw/sddefault.jpg" alt="楽曲 One YouTube動画">
+                        <figcaption>
+                            <span class="song">One</span>
+                            <span class="artist">Metallica</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="msuO_KuHwVY" src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="楽曲 Shadows Flap Their Black Wings YouTube動画">
+                        <figcaption>
+                            <span class="song">Shadows Flap Their Black Wings</span>
+                            <span class="artist">In Vain</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="death-metal"></span>
+                        <span class="prog-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="12kcpP-8jfM" src="https://img.youtube.com/vi/12kcpP-8jfM/hqdefault.jpg" alt="楽曲 American Jesus YouTube動画">
+                        <figcaption>
+                            <span class="song">American Jesus</span>
+                            <span class="artist">Bad Religion</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="melodic-hardcore"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="RGqA1lNXYhg" src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="楽曲 New Dark Age YouTube動画">
+                        <figcaption>
+                            <span class="song">New Dark Age</span>
+                            <span class="artist">Bad Religion</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="melodic-hardcore"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="n7-YIZhwvKI" src="https://img.youtube.com/vi/n7-YIZhwvKI/sddefault.jpg" alt="楽曲 Reason YouTube動画">
+                        <figcaption>
+                            <span class="song">Reason</span>
+                            <span class="artist">DGM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="YjPZgtm3Dmk" src="https://img.youtube.com/vi/YjPZgtm3Dmk/sddefault.jpg" alt="楽曲 Trust YouTube動画">
+                        <figcaption>
+                            <span class="song">Trust</span>
+                            <span class="artist">DGM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="CbI79e5iZKs" src="https://img.youtube.com/vi/CbI79e5iZKs/sddefault.jpg" alt="楽曲 無常のスキャット YouTube動画">
+                        <figcaption>
+                            <span class="song">無情のスキャット</span>
+                            <span class="artist">人間椅子</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="doom-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="woGfOQ6Ze90" src="https://img.youtube.com/vi/woGfOQ6Ze90/sddefault.jpg" alt="楽曲 Integral YouTube動画">
+                        <figcaption>
+                            <span class="song">Integral</span>
+                            <span class="artist">Cynic</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="MM62wjLrgmA" src="https://img.youtube.com/vi/MM62wjLrgmA/sddefault.jpg" alt="楽曲 Schism YouTube動画">
+                        <figcaption>
+                            <span class="song">Schism</span>
+                            <span class="artist">Tool</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                        <span class="alternative-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="-_nQhGR0K8M" src="https://img.youtube.com/vi/-_nQhGR0K8M/sddefault.jpg" alt="楽曲 Parabola YouTube動画">
+                        <figcaption>
+                            <span class="song">Parabola</span>
+                            <span class="artist">Tool</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="prog-metal"></span>
+                        <span class="alternative-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="ZRtdQ81jPUQ" src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="楽曲 アイドル YouTube動画">
+                        <figcaption>
+                            <span class="song">アイドル</span>
+                            <span class="artist">YOASOBI</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="3V9952osjnc" src="https://img.youtube.com/vi/3V9952osjnc/sddefault.jpg" alt="楽曲 シル・ヴ・プレジテント YouTube動画">
+                        <figcaption>
+                            <span class="song">シル・ヴ・プレジデント</span>
+                            <span class="artist">P丸様。</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="vtuber"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="q_I56SKoMGQ" src="https://img.youtube.com/vi/q_I56SKoMGQ/sddefault.jpg" alt="楽曲 ダーリンダンス YouTube動画">
+                        <figcaption>
+                            <span class="song">ダーリンダンス</span>
+                            <span class="artist">湊あくあ×猫又おかゆ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="vtuber"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="_ZvxNcITgfo" src="https://img.youtube.com/vi/_ZvxNcITgfo/sddefault.jpg" alt="楽曲 絶対闘争イデオロギー YouTube動画">
+                        <figcaption>
+                            <span class="song">絶対闘争イデオロギー</span>
+                            <span class="artist">貢献Girls</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="game"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="9YkPC2fx_iQ" src="https://img.youtube.com/vi/9YkPC2fx_iQ/sddefault.jpg" alt="楽曲 イバラララバイ YouTube動画">
+                        <figcaption>
+                            <span class="song">イバラララバイ</span>
+                            <span class="artist">パンナ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="game"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="Rkc4JfpowRQ" src="https://img.youtube.com/vi/Rkc4JfpowRQ/sddefault.jpg" alt="楽曲 輝く空の静寂には YouTube動画">
+                        <figcaption>
+                            <span class="song">輝く空の静寂には</span>
+                            <span class="artist">Kalafina</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="symphonic-rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="YDLafQ-Rg-k" src="https://img.youtube.com/vi/YDLafQ-Rg-k/sddefault.jpg" alt="楽曲 雑踏、僕らの街 YouTube動画">
+                        <figcaption>
+                            <span class="song">雑踏、僕らの街</span>
+                            <span class="artist">トゲナシトゲアリ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="WIKKyrGGaDk" src="https://img.youtube.com/vi/WIKKyrGGaDk/sddefault.jpg" alt="楽曲 花の塔 YouTube動画">
+                        <figcaption>
+                            <span class="song">花の塔</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="rjzC2BiY2WM" src="https://img.youtube.com/vi/rjzC2BiY2WM/sddefault.jpg" alt="楽曲 暁のカレイドブラッド YouTube動画">
+                        <figcaption>
+                            <span class="song">暁のカレイドブラッド</span>
+                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="XTdRNjuGE_k" src="https://img.youtube.com/vi/XTdRNjuGE_k/sddefault.jpg" alt="楽曲 The Everlasting Guilty Crown YouTube動画">
+                        <figcaption>
+                            <span class="song">The Everlasting Guilty Crown</span>
+                            <span class="artist">EGOIST</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="gatWgb_wnh4" src="https://img.youtube.com/vi/gatWgb_wnh4/sddefault.jpg" alt="楽曲 君色シグナル YouTube動画">
+                        <figcaption>
+                            <span class="song">君色シグナル</span>
+                            <span class="artist">春奈るな</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="pop"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="aTvexNLRwHw" src="https://img.youtube.com/vi/aTvexNLRwHw/sddefault.jpg" alt="楽曲 アンインストール YouTube動画">
+                        <figcaption>
+                            <span class="song">アンインストール</span>
+                            <span class="artist">石川智晶</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="pop"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="guzvN9tiDd8" src="https://img.youtube.com/vi/guzvN9tiDd8/sddefault.jpg" alt="楽曲 空、星、海の夜 YouTube動画">
+                        <figcaption>
+                            <span class="song">空、星、海の夜</span>
+                            <span class="artist">THE BACK HORN</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="QPdhZR_CIck" src="https://img.youtube.com/vi/QPdhZR_CIck/sddefault.jpg" alt="楽曲 戦う君よ YouTube動画">
+                        <figcaption>
+                            <span class="song">戦う君よ</span>
+                            <span class="artist">THE BACK HORN</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="yf_xwI865gg" src="https://img.youtube.com/vi/yf_xwI865gg/sddefault.jpg" alt="楽曲 コバルトブルー YouTube動画">
+                        <figcaption>
+                            <span class="song">コバルトブルー</span>
+                            <span class="artist">THE BACK HORN</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="T5vVKFfrgkk" src="https://img.youtube.com/vi/T5vVKFfrgkk/sddefault.jpg" alt="楽曲 紅蓮 YouTube動画">
+                        <figcaption>
+                            <span class="song">紅蓮</span>
+                            <span class="artist">DOES</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="NO-Aq2b3Fjc" src="https://img.youtube.com/vi/NO-Aq2b3Fjc/sddefault.jpg" alt="楽曲 曇天 YouTube動画">
+                        <figcaption>
+                            <span class="song">曇天</span>
+                            <span class="artist">DOES</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="3hblnJc3Nn0" src="https://img.youtube.com/vi/3hblnJc3Nn0/sddefault.jpg" alt="楽曲 KNOW KNOW KNOW YouTube動画">
+                        <figcaption>
+                            <span class="song">KNOW KNOW KNOW</span>
+                            <span class="artist">DOES</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="pA2Xw4C7gcw" src="https://img.youtube.com/vi/pA2Xw4C7gcw/sddefault.jpg" alt="楽曲 Wanderland YouTube動画">
+                        <figcaption>
+                            <span class="song">Wanderland</span>
+                            <span class="artist">9mm Parabellum Bullet</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="anime"></span>
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="BgE_MccITtU" src="https://img.youtube.com/vi/BgE_MccITtU/sddefault.jpg" alt="楽曲 キャンドルの灯を YouTube動画">
+                        <figcaption>
+                            <span class="song">キャンドルの灯を</span>
+                            <span class="artist">9mm Parabellum Bullet</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="X6AzbA6U4N8" src="https://img.youtube.com/vi/X6AzbA6U4N8/sddefault.jpg" alt="楽曲 Cold Edge YouTube動画">
+                        <figcaption>
+                            <span class="song">Cold Edge</span>
+                            <span class="artist">9mm Parabellum Bullet</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="kmawA9Jns14" src="https://img.youtube.com/vi/kmawA9Jns14/sddefault.jpg" alt="楽曲 Supernova YouTube動画">
+                        <figcaption>
+                            <span class="song">Supernova</span>
+                            <span class="artist">9mm Parabellum Bullet</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="oYN2C2ppGc0" src="https://img.youtube.com/vi/oYN2C2ppGc0/hqdefault.jpg" alt="楽曲 dead start YouTube動画">
+                        <figcaption>
+                            <span class="song">dead start</span>
+                            <span class="artist">COCK ROACH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="cKOlWLswxuM" src="https://img.youtube.com/vi/cKOlWLswxuM/sddefault.jpg" alt="楽曲 新進化論エレクトロニカルパレーダー YouTube動画">
+                        <figcaption>
+                            <span class="song">新進化論エレクトロニカルパレーダー</span>
+                            <span class="artist">COCK ROACH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="GhMamN_DBO4" src="https://img.youtube.com/vi/GhMamN_DBO4/sddefault.jpg" alt="楽曲 天下五剣 YouTube動画">
+                        <figcaption>
+                            <span class="song">天下五剣</span>
+                            <span class="artist">HAGANE</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                        <span class="recomended"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="fuFbQ-Mewfw" src="https://img.youtube.com/vi/fuFbQ-Mewfw/sddefault.jpg" alt="楽曲 お先に失礼します。 YouTube動画">
+                        <figcaption>
+                            <span class="song">お先に失礼します。</span>
+                            <span class="artist">花冷え。</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="_EeYxtAeaX4" src="https://img.youtube.com/vi/_EeYxtAeaX4/sddefault.jpg" alt="楽曲 Astral Dogma YouTube動画">
+                        <figcaption>
+                            <span class="song">Astral Dogma</span>
+                            <span class="artist">妖精帝國</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="Hx3U9072f38" src="https://img.youtube.com/vi/Hx3U9072f38/sddefault.jpg" alt="楽曲 ROSE HIP-BULLET YouTube動画">
+                        <figcaption>
+                            <span class="song">ROSE HIP-BULLET</span>
+                            <span class="artist">GRANRODEO</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="heavy-metal"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="z4eS1TS0J2Y" src="https://img.youtube.com/vi/z4eS1TS0J2Y/sddefault.jpg" alt="楽曲 Paradise Lost YouTube動画">
+                        <figcaption>
+                            <span class="song">Paradise Lost</span>
+                            <span class="artist">茅原実里</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="ZGGwnnz0f-I" src="https://img.youtube.com/vi/ZGGwnnz0f-I/sddefault.jpg" alt="楽曲 吹雪 YouTube動画">
+                        <figcaption>
+                            <span class="song">吹雪</span>
+                            <span class="artist">西沢幸奏</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                        <span class="anime"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="iyw6-KVmgow" src="https://img.youtube.com/vi/iyw6-KVmgow/sddefault.jpg" alt="楽曲 月光 YouTube動画">
+                        <figcaption>
+                            <span class="song">月光</span>
+                            <span class="artist">鬼束ちひろ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="pop"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="PQ3N4MDR_og" src="https://img.youtube.com/vi/PQ3N4MDR_og/sddefault.jpg" alt="楽曲 孤高之魂魄 YouTube動画">
+                        <figcaption>
+                            <span class="song">孤高之魂魄</span>
+                            <span class="artist">いとうかなこ</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="pop"></span>
+                        <span class="game"></span>
+                    </div>
+                </li>
+                <li class="card">
+                    <figure>
+                        <img data-video-id="GZ20puHx92A" src="https://img.youtube.com/vi/GZ20puHx92A/sddefault.jpg" alt="楽曲 後ろに歩くように俺はできていない YouTube動画">
+                        <figcaption>
+                            <span class="song">後ろに歩くように俺はできていない</span>
+                            <span class="artist">SION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="tags">
+                        <span class="rock"></span>
+                    </div>
+                </li>
+            </ul>
+        </section>    
+    </main>
+
+    <aside>
+        <section class="about-me" id="about-me">
+            <header>
+                <h2>about me.</h2>
+            </header>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        lulliecatのproducerです。
+                        好きな音楽のジャンルはヘヴィメタルとアニソンです。
+                        中学生の頃からヘヴィメタルを聞き始めました。
+                        なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を目の当たりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
+                        他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+                    </p>
+                    <p>
+                        その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
+                        友だちは<em>Ride the Lightning</em>を買っていました。
+                        どちらも名作ですね。
+                    </p>
+                    <p>
+                        そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
+                        それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                        ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                        <em>Insanity and Genious</em>の頃です。
+                    </p>
+                    <p>
+                        当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
+                        何買ったかな、色々かった気がするな。
+                        Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                        本当に凄いよ。おすすめだよ。
+                    </p>
+                </div>
+                <div class="column">
+                    <p>
+                        その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
+                        いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、<em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+                    </p>
+                    <p>
+                        すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
+                        <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                        同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
+                    </p>
+                    <p>
+                        こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
+                        正直、記憶は曖昧なので実際に聞いた順番は前後していると思います。
+                        ですが、これらのバンドがぼくに衝撃を与えたのは本当に大きかったですね。
+                        1992年近辺、本当に凄かったな...ぼくの音楽人生を決めたといっても過言ではありません。
+                        もう私もいい歳ですが、いまだにSomewhere Far Beyondとかしてるもんな...最高の趣味だぜ...
+                    </p>
+                    <p>
+                        アニソンについては、機会があればまた！
+                        アニソンは本格的には1990年代後半から聞き始めましたが、これもまた良いものですね。
+                    </p>
+                    <p>
+                        最後にひとつだけ。さユりさんの音楽にはすごく助けられました。ありがとう、またね。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+    <footer class="page-footer">
+        © 2024 lulliecat
+    </footer>
+
+    <script src="./app.js"></script>
+</body>
+</html>

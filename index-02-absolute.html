@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>lulliecat musics</title>
+    <style>
+        /* 初期化 */
+        * {
+            /* マージンとパディングを全てリセット */
+            margin: 0;
+            padding: 0;
+
+            /* widthをコンテンツ幅+パディング幅+境界線幅を表すように指定 */
+            box-sizing: border-box;
+        }
+        img, svg {
+            /* img要素とsvg要素をブロック要素に指定 */
+            display: block;
+            max-width: 100%;
+        }
+        ul {
+            /* マーカーボックスを削除 */
+            list-style-type: none;
+        }
+        a {
+            /* 装飾を初期化 */
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /*
+         * パラメータ
+         */
+        :root {
+            --background-color: #f0f0f0;
+            --background-color-dark: #e0e0e0;
+            --accent-color: #d7003a;
+            --main-color: #303030;
+            --main-color-dim: #303030f0;
+            --shadow-color: #c0c0c0;
+
+            --max-content-width: 1200px;
+        }
+
+        /*
+         * 全体的な設定
+         */
+        :root {
+            /* 装飾 */
+            font-size: 18px;
+            color: var(--main-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* コンテナ */
+        main, aside, .page-header {
+            /* 寸法 */
+            padding-inline: 1rem;
+            padding-block: 2rlh;
+        }
+        main, .page-header {
+            /* 装飾 */
+            background-color: var(--background-color);
+        }
+        aside {
+            /* 装飾 */
+            background-color: var(--background-color-dark);
+        }
+
+        /* セクション */
+        section {
+            /* 寸法 */
+            width: 100%;
+            max-width: var(--max-content-width);
+            margin-inline: auto; /* 中央寄せ - widthを指定してmargin-inlineをautoにすることにより中央寄せができる */
+        }
+        section > header > h2 {
+            /* 装飾 */
+            font-size: 4rem;
+            border-bottom: 8px solid;
+
+            /* 配置 */
+            margin-bottom: 1rlh;
+        }
+        section > header > h2::first-letter {
+            /* 装飾 */
+            color: var(--accent-color);
+        }
+        @media screen and (max-width: 700px) {
+            section > header > h2 {
+                /* 装飾 */
+                font-size: 2rem;
+            }
+        }
+
+        /* 要素 */
+        em {
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        p {
+            /* 字下げ */
+            text-indent: 1rem;
+        }
+
+
+        /*
+         * Hero
+         */
+        /* ヒーロー画像 */
+        /* 02修正: ヒーロー画像の上にサイト名を表示する */
+        .hero {
+            /* .hero > img, .site-name-1,2 の基準となるブロック */
+            position: relative;
+
+            /* 寸法 */
+            width: 100%;
+            height: 100svh;
+        }
+        .hero > img {
+            /* absolutely positioned respect to .hero */
+            position: absolute;
+            top: 0;
+
+            /* 画像をビューポートサイズに拡大縮小 */
+            width: 100%;
+            height: 100svh; /* スマホでのアドレスバーなどを含まない場合のビューポートの高さ */
+            object-fit: cover; /* アスペクト比を保ったまま拡大縮小。width/heightで指定した領域を全部カバーさせるように拡大縮小し、はみ出た部分はクリップする */
+        }
+
+        /* ヒーロー画像上に表示するウェブサイト名 */
+        .site-name-1, .site-name-2 {
+            /* 装飾 */
+            font-size: 7rem;
+            font-weight: bold;
+            color: var(--accent-color);
+
+            /* absolutely positioned respect to .hero */
+            position: absolute;
+            left: 2rem;
+        }
+        .site-name-1 {
+            bottom: 9rem;
+        }
+        .site-name-2 {
+            bottom: 2rem;
+        }
+
+        @media screen and (max-width: 700px) {
+            .site-name-1 {
+                bottom: 6rem;
+            }
+            .site-name-2 {
+                bottom: 2rem;
+            }
+            .site-name-1, .site-name-2 {
+                font-size: 4rem;
+            }
+        }
+        /* 02修正ここまで */
+
+
+        /*
+         * header
+         */
+        .page-header h1 {
+            /* 装飾 */
+            font-size: 7rem;
+        }
+        .page-header h1 em {
+            /* 装飾 */
+            color: var(--accent-color);
+        }
+        .page-header nav li:hover {
+            border-bottom: 2px solid var(--main-color-dim);
+        }
+        .page-header nav li::first-letter {
+            color: var(--accent-color);
+        }
+
+        @media screen and (max-width: 700px) {
+            body > header > h1 {
+                /* 装飾 */
+                font-size: 5rem;
+            }
+        }
+
+
+        /*
+         * music videos
+         */
+        /* card */
+        .card img {
+            /* 装飾 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px var(--shadow-color);
+
+            /* 寸法 */
+            width: 100%; /* scaling image to grid container */
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            padding: 0;
+        }
+        .card .artist::before {
+            content: " / ";
+        }
+
+
+        /*
+         * about me
+         */
+        .about-me p {
+            /* 配置 */
+            margin-block: 1rlh;
+        }
+
+
+        /*
+         * footer
+         */
+         .page-footer {
+            /* 装飾 */
+            color: var(--background-color);
+            background-color: var(--main-color);
+
+            /* 02修正: フッターを画面下に固定する */
+            /* ビューポートを基準にして絶対位置指定 */
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+
+            /* 寸法 */
+            width: 100%;
+            height: 1rlh;
+            /* 02修正ここまで */
+
+            /* 整列 */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero" id="hero">
+        <img src="./haley-powers-rjhvXX7JBPc-unsplash.jpg" alt="hero image 1">
+        <!-- 02修正: ヒーロー画像の上にサイト名を挿入 -->
+        <div class="site-name-1">lulliecat</div>
+        <div class="site-name-2">musics.</div>
+        <!-- 02修正ここまで -->
+    </div>
+
+    <header class="page-header">
+        <h1>lulliecat <em>m</em>usics.</h1>
+        <nav>
+            <ul>
+                <li><a href="#hero">home</a></li>
+                <li><a href="#music-videos">music videos</a></li>
+                <li><a href="#about-me">about me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="music-videos" id="music-videos">
+            <header>
+                <h2>music videos.</h2>
+            </header>
+            <ul class="card-container">
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=kKOkybfh9bE">
+                            <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="楽曲 平行線 YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">平行線</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=L72R8VFVNEY">
+                            <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="楽曲 酸欠少女YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">酸欠少女</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=9LhUlEeeSF0">
+                            <img src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="楽曲 来世で会おう YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">来世で会おう</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=M1ajQuujwKk">
+                            <img src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="楽曲 それは小さな光のような YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">それは小さな光のような</span>
+                            <span class="artist">さユり</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=PWbg7ShjOPk">
+                            <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="楽曲 エイトビート・バーサーカー YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">エイトビート・バーサーカー</span>
+                            <span class="artist">岸田教団＆THE明星ロケッツ</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=Bds3FALcR7M">
+                            <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="楽曲 all is one YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">All is One</span>
+                            <span class="artist">Orphaned Land</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=msuO_KuHwVY">
+                            <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="楽曲 Shadows Flap Their Black Wings YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">Shadows Flap Their Black Wings</span>
+                            <span class="artist">In Vain</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=RGqA1lNXYhg">
+                            <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="楽曲 New Dark Age YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">New Dark Age</span>
+                            <span class="artist">Bad Religion</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure>
+                        <a href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ">
+                            <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="楽曲 アイドル YouTube動画">
+                        </a>
+                        <figcaption>
+                            <span class="song">アイドル</span>
+                            <span class="artist">YOASOBI</span>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <aside>
+        <section class="about-me" id="about-me">
+            <header>
+                <h2>about me.</h2>
+            </header>
+            <p>
+                lulliecatのproducerです。
+                好きな音楽のジャンルはヘヴィメタルとアニソンです。
+                中学生の頃からヘヴィメタルを聞き始めました。
+                なんかやばい音楽が聴きたい、と思い立ち、当時買っていたFM放送番組表雑誌のFM Stationに載っていた全身タトゥーの完全にやばいミュージシャン(<em>Skid Row</em>でした)を目の当たりにして、CDを買わざるを得ませんでした。<em>Slave to the Grind</em>ですね。
+                他には<em>Judas Priest</em>の<em>Painkiller</em>を買い、最初はこれらの攻撃的な音が衝撃的で一気に好きになりました。
+            </p>
+            <p>
+                その後、どうやらスラッシュメタルというジャンルが凄いらしい、と当時の同級生との会話できき、<em>Metallica</em>の<em>Master of Puppets</em>を買って盛り上がりまくっていました。
+                友だちは<em>Ride the Lightning</em>を買っていました。
+                どちらも名作ですね。
+            </p>
+            <p>
+                そのうち、正直記憶はおぼろげなのですが、なんだかジャーマンメタルと呼ばれるものが良いらしい、と聞いてそちらの方も聞こうとしました。
+                それで、真っ先に手に入れたのが<em>Helloween</em>の<em>Cameleon</em>で、正直これがイマイチで（笑）、ジャーマンメタル熱も最初は冷めようとしていました。
+                ですが、当時放送していたヘヴィメタルのTV番組に<em>Gamma Ray</em>が出演し、その音が結構よくて（何か忘れましたがPVも流していました、insanity and geniousとone with the worldだったような...）、再びチェックしてみる気になり、そしてかなりはまりました。
+                <em>Insanity and Genious</em>の頃です。
+            </p>
+            <p>
+                当時は、Victorからpure metal samplerというオムニバスアルバムが出始めた頃で、それで様々なバンドの音をつまみ食いしてCDを買う参考にできたのも大きかったです。
+                何買ったかな、色々かった気がするな。
+                Helloweenもめでたく<em>守護神伝I, II</em>(何故かこれだけ邦題で書く人です)を手に入れてすごくはまりましたし、<em>Blind Gurdian</em>の<em>Somewhere Far Beyond</em>もかって、もうこれが本当にすごくすごくて、今でも聞いています。
+                本当に凄いよ。おすすめだよ。
+            </p>
+            <p>
+                その他に大きかったのは、これもオムニバスアルバムなのですが、EaracheのEarplugedというアルバムがこれまた凄くて。
+                いわゆるデス・ドゥーム系のアルバムだったのですが、その音楽性も衝撃な上に、かの<em>Carcass</em>の<em>Heartwork</em>からの楽曲や、<em>Cathedral</em>の<em>The Ethereal Mirror</em>からの楽曲とか、それはもう完全なる名作が収録されまくっていて本当に虜になりました。
+            </p>
+            <p>
+                すっかりヘヴィメタル趣味がついて、キャプテン和田誠さんのラジオとか聞いて完全に信者になっていました。
+                <em>Angra</em>がデビューして<em>Angel's Cry</em>をちょうど発売する頃で、ラジオで聞いたCarry Onはテープに録音して何回聞いたかわかりませんね。プログメタルに初めて触れたのもこの頃です。
+                同じくキャプテン和田誠さんのラジオで<em>Psychotic Waltz</em>の<em>Into the Everflow</em>の中からHanging on a Stringを聞き、これもメロディアスで凄く気に入って、買ってみたらまさかのプログレッシブ具合で、とくに偏った音楽が好きだったぼくにとっては大切な一枚になりました。
+            </p>
+            <p>
+                こんな感じで、ぼくの音楽の趣味は大体1990年代前半に形成されました。懐かしいな。
+                正直、記憶は曖昧なので実際に聞いた順番は前後していると思います。
+                ですが、これらのバンドがぼくに衝撃を与えたのは本当に大きかったですね。
+                1992年近辺、本当に凄かったな...ぼくの音楽人生を決めたといっても過言ではありません。
+                もう私もいい歳ですが、いまだにSomewhere Far Beyondとかしてるもんな...最高の趣味だぜ...
+            </p>
+            <p>
+                アニソンについては、機会があればまた！
+                アニソンは本格的には1990年代後半から聞き始めましたが、これもまた良いものですね。
+            </p>
+            <p>
+                最後にひとつだけ。さユりさんの音楽にはすごく助けられました。ありがとう、またね。
+            </p>
+        </section>
+    </aside>
+
+    <footer class="page-footer">
+        © 2024 lulliecat
+    </footer>
+</body>
+</html>
