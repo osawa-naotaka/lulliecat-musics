@@ -1,29 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><style>
-    #light-icon {
-      display: inline;
-    }
-    #dark-icon {
-      display: none;
-    }
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-    @media (prefers-color-scheme: dark) {
-      #light-icon {
-        display: none;
-      }
-      #dark-icon {
-        display: inline;
-      }
-    }
-  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1011)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(4.861111111111111,0,0,4.861111111111111,159.94896263546417,146.43332836363055)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="144" height="144"><svg width="144" height="144" viewBox="0 0 38.099999 38.1" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-  <defs id="defs1"><clipPath id="SvgjsClipPath1011"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs>
-  <g id="layer1">
-    <path d="M 10.0956,32.435387 V 6.1534248 h 6.314727 V 27.143717 h 10.230562 v 5.29167 z" id="text6" style="font-size:21.1667px;font-family:'Noto Sans JP';-inkscape-font-specification:'Noto Sans JP, @wght=900';font-variation-settings:'wght' 900;stroke-width:0.264583" aria-label="
-L"></path>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <path
+       d="m 117.83066,91.881908 q 1.71158,0 2.6332,1.57992 1.05328,1.57992 1.05328,4.34478 0,5.134742 -2.50154,8.162922 -7.37296,8.82122 -14.35094,12.37604 -6.846321,3.55482 -16.589161,3.55482 -6.846321,0 -12.639361,-1.71158 -5.79304,-1.71158 -14.08762,-5.13474 -7.50462,-3.2915 -14.482601,-5.39806 -6.71466,12.24438 -20.14398,12.24438 -7.37296,0 -11.71774,-3.2915 -4.476441,-3.42316 -4.476441,-8.68956 0,-6.45134 6.188021,-10.664462 6.18802,-4.34478 16.4575,-4.34478 h 1.71158 l 2.36988,-38.313061 q 0.78996,-13.166001 4.73976,-21.723901 3.9498,-8.5579 10.927781,-14.61426 6.05636,-5.266401 13.8243,-7.899601 7.76794,-2.7648598 16.4575,-2.7648598 14.219281,0 21.855562,7.3729598 7.63628,7.372961 7.63628,19.222361 0,8.03126 -2.89652,13.03434 -2.89652,4.87142 -8.03126,4.87142 -3.686481,0 -5.793041,-1.71158 -2.10656,-1.84324 -2.10656,-5.13474 0,-1.18494 0.52664,-4.34478 0.78996,-3.68648 0.78996,-6.583 0,-5.52972 -3.2915,-8.68956 -3.15984,-3.2915 -9.742841,-3.2915 -11.58608,0 -17.90576,7.63628 -6.31968,7.50462 -8.03126,23.6988 l -3.02818,29.886821 q -0.6583,6.319681 -1.71158,10.927781 8.42624,1.44826 21.0656,4.608102 7.37296,1.84324 11.32276,2.6332 3.949801,0.78996 6.977981,0.78996 7.63628,0 13.034341,-2.50154 5.52972,-2.633202 10.40114,-8.294582 1.57992,-1.84324 3.55482,-1.84324 z"
+       id="text1"
+       style="font-size:131.66px;font-family:Pacifico;-inkscape-font-specification:'Pacifico, @wght=700';font-variation-settings:'wght' 700;fill-opacity:0.752941;stroke:#3c9fe8;stroke-width:0;stroke-linejoin:round"
+       transform="scale(0.9841456,1.0161098)"
+       aria-label="L" />
   </g>
-</svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1012)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(4.861111111111111,0,0,4.861111111111111,159.94896263546417,146.43332836363055)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="144" height="144"><svg width="144" height="144" viewBox="0 0 38.099999 38.1" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-  <defs id="defs1"><clipPath id="SvgjsClipPath1012"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs>
-  <g id="layer1">
-    <path d="M 10.0956,32.435387 V 6.1534248 h 6.314727 V 27.143717 h 10.230562 v 5.29167 z" id="text6" style="font-size:21.1667px;font-family:'Noto Sans JP';-inkscape-font-specification:'Noto Sans JP, @wght=900';font-variation-settings:'wght' 900;stroke-width:0.264583" aria-label="
-L"></path>
-  </g>
-</svg></svg></g></g></svg></g></svg>
+</svg>
