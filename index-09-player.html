@@ -346,12 +346,29 @@
             /* 装飾 */
             border-radius: 8px;
             box-shadow: 0 0 10px var(--shadow-color);
-            cursor: pointer; /* 09修正: サムネイル画像へのポインタを変更 */
 
             /* 寸法 */
             aspect-ratio: 16 / 9;
             object-fit: cover;
         }
+        /* 09修正: 動画を開くボタン */
+        /* 動画を開くボタン(サムネイル画像を包む) */
+        .card .play {
+            /* ボタンの標準デザインを消す */
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .card .play:focus-visible {
+            /* キーボード操作中だけ表示される枠 */
+            outline: 3px solid var(--accent-color);
+            outline-offset: 4px;
+        }
+        /* 09修正ここまで */
+
         .card .artist::before {
             content: " / ";
         }
@@ -489,9 +506,21 @@
             /* 装飾 */
             cursor: pointer;
 
+            /* ボタンの標準デザインを、周囲の配色に合わせる */
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 1px solid;
+            padding: 0.25rem 1rem;
+
             /* ビューポートを基準にして絶対位置指定 */
             position: fixed;
             top: 0;
+        }
+        .player > .close:focus-visible {
+            /* キーボード操作中だけ表示される枠 */
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
         }
 
         /* メインカラムのスクロールを止める */
@@ -576,8 +605,8 @@
             </header>
 
             <!-- 09修正: 動画プレイヤー -->
-            <div class="player">
-                <div class="close">Close</div>
+            <div class="player" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
+                <button type="button" class="close">Close</button>
                 <iframe loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <!-- 09修正ここまで -->
@@ -613,7 +642,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="kKOkybfh9bE" src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="楽曲 平行線 YouTube動画">
+                        <button type="button" class="play" data-video-id="kKOkybfh9bE">
+                            <img src="https://img.youtube.com/vi/kKOkybfh9bE/sddefault.jpg" alt="平行線の動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">平行線</span>
@@ -629,7 +660,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="L72R8VFVNEY" src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="楽曲 酸欠少女YouTube動画">
+                        <button type="button" class="play" data-video-id="L72R8VFVNEY">
+                            <img src="https://img.youtube.com/vi/L72R8VFVNEY/sddefault.jpg" alt="酸欠少女の動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">酸欠少女</span>
@@ -644,7 +677,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="9LhUlEeeSF0" src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="楽曲 来世で会おう YouTube動画">
+                        <button type="button" class="play" data-video-id="9LhUlEeeSF0">
+                            <img src="https://img.youtube.com/vi/9LhUlEeeSF0/sddefault.jpg" alt="来世で会おうの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">来世で会おう</span>
@@ -660,7 +695,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="M1ajQuujwKk" src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="楽曲 それは小さな光のような YouTube動画">
+                        <button type="button" class="play" data-video-id="M1ajQuujwKk">
+                            <img src="https://img.youtube.com/vi/M1ajQuujwKk/sddefault.jpg" alt="それは小さな光のようなの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">それは小さな光のような</span>
@@ -676,7 +713,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="PWbg7ShjOPk" src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="楽曲 エイトビート・バーサーカー YouTube動画">
+                        <button type="button" class="play" data-video-id="PWbg7ShjOPk">
+                            <img src="https://img.youtube.com/vi/PWbg7ShjOPk/sddefault.jpg" alt="エイトビート・バーサーカーの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">エイトビート・バーサーカー</span>
@@ -692,7 +731,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="Bds3FALcR7M" src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="楽曲 all is one YouTube動画">
+                        <button type="button" class="play" data-video-id="Bds3FALcR7M">
+                            <img src="https://img.youtube.com/vi/Bds3FALcR7M/sddefault.jpg" alt="all is oneの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">All is One</span>
@@ -707,7 +748,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="msuO_KuHwVY" src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="楽曲 Shadows Flap Their Black Wings YouTube動画">
+                        <button type="button" class="play" data-video-id="msuO_KuHwVY">
+                            <img src="https://img.youtube.com/vi/msuO_KuHwVY/sddefault.jpg" alt="Shadows Flap Their Black Wingsの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">Shadows Flap Their Black Wings</span>
@@ -722,7 +765,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="RGqA1lNXYhg" src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="楽曲 New Dark Age YouTube動画">
+                        <button type="button" class="play" data-video-id="RGqA1lNXYhg">
+                            <img src="https://img.youtube.com/vi/RGqA1lNXYhg/hqdefault.jpg" alt="New Dark Ageの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">New Dark Age</span>
@@ -737,7 +782,9 @@
                 <li class="card">
                     <figure>
                         <!-- 09修正: 動画リンク修正 -->
-                        <img data-video-id="ZRtdQ81jPUQ" src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="楽曲 アイドル YouTube動画">
+                        <button type="button" class="play" data-video-id="ZRtdQ81jPUQ">
+                            <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/sddefault.jpg" alt="アイドルの動画を再生">
+                        </button>
                         <!-- 09修正ここまで -->
                         <figcaption>
                             <span class="song">アイドル</span>
@@ -821,32 +868,45 @@
 
     <!-- 09修正: 動画プレイヤー用コード -->
     <script>
-        function ad_hock_sanitize(str)
+        function ad_hoc_sanitize(str)
         {
             return str.replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/"/g, '').replace(/'/g, '');
         }
 
         const player        = document.querySelector(".player");
         const player_iframe = player.querySelector("iframe");
+        const player_close  = player.querySelector(".close");
+        let   last_button   = null; // 開いたときのボタン。閉じたらフォーカスを戻す
 
-        // open player
-        const cards         = document.querySelectorAll(".card");
-        cards.forEach((card) => {
-            const img = card.querySelector("figure > img");
-            const id  = ad_hock_sanitize(img.dataset.videoId);
+        function open_player(button)
+        {
+            const id = ad_hoc_sanitize(button.dataset.videoId);
+            last_button = button;
+            player_iframe.src = `https://www.youtube.com/embed/${id}`;
+            player.classList.add('show');
+            player_close.focus(); // showを付けて表示してから。display:noneの要素にはfocusできない
+        }
 
-            // open
-            img.addEventListener('click', () => {
-                player_iframe.src = `https://www.youtube.com/embed/${id}`;
-                player.classList.add('show');
-            });
+        function close_player()
+        {
+            player_iframe.src = "";
+            player.classList.remove('show');
+            if (last_button) {
+                last_button.focus();
+            }
+        }
+
+        // open
+        document.querySelectorAll(".card .play").forEach((button) => {
+            button.addEventListener('click', () => open_player(button));
         });
 
         // close
-        const player_close  = player.querySelector(".close");
-        player_close.addEventListener('click', () => {
-            player_iframe.src ="";
-            player.classList.remove('show');
+        player_close.addEventListener('click', close_player);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && player.classList.contains('show')) {
+                close_player();
+            }
         });
     </script>
     <!-- 09修正ここまで -->

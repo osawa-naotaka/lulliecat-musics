@@ -319,12 +319,27 @@ p {
     /* 装飾 */
     border-radius: 8px;
     box-shadow: 0 0 10px var(--shadow-color);
-    cursor: pointer;
 
     /* 寸法 */
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
+/* 動画を開くボタン(サムネイル画像を包む) */
+.card .play {
+    /* ボタンの標準デザインを消す */
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.card .play:focus-visible {
+    /* キーボード操作中だけ表示される枠 */
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
 .card .artist::before {
     content: " / ";
 }
@@ -475,9 +490,21 @@ p {
     /* 装飾 */
     cursor: pointer;
 
+    /* ボタンの標準デザインを、周囲の配色に合わせる */
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 1px solid;
+    padding: 0.25rem 1rem;
+
     /* ビューポートを基準にして絶対位置指定 */
     position: fixed;
     top: 0;
+}
+.player > .close:focus-visible {
+    /* キーボード操作中だけ表示される枠 */
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /* メインカラムのスクロールを止める */
