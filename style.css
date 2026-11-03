@@ -415,7 +415,7 @@ p {
 .music-videos:has( .music-tags #all:checked ) .card {
     display: block;
 }
-.music-videos:has( .music-tags #recomended:checked ) .card:has( .tags .recomended ),
+.music-videos:has( .music-tags #recommended:checked ) .card:has( .tags .recommended ),
 .music-videos:has( .music-tags #rock:checked ) .card:has( .tags .rock ),
 .music-videos:has( .music-tags #anime:checked ) .card:has( .tags .anime ),
 .music-videos:has( .music-tags #heavy-metal:checked ) .card:has( .tags .heavy-metal ),
