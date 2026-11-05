@@ -45,7 +45,7 @@
 **第1部 入門編: 作って公開する**
 
 1. 完成サイトを見る・作るもの・静的サイトの利点
-2. 準備: VSCode、GitHubアカウント、二段階認証(動画のみ)
+2. 準備: GitHubアカウント、VSCode(動画のみ)
 3. HTMLの基本: 空のファイルから `index-initial.html` まで
 4. GitHub Pagesで公開する(動画のみ)
 5. CSS入門: `index-00-decoration.html`
