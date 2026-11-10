@@ -82,13 +82,16 @@
             margin-inline: auto; /* 中央寄せ - widthを指定してmargin-inlineをautoにすることにより中央寄せができる */
         }
         /* 01修正ここまで */
+        /* 01修正: セクションヘッダーの下マージン */
+        section > header {
+            /* 配置 */
+            margin-block-end: 1rlh;
+        }
+        /* 01修正ここまで */
         section > header > h2 {
             /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
-
-            /* 配置 */
-            margin-bottom: 1rlh;    /* 01修正: section headerのマージン追加 */
         }
         section > header > h2::first-letter {
             /* 装飾 */

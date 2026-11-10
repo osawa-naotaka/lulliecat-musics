@@ -86,13 +86,14 @@
             /* スクロールマージン(navリンクからのジャンプ時用) */
             scroll-margin-block-start: var(--header-height); /* 04修正: アンカーリンクでとんだ先のマージン確保 */
         }
+        section > header {
+            /* 配置 */
+            margin-block-end: 1rlh;
+        }
         section > header > h2 {
             /* 装飾 */
             font-size: 4rem;
             border-bottom: 8px solid;
-
-            /* 配置 */
-            margin-bottom: 1rlh;
         }
         section > header > h2::first-letter {
             /* 装飾 */
